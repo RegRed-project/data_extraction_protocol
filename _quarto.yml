@@ -21,9 +21,9 @@ website:
     tools:
       - icon: globe
         href: https://github.com/RegRed-project
-        text: 'MOBI Lab'
+        text: 'RegRed'
       - icon: github
-        href: https://github.com/RegRed-project/
+        href: https://github.com/RegRed-project/data_extraction_protocol
         text: 'GitHub'
 
     style: docked
