@@ -9,7 +9,7 @@ Because red lists are often similar within a region, it makes sense to assign co
 
 ## 1.1 Pick one country
 
-**Select a country to extract data from** 
+**Select a country to extract data from**   
 **Data extractors** will select a country based on language proficiency, familiarity with the country or region, and/or personal preference and motivation.
 
 ::: {.callout-tip}
@@ -86,7 +86,7 @@ If the source should be included in the table of sources, it will need to be add
 
 ## 1.3 Check if the source has already been extracted by the NRL
 
-**Check before starting to extract data**
+**Check before starting to extract data**.    
 The National Red List project (<https://www.nationalredlist.org/>) is one of [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s partners. They have extracted data from many different sources already, and **data extractors** should make sure not to extract these data again. However, in order for the NRL data to be useful, it will still need to be harmonised by the **NRL data harmoniser**. 
 
 ::: {.callout-warning collapse="true"}

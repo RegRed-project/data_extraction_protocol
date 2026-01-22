@@ -4,3 +4,6 @@
 .Ruserdata
 .DS_Store
 .quarto/project-cache/deno-kv-file
+
+/.quarto/
+**/*.quarto_ipynb
