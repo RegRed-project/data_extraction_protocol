@@ -1,0 +1,45 @@
+---
+title: '[RegRed]{colour="#d14024" bg-colour="#fff"} Data Extraction Protocol'
+subtitle: ''
+page-layout: full
+date-modified: last-modified
+authors:
+  - name: Florencia Grattarola
+    orcid: 0000-0001-8282-5732
+  - name: Kateřina Tschernosterová 
+    orcid: 
+  - name: Ivo Kadlec
+    orcid: 
+  - name: Adam Uličný
+    orcid: 
+  - name: Safiya Praleskouskaya
+    orcid: 
+  - name: Gabriel Ortega
+    orcid: 
+---
+
+## Purpose
+The primary goal of this protocol is to ensure that any team member, regardless of when they join, can confidently and consistently contribute to the data extraction process.   
+Be aware, the protocol is adapted to the extraction of data from the **tetrapods** group.
+
+## How to use this document
+
+::: {.callout-tip}
+## This is a tip
+:::
+
+::: {.callout-warning}
+## This is a question
+:::
+
+This [tag]{colour="#fff" bg-colour="#000"} is used for team member names.   
+
+This [tag]{colour="#fff" bg-colour="#3169e0"} is used for folders.
+
+This [tag]{colour="#fff" bg-colour="#31b0e0"} is used for files.
+
+This `tag` is used for variable names or values.  
+
+## Report errors
+
+Contact [Flo]{colour="#fff" bg-colour="#000"} if you find any inconsistencies in this document: [grattarola@fzp.czu.cz](mailto:grattarola@fzp.czu.cz).

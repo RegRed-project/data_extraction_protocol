@@ -1,0 +1,11 @@
+---
+title: 'For spatial data generator'
+page-layout: full
+---
+
+::: {.callout-note}
+This section needs to be developed.
+:::
+
+Refer to our standardised [geographic_entities]{colour="#fff" bg-colour="#31b0e0"}.  
+<https://regred-project.github.io/geographic_entities/>.

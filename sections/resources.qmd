@@ -1,0 +1,71 @@
+---
+title: ''
+page-layout: full
+---
+
+## One Drive folder structure
+
+```
+.
+├── code/                
+│   └── ...
+├── data/
+│   ├── ...
+│   ├── all_sources_to_extract/
+│   ├── new_sources/
+│   ├── old_files/
+│   ├── status_mapping_sources/
+│   └── tetrapods_extracted_sources/
+├── docs/                  
+├── raw_data/                
+└── README.docx
+```
+
+## Folders (data/)
+
+  - [all_sources_to_extract]{colour="#fff" bg-colour="#3169e0"} | [all_sources_to_extract](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&web=1&e=QdLyUf)  
+This is a directory containing all the files (PDFs, etc.) named after the name convention of the first metadata effort (<*ISO3_taxa_year.pdf*>). Be aware that these names will not match any current fields in the template for data extraction.
+
+  - [new_sources]{colour="#fff" bg-colour="#3169e0"} | [new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)  
+This is a directory in which we store the new sources that people send to us or that we find during the extraction process.
+
+  - [old_files]{colour="#fff" bg-colour="#3169e0"} | [old_files](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/old_files?csf=1&web=1&e=bVVjTk)  
+This is a directory is an archive of old files.  
+
+  - [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} | [status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)  
+This is the directory in which we store the IUCN mapping sources (PDF + table, named after `sourceID`).  
+
+  - [tetrapods_extracted_sources]{colour="#fff" bg-colour="#3169e0"} | [tetrapods_extracted_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/tetrapods_extracted_sources?csf=1&web=1&e=bx6Zki)  
+This is the directory that contains all the tetrapods extracted sources (named after `sourceID`).   
+
+## Files (most important)
+
+  - [tetrapods_sources_to_extract]{colour="#fff" bg-colour="#31b0e0"} | [data/regred_tetrapods_sources_to_extract](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_tetrapods_sources_to_extract.xlsx?d=wf0ea428dc8d944aa8129214a38f69238&csf=1&web=1&e=UXEtEO)   
+This table has all the tetrapods sources that the **data extractors** will use it as a reference for the extraction process. It was generated following our metadata table ([Kadlec et al., 2025](doi.org/doi.org/10.3897/natureconservation.60.158981)) by keeping only those sources that belong to tetrapods. The content in this table should never be edited, except for the fields: `dataExtractor`, `progress`, `redlistTypeOfContent`, `extractionType`, `numberOfRedlists`, `dateStarted`, `fullyExtracted`, `extractionRemarks`.
+
+  - [data_extraction_template]{colour="#fff" bg-colour="#31b0e0"} | [data/regred_data_extraction_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&csf=1&web=1&e=P8dExb)  
+This is the Excel (read-only) template file that **data extractors** will use as a template for the data extraction.
+
+  - [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} | data/regred_geographic_entities (<https://regred-project.github.io/geographic_entities/>)  
+This is the local copy of the standard geographic locations that **data extractors** will use as a reference for filling the `location` table. Only the web version should be used. 
+
+  - [data_codebooks]{colour="#fff" bg-colour="#31b0e0"} | [data/regred_data_codebooks]()  
+This is an Excel (read-only) file that keeps all the controlled vocabulary of the database stored.
+
+  - [mapping_sources_template]{colour="#fff" bg-colour="#31b0e0"} | [data/status_mapping_sources/regred_mapping_sources_template]()  
+This is the Excel (read-only) template file that **data extractors** will use as a template for generating mapping sources for conservation status.
+
+  - [mapping_sources_used]{colour="#fff" bg-colour="#31b0e0"} | [data/status_mapping_sources/regred_mapping_sources_used]()  
+This is the Excel (read-only) template file that **data extractors** will use as a template for generating mapping sources for conservation status.
+
+  - [new_sources]{colour="#fff" bg-colour="#31b0e0"} | [data/new_sources/new_sources](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources/new_sources.xlsx?d=wf01d3d61592a473488abcdc1e4d7b91d&csf=1&web=1&e=VJDcqK)  
+This is the Excel file that **data extractors** will use to store information about any new source (not in found in the [tetrapods_sources_to_extract]{colour="#fff" bg-colour="#31b0e0"}).
+
+  - [split_script]{colour="#fff" bg-colour="#31b0e0"} | [code/Splitter/split_script](https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&web=1&e=DdwV5p)  
+This is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.   
+  
+## Others
+
+  - [**RegRed**]{colour="#d14024" bg-colour="#fff"} project on GitHub <https://github.com/RegRed-project>.  
+  - [**RegRed**]{colour="#d14024" bg-colour="#fff"} **Zotero** library.  
+

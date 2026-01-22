@@ -1,0 +1,305 @@
+---
+title: 'Controlled vocabulary'
+page-layout: full
+toc: true
+toc-location: left
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+library(janitor)
+library(readxl)
+library(reactable)
+library(tidyverse)
+library(Microsoft365R)
+
+site <- get_sharepoint_site("MOBI_science - RegRed")
+drv <- site$get_drive("Dokumenty")
+# drv$list_items('RegRed/data')
+item <- drv$get_item("RegRed/data/regred_data_codebooks.xlsx")
+tmp <- tempfile(fileext = ".xlsx")
+item$download(dest = tmp, overwrite = TRUE)
+```
+
+::: {.callout-warning collapse="true"}
+
+## How to add a new item in the controlled vocabulary (drop-down list) in excel templates
+
+Basic instructions can be found also here: <https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b>.  
+
+-   Unlock the sheet with the list of controlled vocabulary.  
+-   Add a new item to the end of selected column.  
+-   Sort the list in the selected column from A to Z (for easier work).  
+-   Find the column on the worksheet that needs to be changed.  
+-   Select the first cell in the column (below the heather).  
+-   Go to ribbon Data and then Data Validation.  
+-   In the Settings tab, as a validation criteria (allow) select option List.  
+-   Click on Source and then select whole range of items that will be included in the scroll-down list.  
+-   Copy the change in the whole column by double click on bottom-right corner of the first cell
+-   After all the changes, lock the sheet with the list of controlled vocabulary again
+-   Add the changes you have made to the CHANGE LOG in the README table.
+-   Let the team know about the new template version and its changes.
+
+:::
+
+
+::: {.callout-tip}
+## Tips
+
+ - You can resize columns by click-and-dragging the borders.
+ - You can search for content in the table in the top-right Search box.
+:::
+
+## source table
+
+### `sourceLanguage`
+
+-   We use ISO 639 language codes (source: <https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes>).   
+-   Montenegrin does not have two-letter code in ISO 639-1, only three-letter code ISO 639-2 and ISO 639-3 - `cnr`.  
+-   For the CV table in the geodatabase, we selected all the languages from ISO 639-1 macrolanguages and individual language list.   
+-   For the CV table in the Excel template file, we selected only languages that were used in sources that we have (currently 42).   
+-   In case there is a language that is not listed in Excel CV table, it can be added manually, there is a full list of the ISO imported in the database.   
+-   For the sources that have more than one language, please choose the one that is used more in the source.   
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'sLanguage') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 50))
+```
+
+### `sourceLicense`
+
+-   We use standard Creative commons 4.0 (source: <http://creativecommons.org/publicdomain/zero/1.0/legalcode>; <http://creativecommons.org/licenses/by/4.0/legalcode>)
+-   License can be also `unknown`.   
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'sLicense') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `sourceType`
+
+-   We use standard DCMI Metadata Terms (source: <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/type/> and <https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-7>)
+-   For the CV table in the Excel template file, we selected only the source types we could identify for our sources (Collection, Dataset, Interactive resource and Text, marked with yes in usedInRegRed).
+-   In case there is some `sourceType` that is not listed in Excel CV table, it can be added manually, there is a full list of the source types in the database.
+
+```{r}
+#| message: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'sType') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `sourceFormat`
+
+-   We use standard IANA Internet Assigned Numbers Authority, Media Types (registered) (source: <https://www.iana.org/assignments/media-types/media-types.xhtml>).   
+-   For the CV table in excel template file, we selected only the media types relevant to our sources.   
+-   From the media types Application, Text and Image group, we selected all the relevant media subtypes.   
+-   In case that the source is not in digital format (can be mainly hard copy of a book), please select the appropriate option from the CV list: `not digital`.   
+-   In case that the source is Collection (`sourceType`), select all available formats for that source (e.g., `csv | html`).   
+
+```{r}
+#| message: false
+#| echo: false
+#| eval: false
+
+df <- read_xlsx(tmp, sheet = 'sFormat') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(sFormat, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `extractionType`
+
+We use standard DCMI Metadata Terms (source: https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/type/ and ttps://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-7)
+For the CV table in the Excel template file, we selected only the source types we could identify for our sources (Collection, Dataset, Interactive resource and Text, marked in bold).
+In case there is some sourceType that is not listed in Excel CV table, it can be added manually, there is a full list of the source types in the database.
+
+
+```{r}
+#| message: false
+#| echo: false
+#| eval: false
+df <- read_xlsx(tmp, sheet = 'sExtractionType') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(sFormat, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `sourceCategory`
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'sCategory') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `sourcePublisherType`
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'sPublisherType') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+## redlist table
+
+### `geospatialScope`
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'rGeospatialScope') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `taxonomicScope`
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'rTaxonomicScope') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+### `statusAssessmentType`
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'rStatusAssessmentType') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```
+
+## location table
+
+### `continent`
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+df <- read_xlsx(tmp, sheet = 'lContinent') %>% 
+  janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) 
+
+reactable(df, 
+          resizable = TRUE,
+          defaultPageSize = 5,
+          wrap = TRUE,
+          outlined = TRUE,
+          striped = TRUE, searchable = TRUE,
+          defaultColDef = colDef(minWidth = 60))
+```

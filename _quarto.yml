@@ -1,0 +1,95 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  page-navigation: true
+  title: 'RegRed'
+  site-url: ''
+  repo-url: /
+  
+  page-footer:
+    right: "This page is built with 🧉️ and [Quarto](https://quarto.org/)"
+    left: "**Modelling of Biodiversity Lab** (MOBI Lab) -- **Faculty of Environmental Sciences** (FŽP ČZU)"
+    background: "#f2f2f2"
+    center: 'This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"> '
+    
+  sidebar:
+    logo: 'images/other_random_logo_regred.png'
+    pinned: true
+    align: center
+    tools:
+      - icon: globe
+        href: https://github.com/RegRed-project
+        text: 'MOBI Lab'
+      - icon: github
+        href: https://github.com/RegRed-project/
+        text: 'GitHub'
+
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: sections/roles_team_and_responsibilities.qmd
+        text: Roles, team and responsibilities
+      - href: sections/resources.qmd
+        text: Tools and resources
+      - section: Workflow
+        contents:
+          - section: For data extractors #sections/workflows/for_data_extractors/steps.qmd
+            contents:
+              - href: sections/workflows/for_data_extractors/step_1.qmd
+                text: 1. Select a source
+              - href: sections/workflows/for_data_extractors/step_2.qmd
+                text: 2. Extract the data
+              - href: sections/workflows/for_data_extractors/step_3.qmd
+                text: 3. Store the extracted data
+
+          - href: sections/workflows/for_nrl_data_harmoniser/steps.qmd
+            text: For NRL data harmoniser
+          - href: sections/workflows/for_spatial_data_generator/steps.qmd
+            text: For spatial data generator
+          - href: sections/workflows/for_taxonomy_harmoniser/steps.qmd
+            text: For taxonomy harmoniser
+      - section: Appendices
+        contents:
+          - href: sections/appendices/controlled_vocabulary.qmd
+            text: Controlled vocabulary
+          - href: sections/appendices/citation_rules.qmd
+            text: Citation rules
+      - href: sections/faq.qmd
+        text: FAQ
+      # - section: ---
+      # - section: 'Mapping tools'
+      #   contents:
+      #     - href: mapping_tools/os_policies.qmd
+      #     - section: 'Rewarding tools'
+      #       contents:
+      #       - href: mapping_tools/os_award_prizes.qmd
+      #       - href: mapping_tools/os_funds.qmd
+      #       - href: mapping_tools/os_badges_certificates_tokens.qmd
+      #       - href: mapping_tools/os_champions.qmd
+      # - href: abbreviations.qmd
+      #   text: Abbreviations
+      # - href: acknowledgements.qmd
+      #   text: Acknowledgements
+      # - href: references.qmd
+      #   text: References
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+    code-copy: true
+    code-overflow: wrap
+    # toc: true
+    # toc-location: left
+    filters:
+      - highlight-text
+    grid:
+      sidebar-width: 500px
+      body-width: 1200px
+      margin-width: 0px
+      gutter-width: 1.5rem

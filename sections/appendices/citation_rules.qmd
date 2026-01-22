@@ -1,0 +1,124 @@
+---
+title: 'Creating bibliographic citations'
+page-layout: full
+toc: true
+toc-location: left
+---
+
+## Steps
+
+1. Install Zotero and Zotero Connector (<https://www.zotero.org/download/>). If you do not have admin rights, you need to contact the IT helpdesk.
+2. Ask [Flo]{colour="#fff" bg-colour="#000"} to add you to the shared Library.  
+3. Locate the "**Sources**" collection.  
+4. To add a new source click on the icon New Item and select required *type of source*  (see RegRed source types below).  
+5. Select the corresponding "**Item Type**" from the scroll down menu, according to the information filled is a `sourceType` column (see Zotero item types below).   
+6. After you choose an "Item Type" fill in the information for the source.
+7. Create citation in APA standard
+    1. right-click on your selected item and choose "Create Bibliography from Item(s)...".  
+    2. select the APA style, output method "Copy to Clipboard" and click "OK".   
+    3. paste the citation into the source table, column `bibliographicCitation`.  
+
+::: {.callout-warning collapse="true"}
+## How do I use Zotero connector?
+
+-   If you are accessing the source online, you can use Zotero connector, communicating with your internet browser (Firefox, Chrome, Edge).
+-   The **Zotero connector** icon is located in the upper right corner of the browser.
+-   Connector will download available metadata information about the source and capture a page snapshot, but you still need to review them
+-   Always verify the information in the Zotero dashboard and manually correct any errors
+:::
+
+::: {.callout-warning collapse="true"}
+
+## How do I save a website reference?
+
+-   Go to the webpage you want to cite in your web browser.  
+-   Click the **Zotero connector** icon located in your browser's toolbar.  
+-   Select a collection from the dropdown menu and press Enter.  
+-   Go to the desktop application.  
+-   Find the newly saved web page item.  
+-   Review the information pane on the right side of the Zotero window.  
+-   Correct possible errors and add any missing information.  
+
+:::
+
+
+## RegRed source types
+
+-   `Collection` - An aggregation of resources.
+-   `Dataset` - Dataset or database. 
+-   `Interactive resource` - Book in PDF or Web page.   
+-   `Text` - Book, Document, Journal Article.  
+
+## Zotero item types (available in the **New Item** menu)
+
+**Book** - "paper" book, ebook, pdf of the book, interactive book
+
+-   usual source formats - pdf, doc, docx, djvu.   
+-   usual source categories - Other.   
+
+**Dataset** - data are available in form of dataset, excel spreadsheet etc, 
+
+-   usual source formats - xls, xlsx, sql, csv.   
+-   usual source categories - Other.   
+-   do not choose in case that the data are part or supplement of a report, article, … in this case cite the article itself.  
+
+**Document**
+
+-   usual source categories - `Government Document`, `Checklist`.    
+-   usual source formats - `html`, `pdf`, `doc`, `docx`.  
+
+**Journal Article**
+
+-   usual source formats - `html`, `pdf`, `doc`, `docx`.  
+
+**Report**
+-   usual source categories - `Government Document`, `Checklist`.  
+-   usual source formats - `html`, `pdf`, `doc`, `docx`.  
+
+**Web Page** - interactive sources
+
+-   usual source formats - `html`
+
+**Other Zotero item types** (available from the menu Item Type in the info)
+
+-   Thesis, Manuscript, Preprint, Book Section, Web Page.
+
+## Important and mandatory fields
+
+Here are the most important and mandatory fields you should fill for each source type (according to our fields in the database).  
+
+**Book**
+
+-  Title - `sourceTitle`
+-  Author - `sourcePublisher`
+-  Date - `sourceDate`
+-  ISBN, URL and other identifiers - `sourceIdentifier` - URL,DOI, ISBN - priority list
+
+**Dataset**
+
+-   Title - `sourceTitle`
+-   Author - can be organization - `sourcePublisher`
+-   Date - `sourceDate`
+-   DOI or URL - `sourceIdentifier` - URL,DOI, ISBN - priority list
+Accessed
+
+**Document**
+
+-   Title - `sourceTitle`
+-   Author - `sourcePublisher`
+-   Date - `sourceDate`
+-   URL - `sourceIdentifier` - URL,DOI, ISBN - priority list
+
+**Journal Article**
+
+-   Title - `sourceTitle`
+-   Author - `sourcePublisher`
+-   Date - `sourceDate`
+-   DOI or URL - `sourceIdentifier` - URL,DOI, ISBN - priority list
+
+*Website*
+
+-   Title - `sourceTitle`
+-   Author - can be organization - `sourcePublisher`
+-   URL - `sourceIdentifier`
+-   Accessed 

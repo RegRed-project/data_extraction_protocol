@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Step 2: Extract the data – RegRed</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../sections/workflows/for_data_extractors/step_3.html" rel="next">
+<link href="../../../sections/workflows/for_data_extractors/step_1.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-edad9810328c147989dd11948546e96f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workflow</li><li class="breadcrumb-item"><a href="../../../sections/workflows/for_data_extractors/step_1.html">For data extractors</a></li><li class="breadcrumb-item"><a href="../../../sections/workflows/for_data_extractors/step_2.html">2. Extract the data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../images/other_random_logo_regred.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../images/other_random_logo_regred.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/RegRed-project" title="MOBI Lab" class="quarto-navigation-tool px-1" aria-label="MOBI Lab"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/RegRed-project/" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/roles_team_and_responsibilities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Roles, team and responsibilities</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tools and resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Workflow</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">For data extractors</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/workflows/for_data_extractors/step_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Select a source</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/workflows/for_data_extractors/step_2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2. Extract the data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/workflows/for_data_extractors/step_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Store the extracted data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/workflows/for_nrl_data_harmoniser/steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For NRL data harmoniser</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/workflows/for_spatial_data_generator/steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For spatial data generator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/workflows/for_taxonomy_harmoniser/steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">For taxonomy harmoniser</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/appendices/controlled_vocabulary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Controlled vocabulary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/appendices/citation_rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Citation rules</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#golden-rules-when-using-the-data-extraction-template" id="toc-golden-rules-when-using-the-data-extraction-template" class="nav-link active" data-scroll-target="#golden-rules-when-using-the-data-extraction-template">Golden rules when using the data extraction template</a></li>
+  <li><a href="#filling-the-source-table" id="toc-filling-the-source-table" class="nav-link" data-scroll-target="#filling-the-source-table">2.2 Filling the <code>source</code> table</a></li>
+  <li><a href="#filling-the-redlist-table" id="toc-filling-the-redlist-table" class="nav-link" data-scroll-target="#filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</a>
+  <ul class="collapse">
+  <li><a href="#dealing-with-status-mapping-source" id="toc-dealing-with-status-mapping-source" class="nav-link" data-scroll-target="#dealing-with-status-mapping-source">2.3.1 Dealing with status mapping source</a></li>
+  </ul></li>
+  <li><a href="#filling-the-location-table" id="toc-filling-the-location-table" class="nav-link" data-scroll-target="#filling-the-location-table">2.4 Filling the <code>location</code> table</a></li>
+  <li><a href="#filling-the-taxon_asseessment-table" id="toc-filling-the-taxon_asseessment-table" class="nav-link" data-scroll-target="#filling-the-taxon_asseessment-table">2.4 Filling the <code>taxon_asseessment</code> table</a>
+  <ul class="collapse">
+  <li><a href="#instructions-to-extract-the-verbatimidentification-and-verbatimstatuscode-automatically" id="toc-instructions-to-extract-the-verbatimidentification-and-verbatimstatuscode-automatically" class="nav-link" data-scroll-target="#instructions-to-extract-the-verbatimidentification-and-verbatimstatuscode-automatically">2.4.1 Instructions to extract the <code>verbatimIdentification</code> and <code>verbatimStatusCode</code> automatically</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workflow</li><li class="breadcrumb-item"><a href="../../../sections/workflows/for_data_extractors/step_1.html">For data extractors</a></li><li class="breadcrumb-item"><a href="../../../sections/workflows/for_data_extractors/step_2.html">2. Extract the data</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Step 2: Extract the data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Everyone is involved in the extraction</strong><br>
+The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> database has six tables that relate to each other through IDs - they will be filled as follows.</p>
+<ul>
+<li>The <strong>data extractors</strong> will extract data manually using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">data_extraction_template</span> for the tables <code>source</code>, <code>redlist</code>, and <code>location</code>, and will extract data either manually or automatically, depending on the <code>extractionType</code> detected, for the <code>taxon_assessment</code> table. They will also have to create a file for mapping <code>verbatimStatusCode</code> to a standardised <code>statusCode</code>, following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template</span>.<br>
+</li>
+<li>The <strong>spatial data generator</strong> will be in charge of verifying the <code>location</code> table, and generating the spatial polygons for all <code>redlistLocation</code>s following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">geographic_entities</span> standard.<br>
+</li>
+<li>The <strong>taxonomy harmoniser</strong> will be in charge of the <code>taxonomy</code> table, and will have to reconcile the scientific names in the extracted data to match a taxonomic backbone.</li>
+</ul>
+<section id="golden-rules-when-using-the-data-extraction-template" class="level3">
+<h3 class="anchored" data-anchor-id="golden-rules-when-using-the-data-extraction-template">Golden rules when using the data extraction template</h3>
+<ul>
+<li>Do not modify the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">data_extraction_template</span> <strong>under any circumstances</strong>. If you find an error and changes are needed, report it to <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>.<br>
+</li>
+<li>Always refer to this protocol to fill the template. Do not assume any decisions that are not contemplated in this document. If you have doubts about the protocol, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>.<br>
+</li>
+<li>Always check the “<strong>Definitions</strong>” tab and do not assume any definitions on your side.<br>
+</li>
+<li>Follow the respective controlled vocabulary. If the value you want to add in a column is not there, you have to report this to <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Káča</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>. If needed, the option will be added to the template.<br>
+</li>
+<li>Do not copy and paste values blindly. Verify always what you are copying. Remove double spaces, and spaces in the end or start of values (e.g., “<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #f7f414;"></span>Mammals” or “Mammals<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #f7f414;"></span>”).<br>
+</li>
+<li>Do not use the value “<code>Unknown</code>” for information that is missing. Instead, just leave the field empty. Use <code>Unknown</code> only in those cases that have the value as part of the controlled vocabulary.<br>
+</li>
+<li>Verify all the data you extract. Errors can occur, so a careful review is essential to ensure data integrity.</li>
+</ul>
+</section>
+<section id="filling-the-source-table" class="level2">
+<h2 class="anchored" data-anchor-id="filling-the-source-table">2.2 Filling the <code>source</code> table</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What happens if I have multiple classes in one source
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Some sources might include unsorted tables of species (e.g.&nbsp;Fauna, Vertebrates, Amphibians and Reptiles). Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single <code>redlist</code> and use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">splitting script</span> to split the xlsx file into multiple files.</p>
+<p><strong>Instructions to use the file</strong><br>
+1. Copy the script into your working directory where your xlsx with unsorted taxon_assessment data sheet is located.<br>
+2. The script is designed to work with files based on our data extraction template. Fill out bibliography etc. beforehand.<br>
+3. Follow the instructions in the script. The output will be multiple files named filename_Class.xlsx.<br>
+4. The only sheet modified by the script is taxon_assessment, all else stays the same.<br>
+5. Finally, you need to manually fix the taxonomicScope column and filename.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Always follow this hierarchy of preferred identifiers: DOI, ISSN/ISBN, URL to the PDF or interactive resource, and then URL to the electronic catalogue entry (e.g., a national library).</li>
+<li>URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.</li>
+<li>Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
+<ul>
+<li><strong>DOI</strong>: <code>https://doi.org/&lt;doi&gt;</code>, e.g., <code>https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b</code></li>
+<li><strong>ISBN</strong>: <code>urn:isbn:&lt;isbn&gt;</code>, e.g., <code>urn:isbn:0-486-27557-4</code></li>
+<li><strong>ISSN</strong>: <code>urn:issn:&lt;issn&gt;</code>,e.g., <code>urn:issn:0953-4563</code></li>
+<li><strong>URL to source</strong>: e.g., <code>https://example.org/resource.pdf</code></li>
+<li><strong>URL to catalogue</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
+</ul></li>
+<li>If there are additional ISSN/ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISSN, URL, or in Extra).<br>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>sourceID</code></td>
+<td>find the value in the column <code>sourceID</code> of the table of sources, check it, and add it. This should also be the name of the folder you created on step <a href="">1.5 Create a folder and name it using the <code>sourceID</code></a></td>
+</tr>
+<tr class="even">
+<td><code>sourceTitle</code></td>
+<td>find the value in the column <code>sourceTitle</code> of the table of sources, check it, and add it</td>
+</tr>
+<tr class="odd">
+<td><code>sourceIdentifier</code></td>
+<td>find the value in the column <code>sourceIdentifier</code> of the table of sources, check that it is correct and add it following the recommendations on “<strong>How to fill the <code>sourceIdentifier</code> when there is more than one file or document?</strong>”</td>
+</tr>
+<tr class="even">
+<td><code>sourceDate</code></td>
+<td>the table of sources will only have the year as <code>sourceDate</code>, you must check if there is a full date available, and add the value. Full dates are preferred (in the format <code>YYYY-MM-DD</code>), but you can also add year (<code>YYYY</code>), or month and year (<code>YYYY-MM</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>sourceLanguage</code></td>
+<td>find the value in the column <code>sourceLanguage</code> of the table of sources, and select values from the list of controlled vocabulary (this could be a list)</td>
+</tr>
+<tr class="even">
+<td><code>sourceLicense</code></td>
+<td>select the value from the list of controlled vocabulary (could be unknown, but it is very important that you try your best to find it). This value will be used for the citation of the source</td>
+</tr>
+<tr class="odd">
+<td><code>sourceType</code></td>
+<td>select the value from the list of controlled vocabulary</td>
+</tr>
+<tr class="even">
+<td><code>sourceFormat</code></td>
+<td>select on or many values from the list of controlled vocabulary</td>
+</tr>
+<tr class="odd">
+<td><code>extractionType</code></td>
+<td>select the value from the list of controlled vocabulary</td>
+</tr>
+<tr class="even">
+<td><code>sourceCategory</code></td>
+<td>select the value from the list of controlled vocabulary</td>
+</tr>
+<tr class="odd">
+<td><code>sourcePublisher</code></td>
+<td>find the publisher or publishers in the source, and add them separate by “<code>|</code>”. Use the full name of the publishers followed by the acronym in brackets</td>
+</tr>
+<tr class="even">
+<td><code>sourcePublisherType</code></td>
+<td>select from the list of controlled vocabulary. If multiple publishers, separate by “<code>|</code>” following the same order as sourcePublisher</td>
+</tr>
+<tr class="odd">
+<td><code>bibliographicCitation</code></td>
+<td>use <strong>Zotero</strong> to create this field by entering the source in the shared <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> Zotero library (Sources Collection). Export the bibliographic citation in APA style and use that value (see Appendix)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="filling-the-redlist-table" class="level2">
+<h2 class="anchored" data-anchor-id="filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>How to fill the <code>redlistIdentifier</code> or <code>statusAssessmentTypeIdentifier</code> when there is more than one file or document?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Check the previous question “<strong>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?</strong>”. The same applies to these identifiers.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>How to deal with <code>statusAssessmentType</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN <code>statusCodes</code>, this is: “<strong>IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd edn). International Union for Conservation of Nature. <a href="https://portals.iucn.org/library/node/10315" class="uri">https://portals.iucn.org/library/node/10315</a></strong>”, and has <code>statusMappingSourceID = 1</code>.</p>
+<p>All the sources used for mapping statuses will be stored in our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> directory, and will have the corresponding citation generated in Zotero.</p>
+<p>If the <code>statusAssessmentType = IUCN</code> but it is not the latest version of IUCN, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#dealing-with-status-mapping-source">Dealing with status mapping source</a>).</p>
+</div>
+</div>
+</div>
+<p><strong>Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>redlistID</code></td>
+<td>fill this value according to the source’s <code>sourceID</code> and how many redlist the source has (see <code>numberOfRedlists</code> in the table of sources), e.g., if <code>sourceID</code> = <code>2</code>, and you are filling the information for the first red list in the source, then the <code>redlistID</code> should be <code>2_1</code></td>
+</tr>
+<tr class="even">
+<td><code>redlistTitle</code></td>
+<td>this field will be generated automatically as “<em>Redlist of &lt;<code>taxonomicScope</code>&gt; of &lt;<code>redlistLocation</code>&gt; (&lt;year of (<code>redlistDate</code>)&gt;)</em>”. Therefore, these fields must be filled first to build the <code>redlistTitle</code></td>
+</tr>
+<tr class="odd">
+<td><code>redlistIdentifier</code></td>
+<td>this may be the same value as <code>sourceIdentifier</code>, but if the red list has a different identifier, use it. Check that it is correct and add it following the recommendations suggested for other identifiers.</td>
+</tr>
+<tr class="even">
+<td><code>redlistDate</code></td>
+<td>this may be the same value as <code>sourceDate</code>, but if each red list has a different date, add that value. Use only year here (<code>YYYY</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>geospatialScope</code></td>
+<td>select from the list of controlled vocabulary</td>
+</tr>
+<tr class="even">
+<td><code>taxonomicScope</code></td>
+<td>select from the list of controlled vocabulary</td>
+</tr>
+<tr class="odd">
+<td><code>isTaxonomicScopeFullyReported</code></td>
+<td>select from the list of controlled vocabulary. Fill with <code>Yes</code> if the number of species reported on the redlist is the same as the number of species in the <code>taxonomicScope</code></td>
+</tr>
+<tr class="even">
+<td><code>redlistLocation</code></td>
+<td>this must be a unique value, not a list. Check if the location refers to a <code>country</code>, <code>stateProvince</code>, or <code>county</code>, if it is a location smaller than a <code>county</code>, if the location is a protected area or if it is an island, and search for the correct name in the table of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">geographic_entities</span></td>
+</tr>
+<tr class="odd">
+<td><code>statusAssessmentType</code></td>
+<td>select from the list of controlled vocabulary. If it is <code>Non-IUCN</code>, you must create the status mapping source following the template</td>
+</tr>
+<tr class="even">
+<td><code>statusAssessmentTypeCitation</code></td>
+<td>use <strong>Zotero</strong> to create this field by entering the source in the shared <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix)</td>
+</tr>
+<tr class="odd">
+<td><code>statusAssessmentTypeIdentifier</code></td>
+<td>check if the mapping source has an identifier and add the value</td>
+</tr>
+</tbody>
+</table>
+<section id="dealing-with-status-mapping-source" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-status-mapping-source">2.3.1 Dealing with status mapping source</h3>
+<p>All status mapping sources will be created as separate Excel files with their respective documentation PDF, and stored in our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> folder.</p>
+<p>If you have a <code>non-IUCN</code> status assessment first check if there are any official mapping sources published by the countries. If there aren’t, you will have to create the mapping source yourself. You could base your criteria on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p>
+<p><strong>Instructions to create the status mapping source</strong><br>
+Creating the mapping source yourself involves preparing two documents:</p>
+<ol type="1">
+<li>The <strong>status_mapping_source_X</strong> table</li>
+</ol>
+<ul>
+<li>This Excel file will store the equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code>, according to a specific source, and you will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template</span>.</li>
+<li>You should name the file as follows: &lt;<em>status_mapping_source_X.xlsx</em>&gt;, with <em>X</em> = <code>statusMappingID.</code></li>
+<li>The file will be stored in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository and later archived in Zenodo.</li>
+</ul>
+<p><strong>Fields to be filled in</strong>:</p>
+<ul>
+<li><code>statusMappingID</code> - fill this with the ID of the <strong>status_mapping_source_X</strong> (it should be the same in every row).<br>
+</li>
+<li><code>verbatimStatusCode</code> - fill this with the original status code used in the source.<br>
+</li>
+<li><code>statusCode</code> - fill with the mapped IUCN status code.<br>
+</li>
+<li><code>statusCategory</code> - fill.<br>
+</li>
+<li><code>statusMappingBy</code> - select the value from the list of controlled vocabulary.<br>
+</li>
+<li><code>statusMappingRemarks</code> - fill with any specifications about your decisions.</li>
+</ul>
+<ol start="2" type="1">
+<li>The <strong>status_mapping_source_X</strong> documentation</li>
+</ol>
+<ul>
+<li>This PDF document will have a list of the sources used to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>).</li>
+<li>You should name the file as follows: &lt;<em>status_mapping_source_X.pdf</em>&gt;, with <em>X</em> = <code>statusMappingID.</code></li>
+<li>The PDF document will be stored in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository and later archived in Zenodo.</li>
+</ul>
+<p><strong>Content of the document</strong>:</p>
+<ul>
+<li><strong>Author</strong>: Modelling of Biodiversity Lab (MOBI Lab), Faculty of Environmental Sciences (FZP CZU), &lt;<em>your name</em>&gt;, and &lt;<em>the names of anyone else who assisted you</em>&gt;.</li>
+<li><strong>Place and date</strong> = (e.g.&nbsp;Prague, 30 November 2025)</li>
+<li><strong>Title</strong>: “Mapping of &lt;<em>place</em>&gt; status codes from &lt;<em>year/period</em>&gt; to the standard of IUCN (2012) version 3.1 (2nd edn)” (e.g.&nbsp;“Mapping of Belarus status codes from 1993 to the standard of IUCN (2012) version 3.1 (2nd edn)”, “Mapping of Belarus status codes from 2015 and 2025 to the standard of IUCN (2012) version 3.1 (2nd edn)”). Since some countries or provinces may share the same status mapping, the title should be inclusive.</li>
+<li><strong>Summary</strong>: A brief description that clarifies the title or adds more information and explains whether you are using any bibliographical material to guide your interpretation of the categories. In some cases, two or more geographical regions for which mappings already exist use the same categories with identical descriptions but assign them different numbers or letters.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Where do I find the <code>statusMappingSourceID</code> used?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can find the <code>statusMappingSourceID</code> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_used</span> file.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="filling-the-location-table" class="level2">
+<h2 class="anchored" data-anchor-id="filling-the-location-table">2.4 Filling the <code>location</code> table</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What sources does <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> use for geographic locations?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> of are based in the following databases:</p>
+<ul>
+<li><strong>geoBoundaries</strong>: A global database of political administrative boundaries. See <a href="https://www.geoboundaries.org/visualize.html" class="uri">https://www.geoboundaries.org/visualize.html</a>.<br>
+</li>
+<li><strong>WDPA</strong>: The World Database on Protected Areas, the most comprehensive global database on terrestrial and marine protected areas. See <a href="https://www.protectedplanet.net/en/search-areas?geo_type=region" class="uri">https://www.protectedplanet.net/en/search-areas?geo_type=region</a>.</li>
+<li><strong>Global Islands</strong>: The Global Island Database is a global shoreline and associated global islands database. See <a href="https://doi.org/10.1080/1755876X.2018.1529714" class="uri">https://doi.org/10.1080/1755876X.2018.1529714</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Where do I find the standardised information of geographic locations?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Refer always to the website of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <a href="https://regred-project.github.io/geographic_entities/" class="uri">https://regred-project.github.io/geographic_entities/</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>Instructions to use the geographic entities file</strong><br>
+If you are looking for</p>
+<ul>
+<li>a <code>country</code> (ADM0): geoboundaries_country.<br>
+</li>
+<li>a <code>stateProvince</code> or second order administrative region (ADM1): geoboundaries_stateProvince.<br>
+</li>
+<li>a <code>county</code> or the lowest administrative region possible (ADM2): geoboundaries_county.<br>
+</li>
+<li>a <code>locality</code> that is a protected area: wdpa_sep2025.<br>
+</li>
+<li>an <code>island</code> that is a country: geoboundaries_country.<br>
+</li>
+<li>an <code>island</code> that is a <code>stateProvince</code> or second order administrative region: geoboundaries_stateProvince.<br>
+</li>
+<li>an <code>island</code> that is <code>county</code> or the lowest administrative region possible: geoboundaries_county.<br>
+</li>
+<li>an <code>island</code> that does not fit any of the above: global_islands.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What happens if I find an error or if none of these options fits my case
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You should send <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> an email with the name of the locality and a picture (screenshot) of an accompanying map if available.</p>
+</div>
+</div>
+</div>
+<p><strong>Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>locationID</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>locationID</code> value</td>
+</tr>
+<tr class="even">
+<td><code>geometry</code></td>
+<td>do not fill this field</td>
+</tr>
+<tr class="odd">
+<td><code>geometrySource</code></td>
+<td>do not fill this field</td>
+</tr>
+<tr class="even">
+<td><code>verbatimSRS</code></td>
+<td>do not fill this field</td>
+</tr>
+<tr class="odd">
+<td><code>footprintSRS</code></td>
+<td>do not fill this field</td>
+</tr>
+<tr class="even">
+<td><code>continent</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>continent</code> value</td>
+</tr>
+<tr class="odd">
+<td><code>country</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>country</code> value</td>
+</tr>
+<tr class="even">
+<td><code>countryCode</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>countryCode</code> value</td>
+</tr>
+<tr class="odd">
+<td><code>stateProvince</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>stateProvince</code> value</td>
+</tr>
+<tr class="even">
+<td><code>county</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>county</code> value</td>
+</tr>
+<tr class="odd">
+<td><code>locality</code></td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>locality</code> value</td>
+</tr>
+<tr class="even">
+<td><code>isCustomRegion</code></td>
+<td>select from the list of controlled vocabulary. This will be <code>Yes</code> if the <code>redlistLocation</code> spans multiple administrative regions and therefore a custom polygon is needed for the geometry, e.g., “<em>The Carpathians</em>”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="filling-the-taxon_asseessment-table" class="level2">
+<h2 class="anchored" data-anchor-id="filling-the-taxon_asseessment-table">2.4 Filling the <code>taxon_asseessment</code> table</h2>
+<p><strong>Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>statusID</code></td>
+<td>do not fill this field</td>
+</tr>
+<tr class="even">
+<td><code>verbatimIdentification</code></td>
+<td>fill this value with the exact name as it appears in the red list. This could be a species or a subspecies name</td>
+</tr>
+<tr class="odd">
+<td><code>verbatimStatusCode</code></td>
+<td>fill this value with the original abbreviated status category</td>
+</tr>
+<tr class="even">
+<td><code>statusCriteria</code></td>
+<td>fill this value with the criteria used to define the <code>verbatimStatusCode</code> of the <code>verbatimIdentification</code> (if provided in the red list)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>How to deal with red list with multiple taxonomic classes?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians &amp; Reptiles) you can use the <code>split_script</code> to automatically divide the Excel file into multiple class-specific files.</p>
+</div>
+</div>
+</div>
+<p><strong>Instructions to use the <code>split_script</code></strong><br>
+The script is located in our shared OneDrive <a href="https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&amp;web=1&amp;e=DdwV5p">code/Splitter/split_script.R</a>.</p>
+<ol type="1">
+<li>Copy the script into the working directory where your <code>.xlsx</code> file with the unsorted <code>taxon_assessment</code> sheet is located.<br>
+</li>
+<li>The script is designed for files that follow our data extraction template. Make sure <strong>ALL</strong> fields are completed beforehand; this should be the last step.<br>
+</li>
+<li>Follow the instructions provided within the script.</li>
+<li>The script will generate multiple files named <code>filename_&lt;class&gt;.xlsx</code>. Only the <code>taxon_assessment</code> sheet will be modified; all other sheets remain unchanged.</li>
+<li>After the split, manually correct the <code>taxonomicScope</code> column and update the <code>filename</code> field as needed.</li>
+</ol>
+<section id="instructions-to-extract-the-verbatimidentification-and-verbatimstatuscode-automatically" class="level3">
+<h3 class="anchored" data-anchor-id="instructions-to-extract-the-verbatimidentification-and-verbatimstatuscode-automatically">2.4.1 Instructions to extract the <code>verbatimIdentification</code> and <code>verbatimStatusCode</code> automatically</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section needs to be developed.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../sections/workflows/for_data_extractors/step_1.html" class="pagination-link" aria-label="1. Select a source">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1. Select a source</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../sections/workflows/for_data_extractors/step_3.html" class="pagination-link" aria-label="3. Store the extracted data">
+        <span class="nav-page-text">3. Store the extracted data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><strong>Modelling of Biodiversity Lab</strong> (MOBI Lab) – <strong>Faculty of Environmental Sciences</strong> (FŽP ČZU)</p>
+</div>   
+    <div class="nav-footer-center">
+<p>This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+</div>
+    <div class="nav-footer-right">
+<p>This page is built with 🧉️ and <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

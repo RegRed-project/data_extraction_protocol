@@ -1,0 +1,227 @@
+---
+title: 'FAQ'
+page-layout: full
+---
+
+Frequently Asked Questions
+
+## Data extraction
+
+
+### `source`
+
+::: {.callout-warning collapse="true"}
+## Where do I find the document associated with the source?
+
+You may find the document (PDF, website, dataset) associated with the source under the field `fileName` in the folder all sources to extract. **However**, as these were created following a different convention (when the metadata was created), this column may be empty. 
+
+If there is no `fileName`, then find the document associated with the source checking the `sourceIdentifier.` If the `sourceIdentifier` takes you to a broken URL, then use the `sourceTitle` to search for the source online. If you still do not find it, check with [Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}, because if the source is there there there should be a digital object related to it. 
+
+If you find a new digital file for the source, add it to the folder [new_sources]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
+
+If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [all_sources_to_extract]{colour="#fff" bg-colour="#3169e0"} folder.
+
+:::
+
+::: {.callout-warning collapse="true"}
+## What if I find a new source?
+
+If you find a new source that is not in the table of sources, first check with those involved in the metadata creation ([Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}) to see why it is not in the list (maybe there is a reason why it was skipped). 
+
+If it needs to be added, fill in the details about the new source in the [new_sources]{colour="#fff" bg-colour="#31b0e0"} file and store any associated files in [new_sources]{colour="#fff" bg-colour="#3169e0"} folder.  
+
+If the source should be included in the table of sources, it will need to be added by creating a new line at the end of the file and creating the `sourceID` as a consecutive number. [Ivo]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"} will be in charge of creating it. 
+
+:::
+
+::: {.callout-warning collapse="true"}
+## How to know if the source has been extracted by the NRL?  
+
+  -   Check the NRL data and assess whether the source you have is in the NRL database.
+  -   Double-check that the source is effectively fully extracted, as sometimes NRL has a source but only a few species (e.g., only *Mammals* not all tetrapods). 
+
+If the source has already been fully extracted by NRL:   
+
+  -   Indicate this in the table of sources by filling in the `extractionType` = `NRL`.  
+  -   The NRL Data Harmoniser will have to adapt the source to [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s structure. You will be done with the source, and you will start over from step [1.2. Pick a source and report progress]().    
+  
+Else, if the source has not already been fully extracted by NRL:   
+
+  -   Keep working on the following steps.   
+:::
+
+::: {.callout-warning collapse="true"}
+## Why use automated methods?   
+
+AI-based extraction using large language models (LLMs) is useful for sources that are difficult to extract manually, e.g., because the information is provided inside text descriptions (and not tables). However, automated extraction depends on scientific species names and threat information being present on the same page. 
+:::
+
+::: {.callout-warning collapse="true"}
+## When should a source be extracted automatically?    
+
+If the source provides text descriptions and does not contain tables that are easy to copy and paste.
+:::
+
+::: {.callout-warning collapse="true"}
+## When should a source be extracted manually?   
+
+If the source contains only a few species (e.g., a reptile red list from a country with ~10 species).
+If scientific species names and threat status information are not present on the same page of the text (as the LLM will fail to detect this).
+:::
+
+::: { .callout-warning collapse="true"}
+## What happens if I have multiple classes in one source
+
+Some sources might include unsorted tables of species  (e.g. Fauna, Vertebrates, Amphibians and Reptiles).
+Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single `redlist` and use our [splitting script]{colour="#fff" bg-colour="#3169e0"} to split the xlsx file into multiple files.
+
+**Instructions to use the file**  
+1. Copy the script into your working directory where your xlsx with unsorted taxon_assessment data sheet  is located.  
+2. The script is designed to work with files based on our data extraction template. Fill out bibliography etc. beforehand.  
+3. Follow the instructions in the script. The output will be multiple files named filename_Class.xlsx.  
+4. The only sheet modified by the script is taxon_assessment, all else stays the same.  
+5. Finally, you need to manually fix the taxonomicScope column and filename.   
+
+::: 
+
+::: { .callout-warning collapse="true"}
+## How do I fill the `sourceIdentifier` when there is more than one file or document?
+
+-   Always follow this hierarchy of preferred identifiers: DOI, ISSN/ISBN, URL to the PDF or interactive resource, and then URL to the electronic catalogue entry (e.g., a national library).
+-   URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.
+-   Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
+    -   **DOI**: `https://doi.org/<doi>`, e.g., `https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b`
+    -   **ISBN**: `urn:isbn:<isbn>`, e.g., `urn:isbn:0-486-27557-4`
+    -   **ISSN**: `urn:issn:<issn>`,e.g., `urn:issn:0953-4563`
+    -   **URL to source**: e.g., `https://example.org/resource.pdf`
+    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
+-   If there are additional ISSN/ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISSN, URL, or in Extra).  
+::: 
+
+
+
+### `redlist`
+
+::: {.callout-warning collapse="true"}
+## What is a red list for [**RegRed**]{colour="#d14024" bg-colour="#fff"}?
+
+A red list is uniquely identified by the combination of:
+
+  1. `taxonomicScope`:
+Each red list must have a unique taxonomic scope. As the project focuses on tetrapods, begin by identifying the class of organisms in the source (e.g., *Amphibia*, *Reptilia*, *Aves*, *Mammalia*). The maximum `taxonomicScope` is class; the minimum could be any. To determine this, considering the following:
+
+      - **Primary division**: Split by class (Amphibia, Reptilia, Aves, Mammalia) as the default level of `taxonomicScope.`
+    
+      - **Lower-level division**: If the source provides distinct assessments within the same class (e.g., separate evaluations for breeding vs. non-breeding birds), you must divide further into order, family, or other relevant groups. However, do not divide into lower taxonomic levels unless the source clearly distinguishes them with separate assessments (e.g., a species has "LC" for a breeding population and "EN" for a non-breeding).
+  
+  2. `redlistLocation`:
+Each red list must have a unique location. This can be a country, `stateProvince`, `county`, `locality`, or a named custom region. 
+
+  3. `redlistDate`:
+Each red list must have a unique date. We will use the year the assessment was conducted.
+
+If you are uncertain about how to define the `taxonomicScope` for a source, consult [Flo]{colour="#fff" bg-colour="#000"} for guidance.
+:::
+
+::: { .callout-warning collapse="true"}
+## How to fill the `redlistIdentifier` or `statusAssessmentTypeIdentifier` when there is more than one file or document?
+
+Check the previous question "**How do I fill the `sourceIdentifier` when there is more than one file or document?**". The same applies to these identifiers.
+:::
+
+::: { .callout-warning collapse="true"}
+## How to deal with `statusAssessmentType` 
+
+All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN `statusCodes`, this is: "**IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd edn). International Union for Conservation of Nature. <https://portals.iucn.org/library/node/10315>**", and has `statusMappingSourceID = 1`. 
+
+All the sources used for mapping statuses will be stored in our [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} directory, and will have the corresponding citation generated in Zotero.  
+
+If the `statusAssessmentType = IUCN` but it is not the latest version of IUCN, or if the `statusAssessmentType = Non-IUCN`, you will also have to create the status mapping source (see below [Dealing with status mapping source](step_2.html#dealing-with-status-mapping-source)).
+:::
+
+::: { .callout-warning collapse="true"}
+##  Where do I find the `statusMappingSourceID` used?
+
+You can find the `statusMappingSourceID` in the [mapping_sources_used]{colour="#fff" bg-colour="#31b0e0"} file.  
+
+:::
+
+
+### `location`
+
+::: { .callout-warning collapse="true"}
+## What sources does [**RegRed**]{colour="#d14024" bg-colour="#fff"} use for geographic locations?
+
+The [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} of are based in the following databases:
+
+  - **geoBoundaries**: A global database of political administrative boundaries. See <https://www.geoboundaries.org/visualize.html>.     
+  - **WDPA**: The World Database on Protected Areas, the most comprehensive global database on terrestrial and marine protected areas. See <https://www.protectedplanet.net/en/search-areas?geo_type=region>. 
+  - **Global Islands**: The Global Island Database is a global shoreline and associated global islands database. See <https://doi.org/10.1080/1755876X.2018.1529714>. 
+:::
+
+::: { .callout-warning collapse="true"}
+## Where do I find the standardised information of geographic locations?
+
+Refer always to the website of [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} <https://regred-project.github.io/geographic_entities/>.
+:::
+
+::: { .callout-warning collapse="true"}
+## What happens if I find an error or if none of these options fits my case
+You should send [Gabriel]{colour="#fff" bg-colour="#000"} an email with the name of the locality and a picture (screenshot) of an accompanying map if available. 
+
+:::
+
+### `taxon_assessment`
+
+::: { .callout-warning collapse="true"}
+## How to deal with red list with multiple taxonomic classes? 
+If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians & Reptiles) you can use the `split_script` to automatically divide the Excel file into multiple class-specific files. 
+:::
+
+## Citations
+
+::: {.callout-warning collapse="true"}
+## How do I use Zotero connector?
+
+-   If you are accessing the source online, you can use Zotero connector, communicating with your internet browser (Firefox, Chrome, Edge).
+-   The **Zotero connector** icon is located in the upper right corner of the browser.
+-   Connector will download available metadata information about the source and capture a page snapshot, but you still need to review them
+-   Always verify the information in the Zotero dashboard and manually correct any errors
+:::
+
+::: {.callout-warning collapse="true"}
+
+## How do I save a website reference?
+
+-   Go to the webpage you want to cite in your web browser.  
+-   Click the **Zotero connector** icon located in your browser's toolbar.  
+-   Select a collection from the dropdown menu and press Enter.  
+-   Go to the desktop application.  
+-   Find the newly saved web page item.  
+-   Review the information pane on the right side of the Zotero window.  
+-   Correct possible errors and add any missing information.  
+
+:::
+
+## Controlled vocabulary
+
+::: {.callout-warning collapse="true"}
+
+## How to add a new item in the controlled vocabulary (drop-down list) in excel templates
+
+Basic instructions can be found also here: <https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b>.  
+
+-   Unlock the sheet with the list of controlled vocabulary.  
+-   Add a new item to the end of selected column.  
+-   Sort the list in the selected column from A to Z (for easier work).  
+-   Find the column on the worksheet that needs to be changed.  
+-   Select the first cell in the column (below the heather).  
+-   Go to ribbon Data and then Data Validation.  
+-   In the Settings tab, as a validation criteria (allow) select option List.  
+-   Click on Source and then select whole range of items that will be included in the scroll-down list.  
+-   Copy the change in the whole column by double click on bottom-right corner of the first cell
+-   After all the changes, lock the sheet with the list of controlled vocabulary again
+-   Add the changes you have made to the CHANGE LOG in the README table.
+-   Let the team know about the new template version and its changes.
+
+:::

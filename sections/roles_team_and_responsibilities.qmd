@@ -1,0 +1,26 @@
+---
+title: ''
+page-layout: full
+---
+
+## Roles
+
+1. **Data Extractor**: collects and organises the red list data from the designated sources, either manually or using the automated tool.  
+2. **NRL Data Harmoniser**: standardises the data from the National Red List (NRL) and adapts it to the [**RegRed**]{colour="#d14024" bg-colour="#fff"} structure.  
+3. **Spatial Data Generator**: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.  
+4. **Taxonomy Harmoniser**: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.  
+
+## Team members and their responsibilities
+
+  - [Flo]{colour="#fff" bg-colour="#000"} (Florencia Grattarola): coordinator, database structure.
+  - [Ivo]{colour="#fff" bg-colour="#000"} (Ivo Kadlec): data extractor, metadata.  
+  - [Adam]{colour="#fff" bg-colour="#000"} (Adam Uličný): data extractor, metadata, EcoParse.
+  - [Káča]{colour="#fff" bg-colour="#000"} (Kateřina Tschernosterová): data extractor, controlled vocabulary,  bibliographic citations.
+  - [Gabriel]{colour="#fff" bg-colour="#000"} (Gabriel Ortega): geopgraphic entities, geodatabase.
+  - [Sofi]{colour="#fff" bg-colour="#000"} (Safiya Praleskouskaya): data extractor, status mapping.
+
+## Team meetings
+
+We will hold weekly meetings on Tuesdays at 10:30 (**room D233**) to assess progress, report issues and assign new tasks. 
+To make this meetings more productive, team members should write their questions in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s meeting notes in advance.
+

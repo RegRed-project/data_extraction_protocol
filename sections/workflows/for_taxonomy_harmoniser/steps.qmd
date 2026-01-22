@@ -1,0 +1,24 @@
+---
+title: 'For taxonomy harmoniser'
+page-layout: full
+---
+
+
+::: {.callout-note}
+This section needs to be developed.
+:::
+
+Filling the `taxonomy` table
+
+-   `taxonID`
+-   `kingdom`
+-   `phylum`
+-   `class`
+-   `order`
+-   `family`
+-   `genus`
+-   `specificEpithet`
+-   `scientificName`
+-   `scientificNameAuthorship`
+-   `taxonomicBackbone`
+-   `taxonRank`

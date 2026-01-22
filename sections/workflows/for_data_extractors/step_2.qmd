@@ -1,0 +1,247 @@
+---
+title: 'Step 2: Extract the data'
+page-layout: full
+toc: true
+toc-location: left
+---
+
+**Everyone is involved in the extraction**   
+The [**RegRed**]{colour="#d14024" bg-colour="#fff"} database has six tables that relate to each other through IDs - they will be filled as follows. 
+
+  - The **data extractors** will extract data manually using the [data_extraction_template]{colour="#fff" bg-colour="#31b0e0"} for the tables `source`, `redlist`, and `location`, and will extract data either manually or automatically, depending on the `extractionType` detected, for the `taxon_assessment` table. They will also have to create a file for mapping `verbatimStatusCode` to a standardised `statusCode`, following the [mapping_sources_template]{colour="#fff" bg-colour="#31b0e0"}.   
+  - The **spatial data generator** will be in charge of verifying the `location` table, and generating the spatial polygons for all `redlistLocation`s following the [geographic_entities]{colour="#fff" bg-colour="#3169e0"} standard.   
+  - The **taxonomy harmoniser** will be in charge of the `taxonomy` table, and will have to reconcile the scientific names in the extracted data to match a taxonomic backbone.  
+
+
+### Golden rules when using the data extraction template
+
+  - Do not modify the [data_extraction_template]{colour="#fff" bg-colour="#31b0e0"} **under any circumstances**. If you find an error and changes are needed, report it to [Flo]{colour="#fff" bg-colour="#000"}.  
+  - Always refer to this protocol to fill the template. Do not assume any decisions that are not contemplated in this document. If you have doubts about the protocol, contact [Flo]{colour="#fff" bg-colour="#000"}.   
+  - Always check the "**Definitions**" tab and do not assume any definitions on your side.   
+  - Follow the respective controlled vocabulary. If the value you want to add in a column is not there, you have to report this to [Káča]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"}. If needed, the option will be added to the template.  
+  - Do not copy and paste values blindly. Verify always what you are copying. Remove double spaces, and spaces in the end or start of values (e.g., "[ ]{colour="#fff" bg-colour="#f7f414"}Mammals" or "Mammals[ ]{colour="#fff" bg-colour="#f7f414"}").   
+  - Do not use the value "`Unknown`" for information that is missing. Instead, just leave the field empty. Use `Unknown` only in those cases that have the value as part of the controlled vocabulary.  
+  - Verify all the data you extract. Errors can occur, so a careful review is essential to ensure data integrity.  
+
+## 2.2 Filling the `source` table
+
+::: { .callout-warning collapse="true"}
+## What happens if I have multiple classes in one source
+
+Some sources might include unsorted tables of species  (e.g. Fauna, Vertebrates, Amphibians and Reptiles).
+Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single `redlist` and use our [splitting script]{colour="#fff" bg-colour="#3169e0"} to split the xlsx file into multiple files.
+
+**Instructions to use the file**  
+1. Copy the script into your working directory where your xlsx with unsorted taxon_assessment data sheet  is located.  
+2. The script is designed to work with files based on our data extraction template. Fill out bibliography etc. beforehand.  
+3. Follow the instructions in the script. The output will be multiple files named filename_Class.xlsx.  
+4. The only sheet modified by the script is taxon_assessment, all else stays the same.  
+5. Finally, you need to manually fix the taxonomicScope column and filename.   
+
+::: 
+
+
+::: { .callout-warning collapse="true"}
+## How do I fill the `sourceIdentifier` when there is more than one file or document?
+
+-   Always follow this hierarchy of preferred identifiers: DOI, ISSN/ISBN, URL to the PDF or interactive resource, and then URL to the electronic catalogue entry (e.g., a national library).
+-   URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.
+-   Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
+    -   **DOI**: `https://doi.org/<doi>`, e.g., `https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b`
+    -   **ISBN**: `urn:isbn:<isbn>`, e.g., `urn:isbn:0-486-27557-4`
+    -   **ISSN**: `urn:issn:<issn>`,e.g., `urn:issn:0953-4563`
+    -   **URL to source**: e.g., `https://example.org/resource.pdf`
+    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
+-   If there are additional ISSN/ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISSN, URL, or in Extra).  
+::: 
+
+**Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**.
+
+|   |   |
+|---|---|
+| `sourceID` | find the value in the column `sourceID` of the table of sources, check it, and add it. This should also be the name of the folder you created on step [1.5 Create a folder and name it using the `sourceID`]() |
+| `sourceTitle` | find the value in the column `sourceTitle` of the table of sources, check it, and add it |
+| `sourceIdentifier` | find the value in the column `sourceIdentifier` of the table of sources, check that it is correct and add it following the recommendations on "**How to fill the `sourceIdentifier` when there is more than one file or document?**" |
+| `sourceDate` | the table of sources will only have the year as `sourceDate`, you must check if there is a full date available, and add the value.  Full dates are preferred (in the format `YYYY-MM-DD`), but you can also add year (`YYYY`), or month and year (`YYYY-MM`) |
+| `sourceLanguage` | find the value in the column `sourceLanguage` of the table of sources, and select values from the list of controlled vocabulary (this could be a list) |
+| `sourceLicense` | select the value from the list of controlled vocabulary (could be unknown, but it is very important that you try your best to find it). This value will be used for the citation of the source |
+| `sourceType` | select the value from the list of controlled vocabulary |
+| `sourceFormat` | select on or many values from the list of controlled vocabulary |
+| `extractionType` | select the value from the list of controlled vocabulary |
+| `sourceCategory` | select the value from the list of controlled vocabulary |
+| `sourcePublisher` | find the publisher or publishers in the source, and add them separate by "`|`". Use the full name of the publishers followed by the acronym in brackets |
+| `sourcePublisherType` | select from the list of controlled vocabulary. If multiple publishers, separate by "`|`" following the same order as sourcePublisher |
+| `bibliographicCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Sources Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
+
+: {tbl-colwidths="[25,75]"}
+
+## 2.3 Filling the `redlist` table
+
+::: { .callout-warning collapse="true"}
+## How to fill the `redlistIdentifier` or `statusAssessmentTypeIdentifier` when there is more than one file or document?
+
+Check the previous question "**How do I fill the `sourceIdentifier` when there is more than one file or document?**". The same applies to these identifiers.
+:::
+
+::: { .callout-warning collapse="true"}
+## How to deal with `statusAssessmentType` 
+
+All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN `statusCodes`, this is: "**IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd edn). International Union for Conservation of Nature. <https://portals.iucn.org/library/node/10315>**", and has `statusMappingSourceID = 1`. 
+
+All the sources used for mapping statuses will be stored in our [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} directory, and will have the corresponding citation generated in Zotero.  
+
+If the `statusAssessmentType = IUCN` but it is not the latest version of IUCN, or if the `statusAssessmentType = Non-IUCN`, you will also have to create the status mapping source (see below [Dealing with status mapping source](step_2.html#dealing-with-status-mapping-source)).
+:::
+
+**Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**
+
+|   |   |
+|---|---|
+| `redlistID` | fill this value according to the source's `sourceID` and how many redlist the source has (see `numberOfRedlists` in the table of sources), e.g., if `sourceID` = `2`, and you are filling the information for the first red list in the source, then the `redlistID` should be `2_1` | 
+| `redlistTitle` | this field will be generated automatically as "*Redlist of <`taxonomicScope`> of <`redlistLocation`> (<year of (``redlistDate``)>)*". Therefore, these fields must be filled first to build the `redlistTitle` |  
+| `redlistIdentifier` | this may be the same value as `sourceIdentifier`, but if the red list has a different identifier, use it. Check that it is correct and add it following the recommendations suggested for other identifiers. |
+| `redlistDate` |  this may be the same value as `sourceDate`, but if each red list has a different date, add that value. Use only year here (`YYYY`) |
+| `geospatialScope` | select from the list of controlled vocabulary |
+| `taxonomicScope` | select from the list of controlled vocabulary |
+| `isTaxonomicScopeFullyReported` | select from the list of controlled vocabulary. Fill with `Yes` if the number of species reported on the redlist is the same as the number of species in the `taxonomicScope` |
+| `redlistLocation` | this must be a unique value, not a list. Check if the location refers to a `country`, `stateProvince`, or `county`, if it is a location smaller than a `county`, if the location is a protected area or if it is an island, and search for the correct name in the table of [geographic_entities]{colour="#fff" bg-colour="#3169e0"} |
+| `statusAssessmentType` | select from the list of controlled vocabulary. If it is `Non-IUCN`, you must create the status mapping source following the template |
+| `statusAssessmentTypeCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
+| `statusAssessmentTypeIdentifier` | check if the mapping source has an identifier and add the value |
+
+: {tbl-colwidths="[25,75]"}
+
+
+### 2.3.1 Dealing with status mapping source
+
+All status mapping sources will be created as separate Excel files with their respective documentation PDF, and stored in our [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} folder.
+
+If you have a `non-IUCN` status assessment first check if there are any official mapping sources published by the countries. If there aren't, you will have to create the mapping source yourself. You could base your criteria on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
+
+**Instructions to create the status mapping source**   
+Creating the mapping source yourself involves preparing two documents:
+
+1.    The **status_mapping_source_X** table
+
+-   This Excel file will store the equivalent values of `statusCode` for `verbatimStatusCode`, according to a specific source, and you will create it using the [mapping_sources_template]{colour="#fff" bg-colour="#31b0e0"}.
+-   You should name the file as follows: <*status_mapping_source_X.xlsx*>, with *X* = `statusMappingID.`
+-   The file will be stored in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository and later archived in Zenodo.  
+
+**Fields to be filled in**: 
+
+  -   `statusMappingID` - fill this with the ID of the **status_mapping_source_X** (it should be the same in every row).    
+  -   `verbatimStatusCode` - fill this with the original status code used in the source.  
+  -   `statusCode` - fill with the mapped IUCN status code.  
+  -   `statusCategory` - fill.  
+  -   `statusMappingBy` - select the value from the list of controlled vocabulary.    
+  -   `statusMappingRemarks` - fill with any specifications about your decisions.  
+
+2.    The **status_mapping_source_X** documentation
+
+-   This PDF document will have a list of the sources used to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`).
+-   You should name the file as follows: <*status_mapping_source_X.pdf*>, with *X* = `statusMappingID.` 
+-   The PDF document will be stored in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository and later archived in Zenodo. 
+
+**Content of the document**:
+
+-   **Author**: Modelling of Biodiversity Lab (MOBI Lab), Faculty of Environmental Sciences (FZP CZU), <*your name*>, and <*the names of anyone else who assisted you*>.
+-   **Place and date** = (e.g. Prague, 30 November 2025)
+-   **Title**: "Mapping of <*place*> status codes from <*year/period*> to the standard of IUCN (2012) version 3.1 (2nd edn)" (e.g. "Mapping of Belarus status codes from 1993 to the standard of IUCN (2012) version 3.1 (2nd edn)", "Mapping of Belarus status codes from 2015 and 2025 to the standard of IUCN (2012) version 3.1 (2nd edn)"). Since some countries or provinces may share the same status mapping, the title should be inclusive.
+-   **Summary**: A brief description that clarifies the title or adds more information and explains whether you are using any bibliographical material to guide your interpretation of the categories. In some cases, two or more geographical regions for which mappings already exist use the same categories with identical descriptions but assign them different numbers or letters.  
+
+::: { .callout-warning collapse="true"}
+##  Where do I find the `statusMappingSourceID` used?
+
+You can find the `statusMappingSourceID` in the [mapping_sources_used]{colour="#fff" bg-colour="#31b0e0"} file.  
+
+:::
+
+## 2.4 Filling the `location` table
+
+::: { .callout-warning collapse="true"}
+## What sources does [**RegRed**]{colour="#d14024" bg-colour="#fff"} use for geographic locations?
+
+The [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} of are based in the following databases:
+
+  - **geoBoundaries**: A global database of political administrative boundaries. See <https://www.geoboundaries.org/visualize.html>.     
+  - **WDPA**: The World Database on Protected Areas, the most comprehensive global database on terrestrial and marine protected areas. See <https://www.protectedplanet.net/en/search-areas?geo_type=region>. 
+  - **Global Islands**: The Global Island Database is a global shoreline and associated global islands database. See <https://doi.org/10.1080/1755876X.2018.1529714>. 
+:::
+
+::: { .callout-warning collapse="true"}
+## Where do I find the standardised information of geographic locations?
+
+Refer always to the website of [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} <https://regred-project.github.io/geographic_entities/>.
+:::
+
+**Instructions to use the geographic entities file**    
+If you are looking for 
+
+-   a `country` (ADM0): geoboundaries_country.  
+-   a `stateProvince` or second order administrative region (ADM1): geoboundaries_stateProvince.  
+-   a `county` or the lowest administrative region possible (ADM2): geoboundaries_county.  
+-   a `locality` that is a protected area: wdpa_sep2025.   
+-   an `island` that is a country: geoboundaries_country.  
+-   an `island` that is a `stateProvince` or second order administrative region: geoboundaries_stateProvince.  
+-   an `island` that is `county` or the lowest administrative region possible: geoboundaries_county.  
+-   an `island` that does not fit any of the above: global_islands.  
+
+::: { .callout-warning collapse="true"}
+## What happens if I find an error or if none of these options fits my case
+You should send [Gabriel]{colour="#fff" bg-colour="#000"} an email with the name of the locality and a picture (screenshot) of an accompanying map if available. 
+
+:::
+
+**Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**. 
+
+|   |   |
+|---|---|
+| `locationID` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `locationID` value |  
+| `geometry` | do not fill this field |  
+| `geometrySource` | do not fill this field |
+| `verbatimSRS` | do not fill this field |
+| `footprintSRS` | do not fill this field |
+| `continent` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `continent` value |  
+| `country` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `country` value |  
+| `countryCode` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `countryCode` value | 
+| `stateProvince` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `stateProvince` value |  
+| `county` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `county` value |  
+| `locality` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `locality` value | 
+| `isCustomRegion` | select from the list of controlled vocabulary. This will be `Yes` if the `redlistLocation` spans multiple administrative regions and therefore a custom polygon is needed for the geometry, e.g., "*The Carpathians*" |
+
+: {tbl-colwidths="[25,75]"}
+
+
+## 2.4 Filling the `taxon_asseessment` table
+
+**Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**.  
+
+|   |   |
+|---|---|
+| `statusID` | do not fill this field |  
+| `verbatimIdentification` | fill this value with the exact name as it appears in the red list. This could be a species or a subspecies name |  
+| `verbatimStatusCode` | fill this value with the original abbreviated status category |  
+| `statusCriteria` | fill this value with the criteria used to define the `verbatimStatusCode` of the `verbatimIdentification` (if provided in the red list) |  
+
+: {tbl-colwidths="[25,75]"}
+
+::: { .callout-warning collapse="true"}
+## How to deal with red list with multiple taxonomic classes? 
+If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians & Reptiles) you can use the `split_script` to automatically divide the Excel file into multiple class-specific files. 
+:::
+
+**Instructions to use the `split_script`**  
+The script is located in our shared OneDrive [code/Splitter/split_script.R](https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&web=1&e=DdwV5p).
+
+1.    Copy the script into the working directory where your `.xlsx` file with the unsorted `taxon_assessment` sheet is located.  
+2.   The script is designed for files that follow our data extraction template. Make sure **ALL** fields are completed beforehand; this should be the last step.  
+3.    Follow the instructions provided within the script.
+4.    The script will generate multiple files named `filename_<class>.xlsx`. Only the `taxon_assessment` sheet will be modified; all other sheets remain unchanged.
+6.    After the split, manually correct the `taxonomicScope` column and update the `filename` field as needed.
+
+
+### 2.4.1 Instructions to extract the `verbatimIdentification` and `verbatimStatusCode` automatically
+
+::: {.callout-note}
+This section needs to be developed.
+:::

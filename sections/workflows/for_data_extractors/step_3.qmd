@@ -1,0 +1,9 @@
+---
+title: 'Step 3: Store the extracted data'
+page-layout: full
+---
+
+::: {.callout-note}
+This section needs to be developed.
+:::
+

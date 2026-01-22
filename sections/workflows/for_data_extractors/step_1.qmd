@@ -1,0 +1,215 @@
+---
+title: 'Step 1: Select a source'
+page-layout: full
+toc: true
+toc-location: left
+---
+
+Because red lists are often similar within a region, it makes sense to assign countries to specific **data extractors**. This keeps the work consistent and lets each person focus on the countries they know best, which saves time and improves data quality. Preferences can be set at the start of the project to make assignments more efficient.
+
+## 1.1 Pick one country
+
+**Select a country to extract data from** 
+**Data extractors** will select a country based on language proficiency, familiarity with the country or region, and/or personal preference and motivation.
+
+::: {.callout-tip}
+## Ensure balanced workload and accountability
+
+The number of countries assigned to each **data extractors** will vary depending on the complexity and volume of sources, as not all countries/sources require equal effort.  
+
+  - Do not select multiple countries at once: **pick only one**.   
+  - There are no fixed quotas: as you finish one country, you can go on to the next one.   
+:::
+
+::: {.callout-tip}
+## Handling difficult or unclaimed countries
+
+As the project progresses, some sources may remain unclaimed due to complexity or lack of familiarity/motivation  (e.g., "*Austria has too many red lists, it's becoming demotivating*"). In such cases:
+
+  - A meeting will be held to discuss and redistribute these sources if needed.  
+  - If consensus cannot be reached, random assignment may be used.  
+:::
+
+
+## 1.2 Pick a source and report progress
+
+**Work on one source**  
+After you select a country, you will start working on one source at a time. 
+
+**Always track your progress**  
+Indicate your progress by filling in the following columns in the table of sources:
+
+  -   `dataExtractor`: The name of the team member assigned to and responsible for extracting data from the source. | **values**: `Ivo`, `Adam`, `Káča`, `Sofi.`   
+  -   `progress`: The current status of the data extraction process for the source. | **values**: `in progress`, `done.`   
+  -   `redlistTypeOfContent`: Describes the format in which the red list species and their statuses are presented within the source. For example: text (data is in text), table (data is in structured tables), or table+text (a combination of both). This information is key for deciding between manual and automated extraction methods. | **values**: `table`, `text`, `table+text`, `image`.   
+  -   `extractionRemarks`: A field for any relevant notes about the extraction process for a specific source, e.g. broken links, data inconsistencies, or other challenges encountered. | **values**: *free text*.    
+  -   `fullyExtracted`: Indicates whether all relevant red list data from the source has been completely extracted, e.g., only vertebrates are extracted, but the source also contains data for plants. | **values**: `Yes`, `No`.   
+  -   `dateStarted`: The date on which the data extraction for the source officially began. | **format**: `YYYY-MM-DD`.   
+
+::: {.callout-warning collapse="true"}
+## Where do I find the document associated with the source?
+
+You may find the document (PDF, website, dataset) associated with the source under the field `fileName` in the folder all sources to extract. **However**, as these were created following a different convention (when the metadata was created), this column may be empty. 
+
+If there is no `fileName`, then find the document associated with the source checking the `sourceIdentifier.` If the `sourceIdentifier` takes you to a broken URL, then use the `sourceTitle` to search for the source online. If you still do not find it, check with [Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}, because if the source is there there there should be a digital object related to it. 
+
+If you find a new digital file for the source, add it to the folder [new_sources]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
+
+If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [all_sources_to_extract]{colour="#fff" bg-colour="#3169e0"} folder.
+
+:::
+
+::: {.callout-tip}
+##  Make sure to **ALWAYS** verify you are using the correct source
+
+Always check that the file corresponds to the source in the `sourceIdentifier`, and the `sourceTitle`. Guide yourself by the `sourceTitle`, the taxa covered and the year of publication. 
+:::
+
+::: {.callout-warning collapse="true"}
+## What if I find a new source?
+
+If you find a new source that is not in the table of sources, first check with those involved in the metadata creation ([Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}) to see why it is not in the list (maybe there is a reason why it was skipped). 
+
+If it needs to be added, fill in the details about the new source in the [new_sources]{colour="#fff" bg-colour="#31b0e0"} file and store any associated files in [new_sources]{colour="#fff" bg-colour="#3169e0"} folder.  
+
+If the source should be included in the table of sources, it will need to be added by creating a new line at the end of the file and creating the `sourceID` as a consecutive number. [Ivo]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"} will be in charge of creating it. 
+
+:::
+
+::: {.callout-tip}
+##  Report your work during the weekly meetings
+
+  - Each member reports on their progress, including any difficulties encountered.
+  - Plans for the upcoming week are shared, including which country or source they intend to pick next.
+::: 
+
+
+## 1.3 Check if the source has already been extracted by the NRL
+
+**Check before starting to extract data**
+The National Red List project (<https://www.nationalredlist.org/>) is one of [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s partners. They have extracted data from many different sources already, and **data extractors** should make sure not to extract these data again. However, in order for the NRL data to be useful, it will still need to be harmonised by the **NRL data harmoniser**. 
+
+::: {.callout-warning collapse="true"}
+## How to know if the source has been extracted by the NRL?  
+
+  -   Check the NRL data and assess whether the source you have is in the NRL database.
+  -   Double-check that the source is effectively fully extracted, as sometimes NRL has a source but only a few species (e.g., only *Mammals* not all tetrapods). 
+
+If the source has already been fully extracted by NRL:   
+
+  -   Indicate this in the table of sources by filling in the `extractionType` = `NRL`.  
+  -   The NRL Data Harmoniser will have to adapt the source to [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s structure. You will be done with the source, and you will start over from step [1.2. Pick a source and report progress]().    
+  
+Else, if the source has not already been fully extracted by NRL:   
+
+  -   Keep working on the following steps.   
+:::
+
+
+## 1.4 Evaluate the suitability of the source for manual extraction
+
+**Manual or automated extraction**   
+[**RegRed**]{colour="#d14024" bg-colour="#fff"} uses **EcoParse**, a tool that streamlines the AI automated method, but not all sources yield reliable results through automation. Before beginning to extract any data, Data Extractors will have to assess whether the source is appropriate for manual or automated extraction. 
+
+::: {.callout-warning collapse="true"}
+## Why use automated methods?   
+
+AI-based extraction using large language models (LLMs) is useful for sources that are difficult to extract manually, e.g., because the information is provided inside text descriptions (and not tables). However, automated extraction depends on scientific species names and threat information being present on the same page. 
+:::
+
+**If the source can be extracted automatically**   
+Indicate this in the table of sources by filling in the `extractionType` = `EcoParse.`
+
+**Else, if the source will be extracted manually**   
+Indicate in the table of sources that the `extractionType` = `Manual`.  
+
+::: {.callout-warning collapse="true"}
+## When should a source be extracted automatically?    
+
+If the source provides text descriptions and does not contain tables that are easy to copy and paste.
+:::
+
+::: {.callout-warning collapse="true"}
+## When should a source be extracted manually?   
+
+If the source contains only a few species (e.g., a reptile red list from a country with ~10 species).
+If scientific species names and threat status information are not present on the same page of the text (as the LLM will fail to detect this).
+:::
+
+
+::: {.callout-tip}
+## More information and examples
+
+If you want to know more about source types regarding extraction methods are in the CheatSheet [link]. If you are still in doubt, ask [Adam]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"}
+:::
+
+## 1.5 Create a folder and name it using the `sourceID` 
+
+**A unique folder for the source**   
+Whether the **data extractor** is doing the extraction manually or automatically, they will create a dedicated folder in the [tetrapods_extracted_sources]{colour="#fff" bg-colour="#3169e0"} folder to store all related files and outputs for the selected source. This folder must represent a unique source. However, it may contain one or more red lists (see next step for details). 
+
+**Folder Naming Convention**   
+Name the folder using the `sourceID` provided in the table of sources. This should be a numeric value. For example if `sourceID = 2`, the folder will be named "2".
+
+## 1.6 Identify the number of red lists in the source and report progress
+
+**Multiple red lists per source**   
+Each source may contain multiple red lists, which are loosely defined as lists of species assessed for extinction risk within a specific geographic and taxonomic scope.
+
+::: {.callout-warning collapse="false"}
+## What is a red list for [**RegRed**]{colour="#d14024" bg-colour="#fff"}?
+
+A red list is uniquely identified by the combination of:
+
+  1. `taxonomicScope`:
+Each red list must have a unique taxonomic scope. As the project focuses on tetrapods, begin by identifying the class of organisms in the source (e.g., *Amphibia*, *Reptilia*, *Aves*, *Mammalia*). The maximum `taxonomicScope` is class; the minimum could be any. To determine this, considering the following:
+
+      - **Primary division**: Split by class (Amphibia, Reptilia, Aves, Mammalia) as the default level of `taxonomicScope.`
+    
+      - **Lower-level division**: If the source provides distinct assessments within the same class (e.g., separate evaluations for breeding vs. non-breeding birds), you must divide further into order, family, or other relevant groups. However, do not divide into lower taxonomic levels unless the source clearly distinguishes them with separate assessments (e.g., a species has "LC" for a breeding population and "EN" for a non-breeding).
+  
+  2. `redlistLocation`:
+Each red list must have a unique location. This can be a country, `stateProvince`, `county`, `locality`, or a named custom region. 
+
+  3. `redlistDate`:
+Each red list must have a unique date. We will use the year the assessment was conducted.
+
+If you are uncertain about how to define the `taxonomicScope` for a source, consult [Flo]{colour="#fff" bg-colour="#000"} for guidance.
+:::
+
+::: {.callout-tip}
+##  If the source has multiple classes in one
+
+Some sources (e.g., Fauna, Vertebrates, Amphibians and Reptiles) may contain unsorted species tables that mix several taxonomic classes. Manually separating these can be time-consuming.  
+
+If the source is easy to extract as a whole but difficult to split by class, you can use our [split_script]{colour="#fff" bg-colour="#31b0e0"} to automatically divide the Excel file into multiple class-specific files. 
+
+**However**, to be able to do this, you must have extracted all the information in the red list first. Once you have done it, see the instruction in the [Filling the `taxon_assessment`](step_2.html#filling-the-taxon_asseessment-table) table section to use the script to divide the file into classes.
+
+::: 
+
+
+**Report your progress**   
+To help track the scope and complexity of each source and inform extraction planning, after you have identified the number of red lists in the source, indicate your progress by filling in the following column in the table of sources:
+
+  - `numberOfRedlists`: The number of identified redlists in the source | **values**: `1`, `2`, `3`, `4`, …, `N`. 
+
+This number will also be used to name the red list files (see next step).
+
+## 1.7 Create and name red list files using `redlistID`
+
+**Instructions for red list files**   
+For each red list identified within a source, create a copy of the template for data extraction following these steps:
+
+1. **File Creation**   
+Make a **local** copy in your computer of the template for data extraction for each red list identified in the source.
+
+2. **File Naming Convention**   
+Name each file using the `sourceID` followed by an underscore and a sequential number. For example: `sourceID_1`, `sourceID_2`, ..., `sourceID_n` where `n` is the total number of red lists in that source.
+
+2. **File Location**   
+Once you have finished extracting the source, you will save all files in the folder named after the `sourceID.`
+
+**Double-Check**    
+Make sure the numbering matches the total number of red lists recorded in the table of sources under `numberOfRedlists`.   
+Verify that each file is correctly placed in its corresponding folder.

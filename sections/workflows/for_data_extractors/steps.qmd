@@ -1,0 +1,11 @@
+---
+title: 'For data extractors'
+page-layout: full
+---
+
+### Steps
+
+1. [Select a source](/sections/workflows/for_data_extractors/step_1.qmd).  
+1. [Extract the data](/sections/workflows/for_data_extractors/step_2.qmd).  
+1. [Map verbatimStatusCode](/sections/workflows/for_data_extractors/step_3.qmd).  
+1. [Store the extracted data](/sections/workflows/for_data_extractors/step_4.qmd).  
