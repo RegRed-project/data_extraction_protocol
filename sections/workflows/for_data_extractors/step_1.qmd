@@ -55,7 +55,7 @@ If there is no `fileName`, then find the document associated with the source che
 
 If you find a new digital file for the source, add it to the folder [new_sources]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
 
-If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [all_sources_to_extract]{colour="#fff" bg-colour="#3169e0"} folder.
+If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [all_sources_to_extract]{colour="#fffff" bg-colour="#3169e0"} folder.
 
 :::
 
