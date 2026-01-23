@@ -227,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#filling-the-source-table" id="toc-filling-the-source-table" class="nav-link" data-scroll-target="#filling-the-source-table">2.2 Filling the <code>source</code> table</a></li>
   <li><a href="#filling-the-redlist-table" id="toc-filling-the-redlist-table" class="nav-link" data-scroll-target="#filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</a>
   <ul class="collapse">
-  <li><a href="#dealing-with-status-mapping-source" id="toc-dealing-with-status-mapping-source" class="nav-link" data-scroll-target="#dealing-with-status-mapping-source">2.3.1 Dealing with status mapping source</a></li>
+  <li><a href="#dealing-with-status-mapping-source-statusassessmenttypecitation" id="toc-dealing-with-status-mapping-source-statusassessmenttypecitation" class="nav-link" data-scroll-target="#dealing-with-status-mapping-source-statusassessmenttypecitation">2.3.1 Dealing with status mapping source (<code>statusAssessmentTypeCitation</code>)</a></li>
   </ul></li>
   <li><a href="#filling-the-location-table" id="toc-filling-the-location-table" class="nav-link" data-scroll-target="#filling-the-location-table">2.4 Filling the <code>location</code> table</a></li>
   <li><a href="#filling-the-taxon_asseessment-table" id="toc-filling-the-taxon_asseessment-table" class="nav-link" data-scroll-target="#filling-the-taxon_asseessment-table">2.4 Filling the <code>taxon_asseessment</code> table</a>
@@ -332,12 +332,12 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <li>Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
 <ul>
 <li><strong>DOI</strong>: <code>https://doi.org/&lt;doi&gt;</code>, e.g., <code>https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b</code></li>
+<li><strong>URL to catalogue</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
 <li><strong>ISBN</strong>: <code>urn:isbn:&lt;isbn&gt;</code>, e.g., <code>urn:isbn:0-486-27557-4</code></li>
 <li><strong>ISSN</strong>: <code>urn:issn:&lt;issn&gt;</code>,e.g., <code>urn:issn:0953-4563</code></li>
 <li><strong>URL to source</strong>: e.g., <code>https://example.org/resource.pdf</code></li>
-<li><strong>URL to catalogue</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
 </ul></li>
-<li>If there are additional ISSN/ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISSN, URL, or in Extra).<br>
+<li>If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).<br>
 </li>
 </ul>
 </div>
@@ -494,19 +494,33 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </tr>
 </tbody>
 </table>
-<section id="dealing-with-status-mapping-source" class="level3">
-<h3 class="anchored" data-anchor-id="dealing-with-status-mapping-source">2.3.1 Dealing with status mapping source</h3>
-<p>All status mapping sources will be created as separate Excel files with their respective documentation PDF, and stored in our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> folder.</p>
-<p>If you have a <code>non-IUCN</code> status assessment first check if there are any official mapping sources published by the countries. If there aren’t, you will have to create the mapping source yourself. You could base your criteria on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p>
-<p><strong>Instructions to create the status mapping source</strong><br>
-Creating the mapping source yourself involves preparing two documents:</p>
+<section id="dealing-with-status-mapping-source-statusassessmenttypecitation" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-status-mapping-source-statusassessmenttypecitation">2.3.1 Dealing with status mapping source (<code>statusAssessmentTypeCitation</code>)</h3>
+<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN <code>statusCodes</code>.</p>
+<p>The <code>redlist</code> table will have a <code>statusAssessmentTypeCitation</code> that points to the status mapping source you are using.</p>
 <ol type="1">
-<li>The <strong>status_mapping_source_X</strong> table</li>
+<li><p>If the assessment was done with the latest version of IUCN, then use <code>statusMappingSourceID = 1</code>.</p></li>
+<li><p>If not, you will have to create the status mapping source (<code>statusAssessmentTypeCitation</code>). <strong>Even if the source you are extracting (1) provides the mapping between non-IUCN and IUCN statuses as part of the PDF/book, or (2) if the mapping of statuses are already published online</strong>. However, if the mapping source has already been created, you should use that one and the respective <code>statusMappingSourceID</code>.</p>
+<p>2.1. To create the mapping source check:</p>
+<ul>
+<li><p>If the same source provides the translation: you will use this criteria. <strong>You will create the Excel and PDF files, but you will cite the source in the <code>statusAssessmentTypeCitation</code>, and use its identifier in the <code>statusAssessmentTypeIdentifier</code></strong>.</p></li>
+<li><p>If there are official mapping sources published by the countries or researchers: you will use this criteria. <strong>You will create the Excel and PDF files, but you will cite the official document and use its identifier</strong>.</p></li>
+<li><p>If there aren’t any mapping sources available or you have a mix of sources: <strong>you will have to create your own criteria</strong>. <strong>You will create the Excel and PDF files, and you will cite the mapping source you created and use as identifier the URL from our GitHub repository</strong>.</p></li>
+</ul>
+<p>So, for all options you will have to create a separate Excel file with its respective documentation PDF (and <code>statusMappingSourceID</code>), but only in the last case you will use a custom identifier.</p>
+<p>You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p></li>
+</ol>
+<p><strong>Instructions to create the status mapping source</strong><br>
+Creating the mapping source involves preparing two documents:</p>
+<ol type="1">
+<li>The table <strong>status_mapping_source_X</strong></li>
 </ol>
 <ul>
-<li>This Excel file will store the equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code>, according to a specific source, and you will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template</span>.</li>
-<li>You should name the file as follows: &lt;<em>status_mapping_source_X.xlsx</em>&gt;, with <em>X</em> = <code>statusMappingID.</code></li>
-<li>The file will be stored in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository and later archived in Zenodo.</li>
+<li>This Excel file will store the equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code>, according to a specific source. You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template_excel</span>.</li>
+<li>You should name the file as follows: &lt;<em>status_mapping_source_X.xlsx</em>&gt;, with <em>X</em> = <code>statusMappingSourceID</code>.</li>
+<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> folder, and name the folder after the <code>statusMappingSourceID</code>.<br>
+</li>
+<li>When you are done with the mapping source (Excel and PDF), contact Flo to store it in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</li>
 </ul>
 <p><strong>Fields to be filled in</strong>:</p>
 <ul>
@@ -516,27 +530,33 @@ Creating the mapping source yourself involves preparing two documents:</p>
 </li>
 <li><code>statusCode</code> - fill with the mapped IUCN status code.<br>
 </li>
-<li><code>statusCategory</code> - fill.<br>
+<li><code>statusCategory</code> - fill with the status full definition (e.g., “Vulnerable).<br>
 </li>
 <li><code>statusMappingBy</code> - select the value from the list of controlled vocabulary.<br>
 </li>
 <li><code>statusMappingRemarks</code> - fill with any specifications about your decisions.</li>
 </ul>
 <ol start="2" type="1">
-<li>The <strong>status_mapping_source_X</strong> documentation</li>
+<li>The PDF documentation <strong>status_mapping_source_X</strong></li>
 </ol>
 <ul>
-<li>This PDF document will have a list of the sources used to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>).</li>
+<li>This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>). You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template_pdf</span>.</li>
 <li>You should name the file as follows: &lt;<em>status_mapping_source_X.pdf</em>&gt;, with <em>X</em> = <code>statusMappingID.</code></li>
-<li>The PDF document will be stored in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository and later archived in Zenodo.</li>
+<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> folder with the correct <code>statusMappingSourceID</code>.</li>
 </ul>
 <p><strong>Content of the document</strong>:</p>
 <ul>
 <li><strong>Author</strong>: Modelling of Biodiversity Lab (MOBI Lab), Faculty of Environmental Sciences (FZP CZU), &lt;<em>your name</em>&gt;, and &lt;<em>the names of anyone else who assisted you</em>&gt;.</li>
 <li><strong>Place and date</strong> = (e.g.&nbsp;Prague, 30 November 2025)</li>
-<li><strong>Title</strong>: “Mapping of &lt;<em>place</em>&gt; status codes from &lt;<em>year/period</em>&gt; to the standard of IUCN (2012) version 3.1 (2nd edn)” (e.g.&nbsp;“Mapping of Belarus status codes from 1993 to the standard of IUCN (2012) version 3.1 (2nd edn)”, “Mapping of Belarus status codes from 2015 and 2025 to the standard of IUCN (2012) version 3.1 (2nd edn)”). Since some countries or provinces may share the same status mapping, the title should be inclusive.</li>
-<li><strong>Summary</strong>: A brief description that clarifies the title or adds more information and explains whether you are using any bibliographical material to guide your interpretation of the categories. In some cases, two or more geographical regions for which mappings already exist use the same categories with identical descriptions but assign them different numbers or letters.</li>
+<li><strong>Title</strong>: “Mapping of &lt;<em>place</em>&gt; status codes from &lt;<em>year</em>&gt; to the standard of IUCN (2012) version 3.1 (2nd edn)” (e.g.&nbsp;“Mapping of Belarus status codes from 1993 to the standard of IUCN (2012) version 3.1 (2nd edn)”).<br>
+</li>
+<li><strong>Summary</strong>: A brief description that clarifies the title or adds more information and explains whether you are using any bibliographical material to guide your interpretation of the categories. In some cases, two or more geographical regions for which mappings already exist use the same categories with identical descriptions but assign them different numbers or letters.<br>
+</li>
+<li><strong>Bibliography</strong>: The documents and sources you used to define the criteria.</li>
 </ul>
+<p><strong>Final step</strong>:<br>
+When you are done with the mapping source (Excel and PDF), contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> to store it in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</p>
+<p>If you got this far and you still have doubts about status mapping sources, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Sofi</span>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">

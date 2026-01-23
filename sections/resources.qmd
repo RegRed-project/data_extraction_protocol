@@ -33,7 +33,7 @@ This is a directory in which we store the new sources that people send to us or 
 This is a directory is an archive of old files.  
 
   - [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} | [status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)  
-This is the directory in which we store the IUCN mapping sources (PDF + table, named after `sourceID`).  
+This is the directory in which we store the IUCN mapping sources (PDF + table, named after `statusMappingSourceID`).  
 
   - [tetrapods_extracted_sources]{colour="#fff" bg-colour="#3169e0"} | [tetrapods_extracted_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/tetrapods_extracted_sources?csf=1&web=1&e=bx6Zki)  
 This is the directory that contains all the tetrapods extracted sources (named after `sourceID`).   
@@ -52,8 +52,11 @@ This is the local copy of the standard geographic locations that **data extracto
   - [data_codebooks]{colour="#fff" bg-colour="#31b0e0"} | [data/regred_data_codebooks](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_codebooks.xlsx?d=wc0619181efdc4344b600c14f6430e649&csf=1&web=1&e=qbD0GI)  
 This is an Excel (read-only) file that keeps all the controlled vocabulary of the database stored.
 
-  - [mapping_sources_template]{colour="#fff" bg-colour="#31b0e0"} | [data/status_mapping_sources/regred_mapping_sources_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)  
+  - [mapping_sources_template_excel]{colour="#fff" bg-colour="#31b0e0"} | [data/status_mapping_sources/regred_mapping_sources_template_excel](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)  
 This is the Excel (read-only) template file that **data extractors** will use as a template for generating mapping sources for conservation status.
+
+  - [mapping_sources_template_pdf]{colour="#fff" bg-colour="#31b0e0"} | [data/status_mapping_sources/regred_mapping_sources_template_pdf](https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&csf=1&web=1&e=ixPLC6)  
+This is the Word (read-only) template file that **data extractors** will use as a template for generating mapping sources for conservation status. They should store it as a PDF.  
 
   - [mapping_sources_used]{colour="#fff" bg-colour="#31b0e0"} | [data/status_mapping_sources/regred_mapping_sources_used](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_used.xlsx?d=w07c5175a0eeb4186abee639251dcca38&csf=1&web=1&e=hjM4eq)  
 This is the Excel (read-only) template file that **data extractors** will use as a template for generating mapping sources for conservation status.

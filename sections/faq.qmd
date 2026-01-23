@@ -91,11 +91,11 @@ Separating species into classes by hand is a difficult process. If you encounter
 -   URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.
 -   Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
     -   **DOI**: `https://doi.org/<doi>`, e.g., `https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b`
+    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
     -   **ISBN**: `urn:isbn:<isbn>`, e.g., `urn:isbn:0-486-27557-4`
     -   **ISSN**: `urn:issn:<issn>`,e.g., `urn:issn:0953-4563`
     -   **URL to source**: e.g., `https://example.org/resource.pdf`
-    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
--   If there are additional ISSN/ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISSN, URL, or in Extra).  
+-   If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).  
 ::: 
 
 

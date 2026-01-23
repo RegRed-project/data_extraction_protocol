@@ -48,11 +48,11 @@ Separating species into classes by hand is a difficult process. If you encounter
 -   URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.
 -   Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
     -   **DOI**: `https://doi.org/<doi>`, e.g., `https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b`
+    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
     -   **ISBN**: `urn:isbn:<isbn>`, e.g., `urn:isbn:0-486-27557-4`
     -   **ISSN**: `urn:issn:<issn>`,e.g., `urn:issn:0953-4563`
     -   **URL to source**: e.g., `https://example.org/resource.pdf`
-    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
--   If there are additional ISSN/ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISSN, URL, or in Extra).  
+-   If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).  
 ::: 
 
 **Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**.
@@ -112,42 +112,69 @@ If the `statusAssessmentType = IUCN` but it is not the latest version of IUCN, o
 : {tbl-colwidths="[25,75]"}
 
 
-### 2.3.1 Dealing with status mapping source
+### 2.3.1 Dealing with status mapping source (`statusAssessmentTypeCitation`)
 
-All status mapping sources will be created as separate Excel files with their respective documentation PDF, and stored in our [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} folder.
+All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN `statusCodes`. 
 
-If you have a `non-IUCN` status assessment first check if there are any official mapping sources published by the countries. If there aren't, you will have to create the mapping source yourself. You could base your criteria on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
+The `redlist` table will have a `statusAssessmentTypeCitation` that points to the status mapping source you are using.   
+
+1.   If the assessment was done with the latest version of IUCN, then use `statusMappingSourceID = 1`. 
+
+2.   If not, you will have to create the status mapping source (`statusAssessmentTypeCitation`). **Even if the source you are extracting (1) provides the mapping between non-IUCN and IUCN statuses as part of the PDF/book, or (2) if the mapping of statuses are already published online**. However, if the mapping source has already been created, you should use that one and the respective `statusMappingSourceID`.  
+
+      2.1.    To create the mapping source check:
+      
+        - If the same source provides the translation: you will use this criteria. **You will create the Excel and PDF files, but you will cite the source in the `statusAssessmentTypeCitation`, and use its identifier in the `statusAssessmentTypeIdentifier`**.   
+        
+        
+        - If there are official mapping sources published by the countries or researchers: you will use this criteria. **You will create the Excel and PDF files, but you will cite the official document and use its identifier**.  
+        
+        
+        - If there aren't any mapping sources available or you have a mix of sources: **you will have to create your own criteria**. **You will create the Excel and PDF files, and you will cite the mapping source you created and use as identifier the URL from our GitHub repository**.   
+  
+      So, for all options you will have to create a separate Excel file with its respective documentation PDF (and `statusMappingSourceID`), but only in the last case you will use a custom identifier.
+
+      You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
+
 
 **Instructions to create the status mapping source**   
-Creating the mapping source yourself involves preparing two documents:
+Creating the mapping source involves preparing two documents:
 
-1.    The **status_mapping_source_X** table
+1.    The table **status_mapping_source_X**
 
--   This Excel file will store the equivalent values of `statusCode` for `verbatimStatusCode`, according to a specific source, and you will create it using the [mapping_sources_template]{colour="#fff" bg-colour="#31b0e0"}.
--   You should name the file as follows: <*status_mapping_source_X.xlsx*>, with *X* = `statusMappingID.`
--   The file will be stored in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository and later archived in Zenodo.  
+-   This Excel file will store the equivalent values of `statusCode` for `verbatimStatusCode`, according to a specific source. You will create it using the [mapping_sources_template_excel]{colour="#fff" bg-colour="#31b0e0"}.
+-   You should name the file as follows: <*status_mapping_source_X.xlsx*>, with *X* = `statusMappingSourceID`.
+-   You should store the file in the [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} folder, and name the folder after the `statusMappingSourceID`.  
+-   When you are done with the mapping source (Excel and PDF), contact Flo to store it in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
 
 **Fields to be filled in**: 
 
   -   `statusMappingID` - fill this with the ID of the **status_mapping_source_X** (it should be the same in every row).    
   -   `verbatimStatusCode` - fill this with the original status code used in the source.  
   -   `statusCode` - fill with the mapped IUCN status code.  
-  -   `statusCategory` - fill.  
+  -   `statusCategory` - fill with the status full definition (e.g., "Vulnerable).    
   -   `statusMappingBy` - select the value from the list of controlled vocabulary.    
   -   `statusMappingRemarks` - fill with any specifications about your decisions.  
 
-2.    The **status_mapping_source_X** documentation
+2.    The PDF documentation **status_mapping_source_X**
 
--   This PDF document will have a list of the sources used to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`).
+-   This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`). You will create it using the [mapping_sources_template_pdf]{colour="#fff" bg-colour="#31b0e0"}.
 -   You should name the file as follows: <*status_mapping_source_X.pdf*>, with *X* = `statusMappingID.` 
--   The PDF document will be stored in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository and later archived in Zenodo. 
+-   You should store the file in the [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} folder with the correct `statusMappingSourceID`.  
+
 
 **Content of the document**:
 
 -   **Author**: Modelling of Biodiversity Lab (MOBI Lab), Faculty of Environmental Sciences (FZP CZU), <*your name*>, and <*the names of anyone else who assisted you*>.
 -   **Place and date** = (e.g. Prague, 30 November 2025)
--   **Title**: "Mapping of <*place*> status codes from <*year/period*> to the standard of IUCN (2012) version 3.1 (2nd edn)" (e.g. "Mapping of Belarus status codes from 1993 to the standard of IUCN (2012) version 3.1 (2nd edn)", "Mapping of Belarus status codes from 2015 and 2025 to the standard of IUCN (2012) version 3.1 (2nd edn)"). Since some countries or provinces may share the same status mapping, the title should be inclusive.
+-   **Title**: "Mapping of <*place*> status codes from <*year*> to the standard of IUCN (2012) version 3.1 (2nd edn)" (e.g. "Mapping of Belarus status codes from 1993 to the standard of IUCN (2012) version 3.1 (2nd edn)").   
 -   **Summary**: A brief description that clarifies the title or adds more information and explains whether you are using any bibliographical material to guide your interpretation of the categories. In some cases, two or more geographical regions for which mappings already exist use the same categories with identical descriptions but assign them different numbers or letters.  
+-   **Bibliography**: The documents and sources you used to define the criteria.  
+
+**Final step**:    
+When you are done with the mapping source (Excel and PDF), contact [Flo]{colour="#fff" bg-colour="#000"} to store it in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
+
+If you got this far and you still have doubts about status mapping sources, contact [Sofi]{colour="#fff" bg-colour="#000"}.  
 
 ::: { .callout-warning collapse="true"}
 ##  Where do I find the `statusMappingSourceID` used?
