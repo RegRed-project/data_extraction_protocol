@@ -69,6 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+  .light-content a,
+  .dark-content a {
+    color: inherit;
+  }
+</style>
 
 
 </head>
@@ -209,6 +215,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Citation rules</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/appendices/iucn_regional_categories.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IUCN regional categories</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -336,8 +348,8 @@ Indicate your progress by filling in the following columns in the table of sourc
 <div class="callout-body-container callout-body">
 <p>You may find the document (PDF, website, dataset) associated with the source under the field <code>fileName</code> in the folder all sources to extract. <strong>However</strong>, as these were created following a different convention (when the metadata was created), this column may be empty.</p>
 <p>If there is no <code>fileName</code>, then find the document associated with the source checking the <code>sourceIdentifier.</code> If the <code>sourceIdentifier</code> takes you to a broken URL, then use the <code>sourceTitle</code> to search for the source online. If you still do not find it, check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>, because if the source is there there there should be a digital object related to it.</p>
-<p>If you find a new digital file for the source, add it to the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">new_sources</span> using the name of the <code>sourceID</code>.</p>
-<p>If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the <span class="light-content" style="color: #fffff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">all_sources_to_extract</span> folder.</p>
+<p>If you find a new digital file for the source, add it to the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> using the name of the <code>sourceID</code>.</p>
+<p>If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&amp;web=1&amp;e=QdLyUf">all_sources_to_extract</a></span> folder.</p>
 </div>
 </div>
 </div>
@@ -367,7 +379,7 @@ Indicate your progress by filling in the following columns in the table of sourc
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you find a new source that is not in the table of sources, first check with those involved in the metadata creation (<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>) to see why it is not in the list (maybe there is a reason why it was skipped).</p>
-<p>If it needs to be added, fill in the details about the new source in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">new_sources</span> file and store any associated files in <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">new_sources</span> folder.</p>
+<p>If it needs to be added, fill in the details about the new source in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources/new_sources.xlsx?d=wf01d3d61592a473488abcdc1e4d7b91d&amp;csf=1&amp;web=1&amp;e=VJDcqK">new_sources</a></span> file and store any associated files in <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> folder.</p>
 <p>If the source should be included in the table of sources, it will need to be added by creating a new line at the end of the file and creating the <code>sourceID</code> as a consecutive number. <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> will be in charge of creating it.</p>
 </div>
 </div>
@@ -490,14 +502,14 @@ Indicate in the table of sources that the <code>extractionType</code> = <code>Ma
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you want to know more about source types regarding extraction methods are in the CheatSheet [link]. If you are still in doubt, ask <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span></p>
+<p>If you want to know more about source types regarding extraction methods are in the <a href="https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/docs/CheatSheet.docx?d=w331e03fb066e4f16989b410f08d0a802&amp;csf=1&amp;web=1&amp;e=3bIxNh">CheatSheet</a>. If you are still in doubt, ask <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span></p>
 </div>
 </div>
 </section>
 <section id="create-a-folder-and-name-it-using-the-sourceid" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-folder-and-name-it-using-the-sourceid">1.5 Create a folder and name it using the <code>sourceID</code></h2>
 <p><strong>A unique folder for the source</strong><br>
-Whether the <strong>data extractor</strong> is doing the extraction manually or automatically, they will create a dedicated folder in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">tetrapods_extracted_sources</span> folder to store all related files and outputs for the selected source. This folder must represent a unique source. However, it may contain one or more red lists (see next step for details).</p>
+Whether the <strong>data extractor</strong> is doing the extraction manually or automatically, they will create a dedicated folder in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/tetrapods_extracted_sources?csf=1&amp;web=1&amp;e=bx6Zki">tetrapods_extracted_sources</a></span> folder to store all related files and outputs for the selected source. This folder must represent a unique source. However, it may contain one or more red lists (see next step for details).</p>
 <p><strong>Folder Naming Convention</strong><br>
 Name the folder using the <code>sourceID</code> provided in the table of sources. This should be a numeric value. For example if <code>sourceID = 2</code>, the folder will be named “2”.</p>
 </section>
@@ -542,8 +554,8 @@ Each source may contain multiple red lists, which are loosely defined as lists o
 </div>
 <div class="callout-body-container callout-body">
 <p>Some sources (e.g., Fauna, Vertebrates, Amphibians and Reptiles) may contain unsorted species tables that mix several taxonomic classes. Manually separating these can be time-consuming.</p>
-<p>If the source is easy to extract as a whole but difficult to split by class, you can use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">split_script</span> to automatically divide the Excel file into multiple class-specific files.</p>
-<p><strong>However</strong>, to be able to do this, you must have extracted all the information in the red list first. Once you have done it, see the instruction in the <a href="step_2.html#filling-the-taxon_asseessment-table">Filling the <code>taxon_assessment</code></a> table section to use the script to divide the file into classes.</p>
+<p>If the source is easy to extract as a whole but difficult to split by class, you can use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&amp;web=1&amp;e=DdwV5p">split_script</a></span> to automatically divide the Excel file into multiple class-specific files.</p>
+<p><strong>However</strong>, to be able to do this, you must have extracted all the information in the red list first. Once you have done it, see the instruction in the <a href="step_2.html#filling-the-taxon_asseessment-table">2.4 Filling the <code>taxon_assessment</code></a> table section to use the script to divide the file into classes.</p>
 </div>
 </div>
 <p><strong>Report your progress</strong><br>
@@ -555,6 +567,20 @@ To help track the scope and complexity of each source and inform extraction plan
 </section>
 <section id="create-and-name-red-list-files-using-redlistid" class="level2">
 <h2 class="anchored" data-anchor-id="create-and-name-red-list-files-using-redlistid">1.7 Create and name red list files using <code>redlistID</code></h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Always work locally = in your computer, and not online
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the templates and work on them in your local machine. <strong>Do not work online in the folder of the source</strong>. The documents in there, should be the fully extracted versions.</p>
+<p>Be aware that template files may be updated over time, therefore <strong>you should not reuse previously downloaded versions</strong>. You should always check the status of the file online and download the latest version of the template.</p>
+</div>
+</div>
 <p><strong>Instructions for red list files</strong><br>
 For each red list identified within a source, create a copy of the template for data extraction following these steps:</p>
 <ol type="1">
@@ -563,11 +589,10 @@ Make a <strong>local</strong> copy in your computer of the template for data ext
 <li><p><strong>File Naming Convention</strong><br>
 Name each file using the <code>sourceID</code> followed by an underscore and a sequential number. For example: <code>sourceID_1</code>, <code>sourceID_2</code>, …, <code>sourceID_n</code> where <code>n</code> is the total number of red lists in that source.</p></li>
 <li><p><strong>File Location</strong><br>
-Once you have finished extracting the source, you will save all files in the folder named after the <code>sourceID.</code></p></li>
+Once you have finished extracting the source (and your peer has checked the file), you will save all files in the folder named after the <code>sourceID</code>.</p></li>
 </ol>
 <p><strong>Double-Check</strong><br>
-Make sure the numbering matches the total number of red lists recorded in the table of sources under <code>numberOfRedlists</code>.<br>
-Verify that each file is correctly placed in its corresponding folder.</p>
+Make sure the numbering matches the total number of red lists recorded in the table of sources under <code>numberOfRedlists</code>.</p>
 
 
 </section>

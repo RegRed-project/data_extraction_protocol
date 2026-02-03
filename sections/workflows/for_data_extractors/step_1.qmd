@@ -53,9 +53,9 @@ You may find the document (PDF, website, dataset) associated with the source und
 
 If there is no `fileName`, then find the document associated with the source checking the `sourceIdentifier.` If the `sourceIdentifier` takes you to a broken URL, then use the `sourceTitle` to search for the source online. If you still do not find it, check with [Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}, because if the source is there there there should be a digital object related to it. 
 
-If you find a new digital file for the source, add it to the folder [new_sources]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
+If you find a new digital file for the source, add it to the folder [[new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
 
-If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [all_sources_to_extract]{colour="#fffff" bg-colour="#3169e0"} folder.
+If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [[all_sources_to_extract](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&web=1&e=QdLyUf)]{colour="#fff" bg-colour="#3169e0"} folder.
 
 :::
 
@@ -70,7 +70,7 @@ Always check that the file corresponds to the source in the `sourceIdentifier`, 
 
 If you find a new source that is not in the table of sources, first check with those involved in the metadata creation ([Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}) to see why it is not in the list (maybe there is a reason why it was skipped). 
 
-If it needs to be added, fill in the details about the new source in the [new_sources]{colour="#fff" bg-colour="#31b0e0"} file and store any associated files in [new_sources]{colour="#fff" bg-colour="#3169e0"} folder.  
+If it needs to be added, fill in the details about the new source in the [[new_sources](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources/new_sources.xlsx?d=wf01d3d61592a473488abcdc1e4d7b91d&csf=1&web=1&e=VJDcqK)]{colour="#fff" bg-colour="#31b0e0"} file and store any associated files in [[new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)]{colour="#fff" bg-colour="#3169e0"} folder.  
 
 If the source should be included in the table of sources, it will need to be added by creating a new line at the end of the file and creating the `sourceID` as a consecutive number. [Ivo]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"} will be in charge of creating it. 
 
@@ -140,13 +140,13 @@ If scientific species names and threat status information are not present on the
 ::: {.callout-tip}
 ## More information and examples
 
-If you want to know more about source types regarding extraction methods are in the CheatSheet [link]. If you are still in doubt, ask [Adam]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"}
+If you want to know more about source types regarding extraction methods are in the [CheatSheet](https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/docs/CheatSheet.docx?d=w331e03fb066e4f16989b410f08d0a802&csf=1&web=1&e=3bIxNh). If you are still in doubt, ask [Adam]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"}
 :::
 
 ## 1.5 Create a folder and name it using the `sourceID` 
 
 **A unique folder for the source**   
-Whether the **data extractor** is doing the extraction manually or automatically, they will create a dedicated folder in the [tetrapods_extracted_sources]{colour="#fff" bg-colour="#3169e0"} folder to store all related files and outputs for the selected source. This folder must represent a unique source. However, it may contain one or more red lists (see next step for details). 
+Whether the **data extractor** is doing the extraction manually or automatically, they will create a dedicated folder in the [[tetrapods_extracted_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/tetrapods_extracted_sources?csf=1&web=1&e=bx6Zki)]{colour="#fff" bg-colour="#3169e0"} folder to store all related files and outputs for the selected source. This folder must represent a unique source. However, it may contain one or more red lists (see next step for details). 
 
 **Folder Naming Convention**   
 Name the folder using the `sourceID` provided in the table of sources. This should be a numeric value. For example if `sourceID = 2`, the folder will be named "2".
@@ -182,9 +182,9 @@ If you are uncertain about how to define the `taxonomicScope` for a source, cons
 
 Some sources (e.g., Fauna, Vertebrates, Amphibians and Reptiles) may contain unsorted species tables that mix several taxonomic classes. Manually separating these can be time-consuming.  
 
-If the source is easy to extract as a whole but difficult to split by class, you can use our [split_script]{colour="#fff" bg-colour="#31b0e0"} to automatically divide the Excel file into multiple class-specific files. 
+If the source is easy to extract as a whole but difficult to split by class, you can use our [[split_script](https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&web=1&e=DdwV5p)]{colour="#fff" bg-colour="#31b0e0"} to automatically divide the Excel file into multiple class-specific files. 
 
-**However**, to be able to do this, you must have extracted all the information in the red list first. Once you have done it, see the instruction in the [Filling the `taxon_assessment`](step_2.html#filling-the-taxon_asseessment-table) table section to use the script to divide the file into classes.
+**However**, to be able to do this, you must have extracted all the information in the red list first. Once you have done it, see the instruction in the [2.4 Filling the `taxon_assessment`](step_2.html#filling-the-taxon_asseessment-table) table section to use the script to divide the file into classes.
 
 ::: 
 
@@ -198,6 +198,15 @@ This number will also be used to name the red list files (see next step).
 
 ## 1.7 Create and name red list files using `redlistID`
 
+
+::: {.callout-tip}
+##  Always work locally = in your computer, and not online
+
+Download the templates and work on them in your local machine. **Do not work online in the folder of the source**. The documents in there, should be the fully extracted versions.   
+
+Be aware that template files may be updated over time, therefore **you should not reuse previously downloaded versions**. You should always check the status of the file online and download the latest version of the template.  
+::: 
+
 **Instructions for red list files**   
 For each red list identified within a source, create a copy of the template for data extraction following these steps:
 
@@ -207,9 +216,8 @@ Make a **local** copy in your computer of the template for data extraction for e
 2. **File Naming Convention**   
 Name each file using the `sourceID` followed by an underscore and a sequential number. For example: `sourceID_1`, `sourceID_2`, ..., `sourceID_n` where `n` is the total number of red lists in that source.
 
-2. **File Location**   
-Once you have finished extracting the source, you will save all files in the folder named after the `sourceID.`
+3. **File Location**   
+Once you have finished extracting the source (and your peer has checked the file), you will save all files in the folder named after the `sourceID`. 
 
 **Double-Check**    
-Make sure the numbering matches the total number of red lists recorded in the table of sources under `numberOfRedlists`.   
-Verify that each file is correctly placed in its corresponding folder.
+Make sure the numbering matches the total number of red lists recorded in the table of sources under `numberOfRedlists`.  

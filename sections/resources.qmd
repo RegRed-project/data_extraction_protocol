@@ -4,14 +4,17 @@ page-layout: full
 ---
 
 ## One Drive folder structure
-
+   
 ```
 .
 ├── code/                
-│   └── ...
+│   └── Splitter/
+│       ├── ...
+│       └── split_script.R
 ├── data/
 │   ├── ...
 │   ├── all_sources_to_extract/
+│   ├── backups/
 │   ├── new_sources/
 │   ├── old_files/
 │   ├── status_mapping_sources/

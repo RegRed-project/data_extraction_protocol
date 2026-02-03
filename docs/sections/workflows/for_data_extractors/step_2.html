@@ -69,6 +69,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<style>
+  .light-content a,
+  .dark-content a {
+    color: inherit;
+  }
+</style>
 
 
 </head>
@@ -209,6 +218,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Citation rules</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../sections/appendices/iucn_regional_categories.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IUCN regional categories</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -227,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#filling-the-source-table" id="toc-filling-the-source-table" class="nav-link" data-scroll-target="#filling-the-source-table">2.2 Filling the <code>source</code> table</a></li>
   <li><a href="#filling-the-redlist-table" id="toc-filling-the-redlist-table" class="nav-link" data-scroll-target="#filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</a>
   <ul class="collapse">
-  <li><a href="#dealing-with-status-mapping-source-statusassessmenttypecitation" id="toc-dealing-with-status-mapping-source-statusassessmenttypecitation" class="nav-link" data-scroll-target="#dealing-with-status-mapping-source-statusassessmenttypecitation">2.3.1 Dealing with status mapping source (<code>statusAssessmentTypeCitation</code>)</a></li>
+  <li><a href="#dealing-with-the-status-mapping-source" id="toc-dealing-with-the-status-mapping-source" class="nav-link" data-scroll-target="#dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</a></li>
   </ul></li>
   <li><a href="#filling-the-location-table" id="toc-filling-the-location-table" class="nav-link" data-scroll-target="#filling-the-location-table">2.4 Filling the <code>location</code> table</a></li>
   <li><a href="#filling-the-taxon_asseessment-table" id="toc-filling-the-taxon_asseessment-table" class="nav-link" data-scroll-target="#filling-the-taxon_asseessment-table">2.4 Filling the <code>taxon_asseessment</code> table</a>
@@ -266,16 +281,16 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Everyone is involved in the extraction</strong><br>
 The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> database has six tables that relate to each other through IDs - they will be filled as follows.</p>
 <ul>
-<li>The <strong>data extractors</strong> will extract data manually using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">data_extraction_template</span> for the tables <code>source</code>, <code>redlist</code>, and <code>location</code>, and will extract data either manually or automatically, depending on the <code>extractionType</code> detected, for the <code>taxon_assessment</code> table. They will also have to create a file for mapping <code>verbatimStatusCode</code> to a standardised <code>statusCode</code>, following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template</span>.<br>
+<li>The <strong>data extractors</strong> will extract data manually using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&amp;csf=1&amp;web=1&amp;e=P8dExb">data_extraction_template</a></span> for the tables <code>source</code>, <code>redlist</code>, and <code>location</code>, and will extract data either manually or automatically, depending on the <code>extractionType</code> detected, for the <code>taxon_assessment</code> table. They will also have to create a file for mapping <code>verbatimStatusCode</code> to a standardised <code>statusCode</code>, following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&amp;csf=1&amp;web=1&amp;e=eMLqUr">mapping_sources_template</a></span>.<br>
 </li>
-<li>The <strong>spatial data generator</strong> will be in charge of verifying the <code>location</code> table, and generating the spatial polygons for all <code>redlistLocation</code>s following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">geographic_entities</span> standard.<br>
+<li>The <strong>spatial data generator</strong> will be in charge of verifying the <code>location</code> table, and generating the spatial polygons for all <code>redlistLocation</code>s following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> standard.<br>
 </li>
 <li>The <strong>taxonomy harmoniser</strong> will be in charge of the <code>taxonomy</code> table, and will have to reconcile the scientific names in the extracted data to match a taxonomic backbone.</li>
 </ul>
 <section id="golden-rules-when-using-the-data-extraction-template" class="level3">
 <h3 class="anchored" data-anchor-id="golden-rules-when-using-the-data-extraction-template">Golden rules when using the data extraction template</h3>
 <ul>
-<li>Do not modify the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">data_extraction_template</span> <strong>under any circumstances</strong>. If you find an error and changes are needed, report it to <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>.<br>
+<li>Do not modify the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&amp;csf=1&amp;web=1&amp;e=P8dExb">data_extraction_template</a></span> <strong>under any circumstances</strong>. If you find an error and changes are needed, report it to <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>.<br>
 </li>
 <li>Always refer to this protocol to fill the template. Do not assume any decisions that are not contemplated in this document. If you have doubts about the protocol, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>.<br>
 </li>
@@ -304,13 +319,13 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Some sources might include unsorted tables of species (e.g.&nbsp;Fauna, Vertebrates, Amphibians and Reptiles). Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single <code>redlist</code> and use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">splitting script</span> to split the xlsx file into multiple files.</p>
+<p>Some sources might include unsorted tables of species (e.g.&nbsp;Fauna, Vertebrates, Amphibians and Reptiles). Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single <code>redlist</code> and use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&amp;web=1&amp;e=DdwV5p">split_script</a></span> to split the xlsx file into multiple files.</p>
 <p><strong>Instructions to use the file</strong><br>
-1. Copy the script into your working directory where your xlsx with unsorted taxon_assessment data sheet is located.<br>
-2. The script is designed to work with files based on our data extraction template. Fill out bibliography etc. beforehand.<br>
-3. Follow the instructions in the script. The output will be multiple files named filename_Class.xlsx.<br>
-4. The only sheet modified by the script is taxon_assessment, all else stays the same.<br>
-5. Finally, you need to manually fix the taxonomicScope column and filename.</p>
+1. Copy the script into your working directory where your xlsx with unsorted <code>taxon_assessment</code> data sheet is located.<br>
+2. The script is designed to work with files based on our data extraction template. Fill out all other sheets beforehand.<br>
+3. Follow the instructions in the script. The output will be multiple files named <code>filename_Class.xlsx</code>.<br>
+4. The only sheet modified by the script is <code>taxon_assessment</code>, all else stays the same.<br>
+5. Finally, you need to manually fix the <code>taxonomicScope</code> column and <code>fileName</code></p>
 </div>
 </div>
 </div>
@@ -352,7 +367,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <tbody>
 <tr class="odd">
 <td><code>sourceID</code></td>
-<td>find the value in the column <code>sourceID</code> of the table of sources, check it, and add it. This should also be the name of the folder you created on step <a href="">1.5 Create a folder and name it using the <code>sourceID</code></a></td>
+<td>find the value in the column <code>sourceID</code> of the table of sources, check it, and add it. This should also be the name of the folder you created on step <a href="step_1.html#create-a-folder-and-name-it-using-the-sourceid">1.5 Create a folder and name it using the <code>sourceID</code></a></td>
 </tr>
 <tr class="even">
 <td><code>sourceTitle</code></td>
@@ -429,15 +444,18 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>How to deal with <code>statusAssessmentType</code>
+<span class="screen-reader-only">Warning</span>How to deal with the fields <code>statusAssessmentType</code> and <code>statusMappingID</code>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN <code>statusCodes</code>, this is: “<strong>IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd edn). International Union for Conservation of Nature. <a href="https://portals.iucn.org/library/node/10315" class="uri">https://portals.iucn.org/library/node/10315</a></strong>”, and has <code>statusMappingSourceID = 1</code>.</p>
-<p>All the sources used for mapping statuses will be stored in our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> directory, and will have the corresponding citation generated in Zotero.</p>
-<p>If the <code>statusAssessmentType = IUCN</code> but it is not the latest version of IUCN, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#dealing-with-status-mapping-source">Dealing with status mapping source</a>).</p>
+<ul>
+<li><p>The <code>statusAssessmentType</code> is the <strong>type of assessment system</strong> used to define the status codes for the taxa in the redlist. Most redlists follow an <strong>IUCN</strong> criteria, however, many countries create their own protocols to assign conservation statuses. This is why we need to translate all statuses to a common standard.</p></li>
+<li><p>The <code>statusMappingID</code> is the ID for the <code>statusMappingSource</code> that has the mapping (i.e., translation) between statuses.</p></li>
+</ul>
+<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN regional <code>statusCodes</code>. This is “<em>IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</em>”, and has <code>statusMappingSourceID = 1</code>.</p>
+<p>If the <code>statusAssessmentType = IUCN</code> but it is not the standard version, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</a>).</p>
 </div>
 </div>
 </div>
@@ -478,7 +496,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </tr>
 <tr class="even">
 <td><code>redlistLocation</code></td>
-<td>this must be a unique value, not a list. Check if the location refers to a <code>country</code>, <code>stateProvince</code>, or <code>county</code>, if it is a location smaller than a <code>county</code>, if the location is a protected area or if it is an island, and search for the correct name in the table of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">geographic_entities</span></td>
+<td>this must be a unique value, not a list. Check if the location refers to a <code>country</code>, <code>stateProvince</code>, or <code>county</code>, if it is a location smaller than a <code>county</code>, if the location is a protected area or if it is an island, and search for the correct name in the table of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span></td>
 </tr>
 <tr class="odd">
 <td><code>statusAssessmentType</code></td>
@@ -492,12 +510,16 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <td><code>statusAssessmentTypeIdentifier</code></td>
 <td>check if the mapping source has an identifier and add the value</td>
 </tr>
+<tr class="even">
+<td><code>statusMappingSourceID</code></td>
+<td>check if the mapping source has an identifier and add the value</td>
+</tr>
 </tbody>
 </table>
-<section id="dealing-with-status-mapping-source-statusassessmenttypecitation" class="level3">
-<h3 class="anchored" data-anchor-id="dealing-with-status-mapping-source-statusassessmenttypecitation">2.3.1 Dealing with status mapping source (<code>statusAssessmentTypeCitation</code>)</h3>
-<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN <code>statusCodes</code>.</p>
-<p>The <code>redlist</code> table will have a <code>statusAssessmentTypeCitation</code> that points to the status mapping source you are using.</p>
+<section id="dealing-with-the-status-mapping-source" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</h3>
+<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN regional <code>statusCodes</code>. This is “<em>IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</em>”, and has <code>statusMappingSourceID = 1</code>.</p>
+<p><strong>Instructions to select the <code>statusMappingSourceID</code></strong></p>
 <ol type="1">
 <li><p>If the assessment was done with the latest version of IUCN, then use <code>statusMappingSourceID = 1</code>.</p></li>
 <li><p>If not, you will have to create the status mapping source (<code>statusAssessmentTypeCitation</code>). <strong>Even if the source you are extracting (1) provides the mapping between non-IUCN and IUCN statuses as part of the PDF/book, or (2) if the mapping of statuses are already published online</strong>. However, if the mapping source has already been created, you should use that one and the respective <code>statusMappingSourceID</code>.</p>
@@ -510,15 +532,38 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <p>So, for all options you will have to create a separate Excel file with its respective documentation PDF (and <code>statusMappingSourceID</code>), but only in the last case you will use a custom identifier.</p>
 <p>You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p></li>
 </ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[statusAssessmentType] --&gt; B(IUCN)
+    B --&gt;|example: the standard &lt;br/&gt; **cite IUCN and use the corresponding mapping source**| C["**Citation** = IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0&lt;br/&gt;**Mapping source** = 1"]
+    B --&gt;|example: IUCN older version&lt;br/&gt; **cite IUCN and use the corresponding mapping source**| D["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).&lt;br/&gt;**Mapping source** = 2"]
+
+    A[statusAssessmentType] --&gt; E(non-IUCN)
+    E --&gt;|example: paper &lt;br/&gt; **cite the paper and create the corresponding mapping source**| F["**Citation** = Xue, et al. (2023). Mapping Asia Plants. &lt;br/&gt;**Mapping source** = 10"]
+    E --&gt;|example: ourselves &lt;br/&gt; **cite yourself and create the corresponding mapping source**| G["**Citation** = Praleskouskaya, S. (2026, January 31). Mapping of Kirov Oblast (Russia) status codes.&lt;br/&gt;**Mapping source** = 13"]
+
+    A[statusAssessmentType] --&gt; H(IUCN + extra documentation)
+    H --&gt;|example: UICN + paper &lt;br/&gt; **cite IUCN but create new mapping source**| I["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).&lt;br/&gt;**Mapping source** = 14"]
+    H --&gt;|example: UICN + ourselves &lt;br/&gt; **cite IUCN but create new mapping source**| J["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).&lt;br/&gt;**Mapping source** = 15"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p><strong>Instructions to create the status mapping source</strong><br>
 Creating the mapping source involves preparing two documents:</p>
 <ol type="1">
 <li>The table <strong>status_mapping_source_X</strong></li>
 </ol>
 <ul>
-<li>This Excel file will store the equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code>, according to a specific source. You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template_excel</span>.</li>
+<li>This Excel file will store the equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code>, according to a specific source. You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&amp;csf=1&amp;web=1&amp;e=eMLqUr">mapping_sources_template_xlsx</a></span>.</li>
 <li>You should name the file as follows: &lt;<em>status_mapping_source_X.xlsx</em>&gt;, with <em>X</em> = <code>statusMappingSourceID</code>.</li>
-<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> folder, and name the folder after the <code>statusMappingSourceID</code>.<br>
+<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&amp;web=1&amp;e=9vcdgX">status_mapping_sources</a></span> folder, and name the folder after the <code>statusMappingSourceID</code>.<br>
 </li>
 <li>When you are done with the mapping source (Excel and PDF), contact Flo to store it in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</li>
 </ul>
@@ -540,9 +585,9 @@ Creating the mapping source involves preparing two documents:</p>
 <li>The PDF documentation <strong>status_mapping_source_X</strong></li>
 </ol>
 <ul>
-<li>This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>). You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_template_pdf</span>.</li>
+<li>This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>). You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&amp;csf=1&amp;web=1&amp;e=ixPLC6">mapping_sources_template_docx</a></span>, and then save it as a PDF.</li>
 <li>You should name the file as follows: &lt;<em>status_mapping_source_X.pdf</em>&gt;, with <em>X</em> = <code>statusMappingID.</code></li>
-<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> folder with the correct <code>statusMappingSourceID</code>.</li>
+<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&amp;web=1&amp;e=9vcdgX">status_mapping_sources</a></span> folder with the correct <code>statusMappingSourceID</code>.</li>
 </ul>
 <p><strong>Content of the document</strong>:</p>
 <ul>
@@ -589,7 +634,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> of are based in the following databases:</p>
+<p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> are based in the following databases:</p>
 <ul>
 <li><strong>geoBoundaries</strong>: A global database of political administrative boundaries. See <a href="https://www.geoboundaries.org/visualize.html" class="uri">https://www.geoboundaries.org/visualize.html</a>.<br>
 </li>
@@ -659,7 +704,7 @@ If you are looking for</p>
 <tbody>
 <tr class="odd">
 <td><code>locationID</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>locationID</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>locationID</code> value</td>
 </tr>
 <tr class="even">
 <td><code>geometry</code></td>
@@ -679,27 +724,27 @@ If you are looking for</p>
 </tr>
 <tr class="even">
 <td><code>continent</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>continent</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>continent</code> value</td>
 </tr>
 <tr class="odd">
 <td><code>country</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>country</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>country</code> value</td>
 </tr>
 <tr class="even">
 <td><code>countryCode</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>countryCode</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>countryCode</code> value</td>
 </tr>
 <tr class="odd">
 <td><code>stateProvince</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>stateProvince</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>stateProvince</code> value</td>
 </tr>
 <tr class="even">
 <td><code>county</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>county</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>county</code> value</td>
 </tr>
 <tr class="odd">
 <td><code>locality</code></td>
-<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <code>locality</code> value</td>
+<td>fill this value according to the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> <code>locality</code> value</td>
 </tr>
 <tr class="even">
 <td><code>isCustomRegion</code></td>

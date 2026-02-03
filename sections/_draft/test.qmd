@@ -1,0 +1,22 @@
+---
+title: "test"
+page-layout: full
+---
+
+```{mermaid}
+flowchart LR
+    A[statusAssessmentType] --> B(IUCN)
+    B -->|example: the standard <br/> **cite IUCN and use the corresponding mapping source**| C["**Citation** = IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0<br/>**Mapping source** = 1"]
+    B -->|example: IUCN older version<br/> **cite IUCN and use the corresponding mapping source**| D["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 2"]
+
+    A[statusAssessmentType] --> E(non-IUCN)
+    E -->|example: paper <br/> **cite the paper and create the corresponding mapping source**| F["**Citation** = Xue, et al. (2023). Mapping Asia Plants. <br/>**Mapping source** = 10"]
+    E -->|example: ourselves <br/> **cite yourself and create the corresponding mapping source**| G["**Citation** = Praleskouskaya, S. (2026, January 31). Mapping of Kirov Oblast (Russia) status codes.<br/>**Mapping source** = 13"]
+
+    A[statusAssessmentType] --> H(IUCN + EXTRA)
+    H -->|example: UICN + paper <br/> **cite IUCN but create new mapping source**| I["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 14"]
+    H -->|example: UICN + ourselves <br/> **cite IUCN but create new mapping source**| J["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 15"]
+```
+
+
+

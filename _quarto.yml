@@ -59,6 +59,8 @@ website:
             text: Controlled vocabulary
           - href: sections/appendices/citation_rules.qmd
             text: Citation rules
+          - href: sections/appendices/iucn_regional_categories.qmd
+            text: IUCN regional categories  
       - href: sections/faq.qmd
         text: FAQ
 
@@ -72,6 +74,14 @@ format:
     # toc-location: left
     filters:
       - highlight-text
+    include-in-header:
+      - text: |
+          <style>
+            .light-content a,
+            .dark-content a {
+              color: inherit;
+            }
+          </style>
     grid:
       sidebar-width: 500px
       body-width: 1200px

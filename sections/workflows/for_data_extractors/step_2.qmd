@@ -8,14 +8,14 @@ toc-location: left
 **Everyone is involved in the extraction**   
 The [**RegRed**]{colour="#d14024" bg-colour="#fff"} database has six tables that relate to each other through IDs - they will be filled as follows. 
 
-  - The **data extractors** will extract data manually using the [data_extraction_template]{colour="#fff" bg-colour="#31b0e0"} for the tables `source`, `redlist`, and `location`, and will extract data either manually or automatically, depending on the `extractionType` detected, for the `taxon_assessment` table. They will also have to create a file for mapping `verbatimStatusCode` to a standardised `statusCode`, following the [mapping_sources_template]{colour="#fff" bg-colour="#31b0e0"}.   
-  - The **spatial data generator** will be in charge of verifying the `location` table, and generating the spatial polygons for all `redlistLocation`s following the [geographic_entities]{colour="#fff" bg-colour="#3169e0"} standard.   
+  - The **data extractors** will extract data manually using the [[data_extraction_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&csf=1&web=1&e=P8dExb)]{colour="#fff" bg-colour="#31b0e0"} for the tables `source`, `redlist`, and `location`, and will extract data either manually or automatically, depending on the `extractionType` detected, for the `taxon_assessment` table. They will also have to create a file for mapping `verbatimStatusCode` to a standardised `statusCode`, following the [[mapping_sources_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)]{colour="#fff" bg-colour="#31b0e0"}.   
+  - The **spatial data generator** will be in charge of verifying the `location` table, and generating the spatial polygons for all `redlistLocation`s following the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} standard.   
   - The **taxonomy harmoniser** will be in charge of the `taxonomy` table, and will have to reconcile the scientific names in the extracted data to match a taxonomic backbone.  
 
 
 ### Golden rules when using the data extraction template
 
-  - Do not modify the [data_extraction_template]{colour="#fff" bg-colour="#31b0e0"} **under any circumstances**. If you find an error and changes are needed, report it to [Flo]{colour="#fff" bg-colour="#000"}.  
+  - Do not modify the [[data_extraction_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&csf=1&web=1&e=P8dExb)]{colour="#fff" bg-colour="#31b0e0"} **under any circumstances**. If you find an error and changes are needed, report it to [Flo]{colour="#fff" bg-colour="#000"}.  
   - Always refer to this protocol to fill the template. Do not assume any decisions that are not contemplated in this document. If you have doubts about the protocol, contact [Flo]{colour="#fff" bg-colour="#000"}.   
   - Always check the "**Definitions**" tab and do not assume any definitions on your side.   
   - Follow the respective controlled vocabulary. If the value you want to add in a column is not there, you have to report this to [Káča]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"}. If needed, the option will be added to the template.  
@@ -29,14 +29,14 @@ The [**RegRed**]{colour="#d14024" bg-colour="#fff"} database has six tables that
 ## What happens if I have multiple classes in one source
 
 Some sources might include unsorted tables of species  (e.g. Fauna, Vertebrates, Amphibians and Reptiles).
-Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single `redlist` and use our [splitting script]{colour="#fff" bg-colour="#3169e0"} to split the xlsx file into multiple files.
+Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single `redlist` and use our [[split_script](https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&web=1&e=DdwV5p)]{colour="#fff" bg-colour="#31b0e0"} to split the xlsx file into multiple files.
 
 **Instructions to use the file**  
-1. Copy the script into your working directory where your xlsx with unsorted taxon_assessment data sheet  is located.  
-2. The script is designed to work with files based on our data extraction template. Fill out bibliography etc. beforehand.  
-3. Follow the instructions in the script. The output will be multiple files named filename_Class.xlsx.  
-4. The only sheet modified by the script is taxon_assessment, all else stays the same.  
-5. Finally, you need to manually fix the taxonomicScope column and filename.   
+1. Copy the script into your working directory where your xlsx with unsorted `taxon_assessment` data sheet is located.  
+2. The script is designed to work with files based on our data extraction template. Fill out all other sheets beforehand.  
+3. Follow the instructions in the script. The output will be multiple files named `filename_Class.xlsx`.  
+4. The only sheet modified by the script is `taxon_assessment`, all else stays the same.  
+5. Finally, you need to manually fix the `taxonomicScope` column and `fileName`   
 
 ::: 
 
@@ -59,7 +59,7 @@ Separating species into classes by hand is a difficult process. If you encounter
 
 |   |   |
 |---|---|
-| `sourceID` | find the value in the column `sourceID` of the table of sources, check it, and add it. This should also be the name of the folder you created on step [1.5 Create a folder and name it using the `sourceID`]() |
+| `sourceID` | find the value in the column `sourceID` of the table of sources, check it, and add it. This should also be the name of the folder you created on step [1.5 Create a folder and name it using the `sourceID`](step_1.html#create-a-folder-and-name-it-using-the-sourceid) |
 | `sourceTitle` | find the value in the column `sourceTitle` of the table of sources, check it, and add it |
 | `sourceIdentifier` | find the value in the column `sourceIdentifier` of the table of sources, check that it is correct and add it following the recommendations on "**How to fill the `sourceIdentifier` when there is more than one file or document?**" |
 | `sourceDate` | the table of sources will only have the year as `sourceDate`, you must check if there is a full date available, and add the value.  Full dates are preferred (in the format `YYYY-MM-DD`), but you can also add year (`YYYY`), or month and year (`YYYY-MM`) |
@@ -84,13 +84,15 @@ Check the previous question "**How do I fill the `sourceIdentifier` when there i
 :::
 
 ::: { .callout-warning collapse="true"}
-## How to deal with `statusAssessmentType` 
+## How to deal with the fields `statusAssessmentType` and `statusMappingID`
 
-All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN `statusCodes`, this is: "**IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd edn). International Union for Conservation of Nature. <https://portals.iucn.org/library/node/10315>**", and has `statusMappingSourceID = 1`. 
+-   The `statusAssessmentType` is the **type of assessment system** used to define the status codes for the taxa in the redlist. Most redlists follow an **IUCN** criteria, however, many countries create their own protocols to assign conservation statuses. This is why we need to translate all statuses to a common standard.
 
-All the sources used for mapping statuses will be stored in our [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} directory, and will have the corresponding citation generated in Zotero.  
+-   The `statusMappingID` is the ID for the `statusMappingSource` that has the mapping (i.e., translation) between statuses. 
 
-If the `statusAssessmentType = IUCN` but it is not the latest version of IUCN, or if the `statusAssessmentType = Non-IUCN`, you will also have to create the status mapping source (see below [Dealing with status mapping source](step_2.html#dealing-with-status-mapping-source)).
+All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN regional `statusCodes`. This is "*IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336*", and has `statusMappingSourceID = 1`.  
+
+If the `statusAssessmentType = IUCN` but it is not the standard version, or if the `statusAssessmentType = Non-IUCN`, you will also have to create the status mapping source (see below [2.3.1 Dealing with the status mapping source](step_2.html#dealing-with-the-status-mapping-source)).
 :::
 
 **Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**
@@ -104,19 +106,21 @@ If the `statusAssessmentType = IUCN` but it is not the latest version of IUCN, o
 | `geospatialScope` | select from the list of controlled vocabulary |
 | `taxonomicScope` | select from the list of controlled vocabulary |
 | `isTaxonomicScopeFullyReported` | select from the list of controlled vocabulary. Fill with `Yes` if the number of species reported on the redlist is the same as the number of species in the `taxonomicScope` |
-| `redlistLocation` | this must be a unique value, not a list. Check if the location refers to a `country`, `stateProvince`, or `county`, if it is a location smaller than a `county`, if the location is a protected area or if it is an island, and search for the correct name in the table of [geographic_entities]{colour="#fff" bg-colour="#3169e0"} |
+| `redlistLocation` | this must be a unique value, not a list. Check if the location refers to a `country`, `stateProvince`, or `county`, if it is a location smaller than a `county`, if the location is a protected area or if it is an island, and search for the correct name in the table of [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} |
 | `statusAssessmentType` | select from the list of controlled vocabulary. If it is `Non-IUCN`, you must create the status mapping source following the template |
 | `statusAssessmentTypeCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
 | `statusAssessmentTypeIdentifier` | check if the mapping source has an identifier and add the value |
+| `statusMappingSourceID` | check if the mapping source has an identifier and add the value |
 
 : {tbl-colwidths="[25,75]"}
 
 
-### 2.3.1 Dealing with status mapping source (`statusAssessmentTypeCitation`)
+### 2.3.1 Dealing with the status mapping source
 
-All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN `statusCodes`. 
 
-The `redlist` table will have a `statusAssessmentTypeCitation` that points to the status mapping source you are using.   
+All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN regional `statusCodes`. This is "*IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336*", and has `statusMappingSourceID = 1`.   
+
+**Instructions to select the `statusMappingSourceID`**   
 
 1.   If the assessment was done with the latest version of IUCN, then use `statusMappingSourceID = 1`. 
 
@@ -136,15 +140,29 @@ The `redlist` table will have a `statusAssessmentTypeCitation` that points to th
 
       You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
 
+```{mermaid}
+flowchart LR
+    A[statusAssessmentType] --> B(IUCN)
+    B -->|example: the standard <br/> **cite IUCN and use the corresponding mapping source**| C["**Citation** = IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0<br/>**Mapping source** = 1"]
+    B -->|example: IUCN older version<br/> **cite IUCN and use the corresponding mapping source**| D["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 2"]
+
+    A[statusAssessmentType] --> E(non-IUCN)
+    E -->|example: paper <br/> **cite the paper and create the corresponding mapping source**| F["**Citation** = Xue, et al. (2023). Mapping Asia Plants. <br/>**Mapping source** = 10"]
+    E -->|example: ourselves <br/> **cite yourself and create the corresponding mapping source**| G["**Citation** = Praleskouskaya, S. (2026, January 31). Mapping of Kirov Oblast (Russia) status codes.<br/>**Mapping source** = 13"]
+
+    A[statusAssessmentType] --> H(IUCN + extra documentation)
+    H -->|example: UICN + paper <br/> **cite IUCN but create new mapping source**| I["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 14"]
+    H -->|example: UICN + ourselves <br/> **cite IUCN but create new mapping source**| J["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 15"]
+```
 
 **Instructions to create the status mapping source**   
 Creating the mapping source involves preparing two documents:
 
 1.    The table **status_mapping_source_X**
 
--   This Excel file will store the equivalent values of `statusCode` for `verbatimStatusCode`, according to a specific source. You will create it using the [mapping_sources_template_excel]{colour="#fff" bg-colour="#31b0e0"}.
+-   This Excel file will store the equivalent values of `statusCode` for `verbatimStatusCode`, according to a specific source. You will create it using the [[mapping_sources_template_xlsx](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)]{colour="#fff" bg-colour="#31b0e0"}.
 -   You should name the file as follows: <*status_mapping_source_X.xlsx*>, with *X* = `statusMappingSourceID`.
--   You should store the file in the [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} folder, and name the folder after the `statusMappingSourceID`.  
+-   You should store the file in the [[status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)]{colour="#fff" bg-colour="#3169e0"} folder, and name the folder after the `statusMappingSourceID`.  
 -   When you are done with the mapping source (Excel and PDF), contact Flo to store it in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
 
 **Fields to be filled in**: 
@@ -158,10 +176,9 @@ Creating the mapping source involves preparing two documents:
 
 2.    The PDF documentation **status_mapping_source_X**
 
--   This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`). You will create it using the [mapping_sources_template_pdf]{colour="#fff" bg-colour="#31b0e0"}.
+-   This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`). You will create it using the [[mapping_sources_template_docx](https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&csf=1&web=1&e=ixPLC6)]{colour="#fff" bg-colour="#31b0e0"}, and then save it as a PDF.
 -   You should name the file as follows: <*status_mapping_source_X.pdf*>, with *X* = `statusMappingID.` 
--   You should store the file in the [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} folder with the correct `statusMappingSourceID`.  
-
+-   You should store the file in the [[status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)]{colour="#fff" bg-colour="#3169e0"} folder with the correct `statusMappingSourceID`.  
 
 **Content of the document**:
 
@@ -188,7 +205,7 @@ You can find the `statusMappingSourceID` in the [mapping_sources_used]{colour="#
 ::: { .callout-warning collapse="true"}
 ## What sources does [**RegRed**]{colour="#d14024" bg-colour="#fff"} use for geographic locations?
 
-The [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} of are based in the following databases:
+The [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} are based in the following databases:
 
   - **geoBoundaries**: A global database of political administrative boundaries. See <https://www.geoboundaries.org/visualize.html>.     
   - **WDPA**: The World Database on Protected Areas, the most comprehensive global database on terrestrial and marine protected areas. See <https://www.protectedplanet.net/en/search-areas?geo_type=region>. 
@@ -223,17 +240,17 @@ You should send [Gabriel]{colour="#fff" bg-colour="#000"} an email with the name
 
 |   |   |
 |---|---|
-| `locationID` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `locationID` value |  
+| `locationID` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `locationID` value |  
 | `geometry` | do not fill this field |  
 | `geometrySource` | do not fill this field |
 | `verbatimSRS` | do not fill this field |
 | `footprintSRS` | do not fill this field |
-| `continent` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `continent` value |  
-| `country` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `country` value |  
-| `countryCode` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `countryCode` value | 
-| `stateProvince` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `stateProvince` value |  
-| `county` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `county` value |  
-| `locality` | fill this value according to the [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} `locality` value | 
+| `continent` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `continent` value |  
+| `country` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `country` value |  
+| `countryCode` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `countryCode` value | 
+| `stateProvince` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `stateProvince` value |  
+| `county` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `county` value |  
+| `locality` | fill this value according to the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} `locality` value | 
 | `isCustomRegion` | select from the list of controlled vocabulary. This will be `Yes` if the `redlistLocation` spans multiple administrative regions and therefore a custom polygon is needed for the geometry, e.g., "*The Carpathians*" |
 
 : {tbl-colwidths="[25,75]"}

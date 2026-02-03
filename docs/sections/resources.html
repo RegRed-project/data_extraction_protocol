@@ -69,6 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+  .light-content a,
+  .dark-content a {
+    color: inherit;
+  }
+</style>
 
 
 </head>
@@ -209,6 +215,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Citation rules</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/appendices/iucn_regional_categories.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IUCN regional categories</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -233,10 +245,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="one-drive-folder-structure">One Drive folder structure</h2>
 <pre><code>.
 ├── code/                
-│   └── ...
+│   └── Splitter/
+│       ├── ...
+│       └── split_script.R
 ├── data/
 │   ├── ...
 │   ├── all_sources_to_extract/
+│   ├── backups/
 │   ├── new_sources/
 │   ├── old_files/
 │   ├── status_mapping_sources/

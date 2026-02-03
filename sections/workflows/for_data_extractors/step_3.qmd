@@ -8,3 +8,4 @@ This section needs to be developed.
 :::
 
 When you are done with the red list, you have to send it to your designed pair. 
+Verify that each file is correctly placed in its corresponding folder.
