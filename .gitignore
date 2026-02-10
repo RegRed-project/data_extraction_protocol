@@ -9,3 +9,4 @@
 **/*.quarto_ipynb
 tables/.DS_Store
 /sections/_draft
+sections/.DS_Store
