@@ -18,9 +18,10 @@ page-layout: full
   - [Káča]{colour="#fff" bg-colour="#000"} (Kateřina Tschernosterová): data extractor, controlled vocabulary,  bibliographic citations.
   - [Gabriel]{colour="#fff" bg-colour="#000"} (Gabriel Ortega): geopgraphic entities, geodatabase.
   - [Sofi]{colour="#fff" bg-colour="#000"} (Safiya Praleskouskaya): data extractor, status mapping.
+  - [Carmen]{colour="#fff" bg-colour="#000"} (Carmen Soria): data extractor.
+  - [Dani]{colour="#fff" bg-colour="#000"} (Daniela Mellado): data extractor.
 
 ## Team meetings
 
-We will hold weekly meetings on Tuesdays at 10:30 (**room D233**) to assess progress, report issues and assign new tasks. 
-To make this meetings more productive, team members should write their questions in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s meeting notes in advance.
+We will hold weekly meetings on Tuesdays at 10:30 (**room D233**) to assess progress, report issues and assign new tasks. To make this meetings more productive, team members should write their questions in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s meeting notes in advance.
 

@@ -46,6 +46,12 @@ Indicate your progress by filling in the following columns in the table of sourc
   -   `fullyExtracted`: Indicates whether all relevant red list data from the source has been completely extracted, e.g., only vertebrates are extracted, but the source also contains data for plants. | **values**: `Yes`, `No`.   
   -   `dateStarted`: The date on which the data extraction for the source officially began. | **format**: `YYYY-MM-DD`.   
 
+::: {.callout-tip}
+##  Make sure to **ALWAYS** verify you are using the correct source
+
+Always check that the file corresponds to the source in the `sourceIdentifier`, and the `sourceTitle`. Guide yourself by the `sourceTitle`, the taxa covered and the year of publication. 
+:::
+
 ::: {.callout-warning collapse="true"}
 ## Where do I find the document associated with the source?
 
@@ -56,13 +62,17 @@ If there is no `fileName`, then find the document associated with the source che
 If you find a new digital file for the source, add it to the folder [[new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
 
 If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [[all_sources_to_extract](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&web=1&e=QdLyUf)]{colour="#fff" bg-colour="#3169e0"} folder.
-
 :::
 
-::: {.callout-tip}
-##  Make sure to **ALWAYS** verify you are using the correct source
+::: {.callout-warning collapse="true"}
+## What should I do if I find errors in the metadata for the source?
 
-Always check that the file corresponds to the source in the `sourceIdentifier`, and the `sourceTitle`. Guide yourself by the `sourceTitle`, the taxa covered and the year of publication. 
+The content in the table [[tetrapods_sources_to_extract](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_tetrapods_sources_to_extract.xlsx?d=wf0ea428dc8d944aa8129214a38f69238&csf=1&web=1&e=UXEtEO)]{colour="#fff" bg-colour="#31b0e0"} should never be edited. This is because we don't want to spend time correcting the information in this file as all the correct information **will** be stored in the file you are extracting.       
+
+You should only add details to the fields: `dataExtractor`, `progress`, `redlistTypeOfContent`, `extractionType`, `numberOfRedlists`, `dateStarted`, `fullyExtracted`, and `extractionRemarks`.  
+
+If there are any comments you want to make about any of the metadata being wrong (e.g., the year is incorrect), you should make them in the field `extractionRemarks`.   
+
 :::
 
 ::: {.callout-warning collapse="true"}

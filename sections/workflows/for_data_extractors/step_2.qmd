@@ -63,15 +63,15 @@ Separating species into classes by hand is a difficult process. If you encounter
 | `sourceTitle` | find the value in the column `sourceTitle` of the table of sources, check it, and add it |
 | `sourceIdentifier` | find the value in the column `sourceIdentifier` of the table of sources, check that it is correct and add it following the recommendations on "**How to fill the `sourceIdentifier` when there is more than one file or document?**" |
 | `sourceDate` | the table of sources will only have the year as `sourceDate`, you must check if there is a full date available, and add the value.  Full dates are preferred (in the format `YYYY-MM-DD`), but you can also add year (`YYYY`), or month and year (`YYYY-MM`) |
-| `sourceLanguage` | find the value in the column `sourceLanguage` of the table of sources, and select values from the list of controlled vocabulary (this could be a list) |
-| `sourceLicense` | select the value from the list of controlled vocabulary (could be unknown, but it is very important that you try your best to find it). This value will be used for the citation of the source |
-| `sourceType` | select the value from the list of controlled vocabulary |
-| `sourceFormat` | select on or many values from the list of controlled vocabulary |
-| `extractionType` | select the value from the list of controlled vocabulary |
-| `sourceCategory` | select the value from the list of controlled vocabulary |
-| `sourcePublisher` | find the publisher or publishers in the source, and add them separate by "`|`". Use the full name of the publishers followed by the acronym in brackets |
-| `sourcePublisherType` | select from the list of controlled vocabulary. If multiple publishers, separate by "`|`" following the same order as sourcePublisher |
-| `bibliographicCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Sources Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
+| `sourceLanguage` | find the value in the column `sourceLanguage` of the table of sources, and select values from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcelanguage) (this could be a list) |
+| `sourceLicense` | select the value from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcelicense) (could be unknown, but it is very important that you try your best to find it). This value will be used for the citation of the source |
+| `sourceType` | select the value from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcetype) |
+| `sourceFormat` | select on or many values from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourceformat) |
+| `extractionType` | select the value from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#extractiontype) |
+| `sourceCategory` | select the value from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcecategory) |
+| `sourcePublisher` | find the publisher or publishers in the source, and add them separate by "`|`". Use the full name of the publishers followed by the acronym in brackets. A publisher can be an institution or people |
+| `sourcePublisherType` | select from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcepublishertype). If multiple publishers, separate by "`|`" following the same order as `sourcePublisher` |
+| `bibliographicCitation` | use **Zotero** to create this value by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Sources Collection). Export the bibliographic citation in APA 7 style (Englsih UK) and use that value (more information in the [Citation Rules](/sections/appendices/citation_rules.html) appendix) |
 
 : {tbl-colwidths="[25,75]"}
 
@@ -103,11 +103,11 @@ If the `statusAssessmentType = IUCN` but it is not the standard version, or if t
 | `redlistTitle` | this field will be generated automatically as "*Redlist of <`taxonomicScope`> of <`redlistLocation`> (<year of (``redlistDate``)>)*". Therefore, these fields must be filled first to build the `redlistTitle` |  
 | `redlistIdentifier` | this may be the same value as `sourceIdentifier`, but if the red list has a different identifier, use it. Check that it is correct and add it following the recommendations suggested for other identifiers. |
 | `redlistDate` |  this may be the same value as `sourceDate`, but if each red list has a different date, add that value. Use only year here (`YYYY`) |
-| `geospatialScope` | select from the list of controlled vocabulary |
-| `taxonomicScope` | select from the list of controlled vocabulary |
+| `geospatialScope` | select from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#geospatialscope) |
+| `taxonomicScope` | select from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#taxonomicscope) |
 | `isTaxonomicScopeFullyReported` | select from the list of controlled vocabulary. Fill with `Yes` if the number of species reported on the redlist is the same as the number of species in the `taxonomicScope` |
 | `redlistLocation` | this must be a unique value, not a list. Check if the location refers to a `country`, `stateProvince`, or `county`, if it is a location smaller than a `county`, if the location is a protected area or if it is an island, and search for the correct name in the table of [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} |
-| `statusAssessmentType` | select from the list of controlled vocabulary. If it is `Non-IUCN`, you must create the status mapping source following the template |
+| `statusAssessmentType` | select from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#statusassessmenttype). If it is `Non-IUCN`, you must create the status mapping source following the template |
 | `statusAssessmentTypeCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
 | `statusAssessmentTypeIdentifier` | check if the mapping source has an identifier and add the value |
 | `statusMappingSourceID` | check if the mapping source has an identifier and add the value |
@@ -168,9 +168,9 @@ Creating the mapping source involves preparing two documents:
 **Fields to be filled in**: 
 
   -   `statusMappingID` - fill this with the ID of the **status_mapping_source_X** (it should be the same in every row).    
-  -   `verbatimStatusCode` - fill this with the original status code used in the source.  
+  -   `verbatimStatusCode` - fill this with the **original** status code used in the source.  
   -   `statusCode` - fill with the mapped IUCN status code.  
-  -   `statusCategory` - fill with the status full definition (e.g., "Vulnerable).    
+  -   `statusCategory` - fill with the status full definition (e.g., "Vulnerable").    
   -   `statusMappingBy` - select the value from the list of controlled vocabulary.    
   -   `statusMappingRemarks` - fill with any specifications about your decisions.  
 
@@ -263,9 +263,9 @@ You should send [Gabriel]{colour="#fff" bg-colour="#000"} an email with the name
 |   |   |
 |---|---|
 | `statusID` | do not fill this field |  
-| `verbatimIdentification` | fill this value with the exact name as it appears in the red list. This could be a species or a subspecies name |  
-| `verbatimStatusCode` | fill this value with the original abbreviated status category |  
-| `statusCriteria` | fill this value with the criteria used to define the `verbatimStatusCode` of the `verbatimIdentification` (if provided in the red list) |  
+| `verbatimIdentification` | fill this value with **the exact name** as it appears in the red list. This could be a species or a subspecies name |  
+| `verbatimStatusCode` | fill this value with the **original** abbreviated status category |  
+| `statusCriteria` | fill this value with the criteria used to define the `verbatimStatusCode` of the `verbatimIdentification` (if provided in the red list). This value should be the **original**; you shouldn't modify it |  
 
 : {tbl-colwidths="[25,75]"}
 
@@ -287,5 +287,5 @@ The script is located in our shared OneDrive [code/Splitter/split_script.R](http
 ### 2.4.1 Instructions to extract the `verbatimIdentification` and `verbatimStatusCode` automatically
 
 ::: {.callout-note}
-This section needs to be developed.
+This section needs to be developed, but if you have questions, ask [Adam]{colour="#fff" bg-colour="#000"}.
 :::
