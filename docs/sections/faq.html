@@ -281,8 +281,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <p>You may find the document (PDF, website, dataset) associated with the source under the field <code>fileName</code> in the folder all sources to extract. <strong>However</strong>, as these were created following a different convention (when the metadata was created), this column may be empty.</p>
 <p>If there is no <code>fileName</code>, then find the document associated with the source checking the <code>sourceIdentifier.</code> If the <code>sourceIdentifier</code> takes you to a broken URL, then use the <code>sourceTitle</code> to search for the source online. If you still do not find it, check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>, because if the source is there there there should be a digital object related to it.</p>
-<p>If you find a new digital file for the source, add it to the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">new_sources</span> using the name of the <code>sourceID</code>.</p>
-<p>If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">all_sources_to_extract</span> folder.</p>
+<p>If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace the current version in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&amp;web=1&amp;e=QdLyUf">all_sources_to_extract</a></span> folder with the one you have.</p>
+<p>If you find a new file for the source that did not have one (PDF or any digital format), add it to the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> using the name of the <code>sourceID</code>.</p>
 </div>
 </div>
 </div>
@@ -292,15 +292,15 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What if I find a new source?
+<span class="screen-reader-only">Warning</span>What should I do if I find errors in the metadata for the source?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If you find a new source that is not in the table of sources, first check with those involved in the metadata creation (<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>) to see why it is not in the list (maybe there is a reason why it was skipped).</p>
-<p>If it needs to be added, fill in the details about the new source in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">new_sources</span> file and store any associated files in <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">new_sources</span> folder.</p>
-<p>If the source should be included in the table of sources, it will need to be added by creating a new line at the end of the file and creating the <code>sourceID</code> as a consecutive number. <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> will be in charge of creating it.</p>
+<p>The content in the table <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_tetrapods_sources_to_extract.xlsx?d=wf0ea428dc8d944aa8129214a38f69238&amp;csf=1&amp;web=1&amp;e=UXEtEO">tetrapods_sources_to_extract</a></span> should never be edited. This is because we don’t want to spend time correcting the information in this file as all the correct information <strong>will</strong> be stored in the file you are extracting.</p>
+<p>You should only add details to the fields: <code>dataExtractor</code>, <code>progress</code>, <code>redlistTypeOfContent</code>, <code>extractionType</code>, <code>numberOfRedlists</code>, <code>dateStarted</code>, <code>fullyExtracted</code>, and <code>extractionRemarks</code>.</p>
+<p>If there are any comments you want to make about any of the metadata being wrong (e.g., the year is incorrect), you should make them in the field <code>extractionRemarks</code>.</p>
 </div>
 </div>
 </div>
@@ -310,11 +310,29 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>How to know if the source has been extracted by the NRL?
+<span class="screen-reader-only">Warning</span>What if I find a new source?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you find a new source that is not in the table of sources, first check with those involved in the metadata creation (<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>) to see why it is not in the list (maybe there is a reason why it was skipped).</p>
+<p>If it needs to be added, fill in the details about the new source in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources/new_sources.xlsx?d=wf01d3d61592a473488abcdc1e4d7b91d&amp;csf=1&amp;web=1&amp;e=VJDcqK">new_sources</a></span> file and store any associated files in <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> folder.</p>
+<p>If the source should be included in the table of sources, it will need to be added by creating a new line at the end of the file and creating the <code>sourceID</code> as a consecutive number. <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> will be in charge of creating it.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>How to know if the source has been extracted by the NRL?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Check the NRL data and assess whether the source you have is in the NRL database.</li>
@@ -335,7 +353,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -344,25 +362,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>AI-based extraction using large language models (LLMs) is useful for sources that are difficult to extract manually, e.g., because the information is provided inside text descriptions (and not tables). However, automated extraction depends on scientific species names and threat information being present on the same page.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>When should a source be extracted automatically?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If the source provides text descriptions and does not contain tables that are easy to copy and paste.</p>
+<p>AI-based extraction using large language models (LLMs) is useful for sources that are difficult to extract manually, e.g., because the information is provided inside text descriptions (and not tables). However, automated extraction depends on scientific species names and threat information being present on the same page.</p>
 </div>
 </div>
 </div>
@@ -372,13 +374,13 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>When should a source be extracted manually?
+<span class="screen-reader-only">Warning</span>When should a source be extracted automatically?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If the source contains only a few species (e.g., a reptile red list from a country with ~10 species). If scientific species names and threat status information are not present on the same page of the text (as the LLM will fail to detect this).</p>
+<p>If the source provides text descriptions and does not contain tables that are easy to copy and paste.</p>
 </div>
 </div>
 </div>
@@ -388,19 +390,13 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What happens if I have multiple classes in one source
+<span class="screen-reader-only">Warning</span>When should a source be extracted manually?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Some sources might include unsorted tables of species (e.g.&nbsp;Fauna, Vertebrates, Amphibians and Reptiles). Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single <code>redlist</code> and use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">splitting script</span> to split the xlsx file into multiple files.</p>
-<p><strong>Instructions to use the file</strong><br>
-1. Copy the script into your working directory where your xlsx with unsorted taxon_assessment data sheet is located.<br>
-2. The script is designed to work with files based on our data extraction template. Fill out bibliography etc. beforehand.<br>
-3. Follow the instructions in the script. The output will be multiple files named filename_Class.xlsx.<br>
-4. The only sheet modified by the script is taxon_assessment, all else stays the same.<br>
-5. Finally, you need to manually fix the taxonomicScope column and filename.</p>
+<p>If the source contains only a few species (e.g., a reptile red list from a country with ~10 species). If scientific species names and threat status information are not present on the same page of the text (as the LLM will fail to detect this).</p>
 </div>
 </div>
 </div>
@@ -410,25 +406,70 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?
+<span class="screen-reader-only">Warning</span>What happens if I have multiple classes in one source
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Always follow this hierarchy of preferred identifiers: DOI, ISSN/ISBN, URL to the PDF or interactive resource, and then URL to the electronic catalogue entry (e.g., a national library).</li>
-<li>URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.</li>
-<li>Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
+<p>Some sources might include unsorted tables of species (e.g.&nbsp;Fauna, Vertebrates, Amphibians and Reptiles). Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single <code>redlist</code> and use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&amp;web=1&amp;e=DdwV5p">split_script</a></span> to split the xlsx file into multiple files.</p>
+<p><strong>Instructions to use the file</strong><br>
+1. Copy the script into your working directory where your xlsx with unsorted <code>taxon_assessment</code> data sheet is located.<br>
+2. The script is designed to work with files based on our data extraction template. Fill out all other sheets beforehand.<br>
+3. Follow the instructions in the script. The output will be multiple files named <code>filename_Class.xlsx</code>.<br>
+4. The only sheet modified by the script is <code>taxon_assessment</code>, all else stays the same.<br>
+5. Finally, you need to manually fix the <code>taxonomicScope</code> column and <code>fileName</code></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>How do I fill the <code>sourceIdentifier</code>?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The identifier is a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs.</p>
 <ul>
 <li><strong>DOI</strong>: <code>https://doi.org/&lt;doi&gt;</code>, e.g., <code>https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b</code></li>
 <li><strong>ISBN</strong>: <code>urn:isbn:&lt;isbn&gt;</code>, e.g., <code>urn:isbn:0-486-27557-4</code></li>
 <li><strong>ISSN</strong>: <code>urn:issn:&lt;issn&gt;</code>,e.g., <code>urn:issn:0953-4563</code></li>
-<li><strong>URL to catalogue</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
+<li><strong>URL to catalog</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
 <li><strong>URL to source</strong>: e.g., <code>https://example.org/resource.pdf</code></li>
-</ul></li>
-<li>If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).<br>
-</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What happens if there are several possibilities for a <code>sourceIdentifier</code>?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You may have more than one potential identifier, e.g., a DOI and also an URL.</p>
+<ul>
+<li>Always follow this hierarchy of preferred identifiers:</li>
+</ul>
+<ol type="1">
+<li><strong>DOI</strong></li>
+<li><strong>ISSN</strong>/<strong>ISBN</strong></li>
+<li><strong>URL</strong> to the electronic catalog entry (e.g., a national library)</li>
+<li><strong>URL</strong> to the PDF or interactive resource.</li>
+</ol>
+<ul>
+<li>URLs <strong>should only be used</strong> when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.</li>
+<li>If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).</li>
 </ul>
 </div>
 </div>
@@ -437,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="redlist" class="level3">
 <h3 class="anchored" data-anchor-id="redlist"><code>redlist</code></h3>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -446,7 +487,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>A red list is uniquely identified by the combination of:</p>
 <ol type="1">
@@ -463,7 +504,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -472,32 +513,35 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Check the previous question “<strong>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?</strong>”. The same applies to these identifiers.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>How to deal with <code>statusAssessmentType</code>
+<span class="screen-reader-only">Warning</span>How to deal with the fields <code>statusAssessmentType</code> and <code>statusMappingID</code>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN <code>statusCodes</code>, this is: “<strong>IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd edn). International Union for Conservation of Nature. <a href="https://portals.iucn.org/library/node/10315" class="uri">https://portals.iucn.org/library/node/10315</a></strong>”, and has <code>statusMappingSourceID = 1</code>.</p>
-<p>All the sources used for mapping statuses will be stored in our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> directory, and will have the corresponding citation generated in Zotero.</p>
-<p>If the <code>statusAssessmentType = IUCN</code> but it is not the latest version of IUCN, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#dealing-with-status-mapping-source">Dealing with status mapping source</a>).</p>
+<ul>
+<li><p>The <code>statusAssessmentType</code> is the <strong>type of assessment system</strong> used to define the status codes for the taxa in the redlist. Most redlists follow an <strong>IUCN</strong> criteria, however, many countries create their own protocols to assign conservation statuses. This is why we need to translate all statuses to a common standard.</p></li>
+<li><p>The <code>statusMappingID</code> is the ID for the <code>statusMappingSource</code> that has the mapping (i.e., translation) between statuses.</p></li>
+</ul>
+<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN regional <code>statusCodes</code>. This is “<em>IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</em>”, and has <code>statusMappingSourceID = 1</code>.</p>
+<p>If the <code>statusAssessmentType = IUCN</code> but it is not the standard version, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</a>).</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -506,7 +550,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can find the <code>statusMappingSourceID</code> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_used</span> file.</p>
 </div>
@@ -516,7 +560,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="location" class="level3">
 <h3 class="anchored" data-anchor-id="location"><code>location</code></h3>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -525,9 +569,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> of are based in the following databases:</p>
+<p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> are based in the following databases:</p>
 <ul>
 <li><strong>geoBoundaries</strong>: A global database of political administrative boundaries. See <a href="https://www.geoboundaries.org/visualize.html" class="uri">https://www.geoboundaries.org/visualize.html</a>.<br>
 </li>
@@ -538,7 +582,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -547,14 +591,33 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Refer always to the website of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <a href="https://regred-project.github.io/geographic_entities/" class="uri">https://regred-project.github.io/geographic_entities/</a>.</p>
 </div>
 </div>
 </div>
+<p><strong>Instructions to use the geographic entities file</strong><br>
+If you are looking for</p>
+<ul>
+<li>a <code>country</code> (ADM0): geoboundaries_country.<br>
+</li>
+<li>a <code>stateProvince</code> or second order administrative region (ADM1): geoboundaries_stateProvince.<br>
+</li>
+<li>a <code>county</code> or the lowest administrative region possible (ADM2): geoboundaries_county.<br>
+</li>
+<li>a <code>locality</code> that is a protected area: wdpa_sep2025.<br>
+</li>
+<li>an <code>island</code> that is a country: geoboundaries_country.<br>
+</li>
+<li>an <code>island</code> that is a <code>stateProvince</code> or second order administrative region: geoboundaries_stateProvince.<br>
+</li>
+<li>an <code>island</code> that is <code>county</code> or the lowest administrative region possible: geoboundaries_county.<br>
+</li>
+<li>an <code>island</code> that does not fit any of the above: global_islands.</li>
+</ul>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -563,7 +626,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You should send <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> an email with the name of the locality and a picture (screenshot) of an accompanying map if available.</p>
 </div>
@@ -573,7 +636,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="taxon_assessment" class="level3">
 <h3 class="anchored" data-anchor-id="taxon_assessment"><code>taxon_assessment</code></h3>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -582,7 +645,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians &amp; Reptiles) you can use the <code>split_script</code> to automatically divide the Excel file into multiple class-specific files.</p>
 </div>
@@ -593,7 +656,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="citations" class="level2">
 <h2 class="anchored" data-anchor-id="citations">Citations</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -602,7 +665,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>If you are accessing the source online, you can use Zotero connector, communicating with your internet browser (Firefox, Chrome, Edge).</li>
@@ -614,7 +677,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -623,7 +686,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Go to the webpage you want to cite in your web browser.<br>
@@ -647,7 +710,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="controlled-vocabulary" class="level2">
 <h2 class="anchored" data-anchor-id="controlled-vocabulary">Controlled vocabulary</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -656,7 +719,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Basic instructions can be found also here: <a href="https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b" class="uri">https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b</a>.</p>
 <ul>
