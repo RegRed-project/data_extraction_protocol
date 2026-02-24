@@ -42,9 +42,11 @@ Indicate your progress by filling in the following columns in the table of sourc
   -   `dataExtractor`: The name of the team member assigned to and responsible for extracting data from the source. | **values**: `Ivo`, `Adam`, `Káča`, `Sofi.`   
   -   `progress`: The current status of the data extraction process for the source. | **values**: `in progress`, `done.`   
   -   `redlistTypeOfContent`: Describes the format in which the red list species and their statuses are presented within the source. For example: text (data is in text), table (data is in structured tables), or table+text (a combination of both). This information is key for deciding between manual and automated extraction methods. | **values**: `table`, `text`, `table+text`, `image`.   
-  -   `extractionRemarks`: A field for any relevant notes about the extraction process for a specific source, e.g. broken links, data inconsistencies, or other challenges encountered. | **values**: *free text*.    
+  -   `extractionType`: Describes how was the data extracted, manually by a data extractor, in an automated way, or by the NRL and translated to the RegRed's system. | **values**: `EcoParse`, `Manual`, and `NRL`.
+  -   `numberOfRedlists`: The number of identified redlists in the source. | **values**: *integer numbers > 1*.
+  -   `dateStarted`: The date on which the data extraction for the source officially began. | **format**: `YYYY-MM-DD`.     
   -   `fullyExtracted`: Indicates whether all relevant red list data from the source has been completely extracted, e.g., only vertebrates are extracted, but the source also contains data for plants. | **values**: `Yes`, `No`.   
-  -   `dateStarted`: The date on which the data extraction for the source officially began. | **format**: `YYYY-MM-DD`.   
+  -   `extractionRemarks`: A field for any relevant notes about the extraction process for a specific source, e.g. broken links, data inconsistencies, or other challenges encountered. | **values**: *free text*.   
 
 ::: {.callout-tip}
 ##  Make sure to **ALWAYS** verify you are using the correct source
@@ -59,9 +61,9 @@ You may find the document (PDF, website, dataset) associated with the source und
 
 If there is no `fileName`, then find the document associated with the source checking the `sourceIdentifier.` If the `sourceIdentifier` takes you to a broken URL, then use the `sourceTitle` to search for the source online. If you still do not find it, check with [Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}, because if the source is there there there should be a digital object related to it. 
 
-If you find a new digital file for the source, add it to the folder [[new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
+If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace the current version in the [[all_sources_to_extract](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&web=1&e=QdLyUf)]{colour="#fff" bg-colour="#3169e0"} folder with the one you have.
 
-If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the [[all_sources_to_extract](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&web=1&e=QdLyUf)]{colour="#fff" bg-colour="#3169e0"} folder.
+If you find a new file for the source that did not have one (PDF or any digital format), add it to the folder [[new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)]{colour="#fff" bg-colour="#3169e0"} using the name of the `sourceID`.
 :::
 
 ::: {.callout-warning collapse="true"}

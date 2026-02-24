@@ -205,6 +205,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../sections/appendices/extraction_template_definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extraction template definitions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../sections/appendices/controlled_vocabulary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Controlled vocabulary</span></a>
   </div>
@@ -328,11 +334,13 @@ Indicate your progress by filling in the following columns in the table of sourc
 </li>
 <li><code>redlistTypeOfContent</code>: Describes the format in which the red list species and their statuses are presented within the source. For example: text (data is in text), table (data is in structured tables), or table+text (a combination of both). This information is key for deciding between manual and automated extraction methods. | <strong>values</strong>: <code>table</code>, <code>text</code>, <code>table+text</code>, <code>image</code>.<br>
 </li>
-<li><code>extractionRemarks</code>: A field for any relevant notes about the extraction process for a specific source, e.g.&nbsp;broken links, data inconsistencies, or other challenges encountered. | <strong>values</strong>: <em>free text</em>.<br>
+<li><code>extractionType</code>: Describes how was the data extracted, manually by a data extractor, in an automated way, or by the NRL and translated to the RegRed’s system. | <strong>values</strong>: <code>EcoParse</code>, <code>Manual</code>, and <code>NRL</code>.</li>
+<li><code>numberOfRedlists</code>: The number of identified redlists in the source. | <strong>values</strong>: <em>integer numbers &gt; 1</em>.</li>
+<li><code>dateStarted</code>: The date on which the data extraction for the source officially began. | <strong>format</strong>: <code>YYYY-MM-DD</code>.<br>
 </li>
 <li><code>fullyExtracted</code>: Indicates whether all relevant red list data from the source has been completely extracted, e.g., only vertebrates are extracted, but the source also contains data for plants. | <strong>values</strong>: <code>Yes</code>, <code>No</code>.<br>
 </li>
-<li><code>dateStarted</code>: The date on which the data extraction for the source officially began. | <strong>format</strong>: <code>YYYY-MM-DD</code>.</li>
+<li><code>extractionRemarks</code>: A field for any relevant notes about the extraction process for a specific source, e.g.&nbsp;broken links, data inconsistencies, or other challenges encountered. | <strong>values</strong>: <em>free text</em>.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -361,8 +369,8 @@ Indicate your progress by filling in the following columns in the table of sourc
 <div class="callout-body-container callout-body">
 <p>You may find the document (PDF, website, dataset) associated with the source under the field <code>fileName</code> in the folder all sources to extract. <strong>However</strong>, as these were created following a different convention (when the metadata was created), this column may be empty.</p>
 <p>If there is no <code>fileName</code>, then find the document associated with the source checking the <code>sourceIdentifier.</code> If the <code>sourceIdentifier</code> takes you to a broken URL, then use the <code>sourceTitle</code> to search for the source online. If you still do not find it, check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>, because if the source is there there there should be a digital object related to it.</p>
-<p>If you find a new digital file for the source, add it to the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> using the name of the <code>sourceID</code>.</p>
-<p>If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace it in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&amp;web=1&amp;e=QdLyUf">all_sources_to_extract</a></span> folder.</p>
+<p>If you find a more complete file for the source (PDF or any digital format) you are extracting, you should replace the current version in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&amp;web=1&amp;e=QdLyUf">all_sources_to_extract</a></span> folder with the one you have.</p>
+<p>If you find a new file for the source that did not have one (PDF or any digital format), add it to the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> using the name of the <code>sourceID</code>.</p>
 </div>
 </div>
 </div>

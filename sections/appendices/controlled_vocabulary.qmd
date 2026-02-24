@@ -18,7 +18,7 @@ library(reactable)
 library(tidyverse)
 library(Microsoft365R)
 
-site <- get_sharepoint_site("MOBI_science - RegRed")
+site <- get_sharepoint_site("MOBI_science-RegRed")
 drv <- site$get_drive("Dokumenty")
 # drv$list_items('RegRed/data')
 item <- drv$get_item("RegRed/data/regred_data_codebooks.xlsx")

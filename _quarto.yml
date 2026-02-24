@@ -55,6 +55,8 @@ website:
             text: For taxonomy harmoniser
       - section: Appendices
         contents:
+          - href: sections/appendices/extraction_template_definitions.qmd
+            text: Extraction template definitions
           - href: sections/appendices/controlled_vocabulary.qmd
             text: Controlled vocabulary
           - href: sections/appendices/citation_rules.qmd

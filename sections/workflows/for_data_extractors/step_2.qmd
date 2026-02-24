@@ -42,18 +42,34 @@ Separating species into classes by hand is a difficult process. If you encounter
 
 
 ::: { .callout-warning collapse="true"}
-## How do I fill the `sourceIdentifier` when there is more than one file or document?
+## How do I fill the `sourceIdentifier`?
 
--   Always follow this hierarchy of preferred identifiers: DOI, ISSN/ISBN, URL to the PDF or interactive resource, and then URL to the electronic catalogue entry (e.g., a national library).
--   URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.
--   Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
-    -   **DOI**: `https://doi.org/<doi>`, e.g., `https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b`
-    -   **ISBN**: `urn:isbn:<isbn>`, e.g., `urn:isbn:0-486-27557-4`
-    -   **ISSN**: `urn:issn:<issn>`,e.g., `urn:issn:0953-4563`
-    -   **URL to catalogue**: e.g., `https://portals.iucn.org/library/node/10315`
-    -   **URL to source**: e.g., `https://example.org/resource.pdf`
--   If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).  
+The identifier is a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. 
+
+  -   **DOI**: `https://doi.org/<doi>`, e.g., `https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b`
+  -   **ISBN**: `urn:isbn:<isbn>`, e.g., `urn:isbn:0-486-27557-4`
+  -   **ISSN**: `urn:issn:<issn>`,e.g., `urn:issn:0953-4563`
+  -   **URL to catalog**: e.g., `https://portals.iucn.org/library/node/10315`
+  -   **URL to source**: e.g., `https://example.org/resource.pdf`
+
 ::: 
+
+::: { .callout-warning collapse="true"}
+## What happens if there are several possibilities for a `sourceIdentifier`?
+
+You may have more than one potential identifier, e.g., a DOI and also an URL.
+
+-   Always follow this hierarchy of preferred identifiers: 
+
+1. **DOI**
+2. **ISSN**/**ISBN**
+3. **URL** to the electronic catalog entry (e.g., a national library)
+4. **URL** to the PDF or interactive resource.
+
+-   URLs **should only be used** when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.
+-   If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).  
+
+:::
 
 **Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**.
 
@@ -117,6 +133,7 @@ If the `statusAssessmentType = IUCN` but it is not the standard version, or if t
 
 ### 2.3.1 Dealing with the status mapping source
 
+Status mapping sources are one of the key values of RegRed. 
 
 All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN regional `statusCodes`. This is "*IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336*", and has `statusMappingSourceID = 1`.   
 

@@ -3,9 +3,11 @@ title: 'Step 3: Store the extracted data'
 page-layout: full
 ---
 
+When you are done with the red list, you have to send it to one of your designed reviewer peers. 
+Verify that each file is correctly placed in its corresponding folder.
+
+## Steps for the peer-review process
+
 ::: {.callout-note}
 This section needs to be developed.
 :::
-
-When you are done with the red list, you have to send it to your designed pair. 
-Verify that each file is correctly placed in its corresponding folder.

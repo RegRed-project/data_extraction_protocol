@@ -1,0 +1,170 @@
+---
+title: 'Extraction template definitions'
+page-layout: full
+toc: true
+toc-location: left
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+library(janitor)
+library(readxl)
+library(reactable)
+library(tidyverse)
+library(Microsoft365R)
+
+site <- get_sharepoint_site("MOBI_science-RegRed")
+drv <- site$get_drive("Dokumenty")
+# drv$list_items('RegRed/data')
+item <- drv$get_item("RegRed/data/regred_data_extraction_template.xlsx")
+tmp <- tempfile(fileext = ".xlsx")
+item$download(dest = tmp, overwrite = TRUE)
+
+df <- read_xlsx(tmp, sheet = 'Definitions') %>% 
+  janitor::clean_names('snake', abbreviations = c('ID', 'NRL')) %>% 
+  mutate(across(everything(), ~str_squish(str_trim(.)))) %>% 
+  select(table, term, definition, example, controlled_vocabullary, comments_recommendations)
+```
+
+## `source` 
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+reactable(df %>% filter(table == 'SOURCE') %>% select(-table), 
+          resizable = TRUE,
+          defaultPageSize = 25,
+          wrap = TRUE,
+          outlined = TRUE,
+          bordered = TRUE, highlight = TRUE,
+          searchable = TRUE,
+          defaultColDef = colDef(minWidth = 40),
+          columns = list(
+            term = colDef(minWidth = 35, 
+                          style = list(fontFamily = "monospace",
+                                       fontSize = "0.85rem"))
+            )
+          )
+```
+
+## `redlist` 
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+reactable(df %>% filter(table == 'REDLIST') %>% select(-table), 
+          resizable = TRUE,
+          defaultPageSize = 25,
+          wrap = TRUE,
+          outlined = TRUE,
+          bordered = TRUE, highlight = TRUE,
+          searchable = TRUE,
+          defaultColDef = colDef(minWidth = 40),
+          columns = list(
+            term = colDef(minWidth = 35, 
+                          style = list(fontFamily = "monospace",
+                                       fontSize = "0.85rem"))
+            )
+          )
+```
+
+## `location` 
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+reactable(df %>% filter(table == 'LOCATION') %>% select(-table), 
+          resizable = TRUE,
+          defaultPageSize = 25,
+          wrap = TRUE,
+          outlined = TRUE,
+          bordered = TRUE, highlight = TRUE,
+          searchable = TRUE,
+          defaultColDef = colDef(minWidth = 40),
+          columns = list(
+            term = colDef(minWidth = 35, 
+                          style = list(fontFamily = "monospace",
+                                       fontSize = "0.85rem"))
+            )
+          )
+```
+
+## `taxon_assessment` 
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+reactable(df %>% filter(table == 'TAXON_ASSESSMENT') %>% select(-table), 
+          resizable = TRUE,
+          defaultPageSize = 25,
+          wrap = TRUE,
+          outlined = TRUE,
+          bordered = TRUE, highlight = TRUE,
+          searchable = TRUE,
+          defaultColDef = colDef(minWidth = 40),
+          columns = list(
+            term = colDef(minWidth = 35, 
+                          style = list(fontFamily = "monospace",
+                                       fontSize = "0.85rem"))
+            )
+          )
+```
+
+## `taxonomy` 
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+reactable(df %>% filter(table == 'TAXONOMY') %>% select(-table), 
+          resizable = TRUE,
+          defaultPageSize = 25,
+          wrap = TRUE,
+          outlined = TRUE,
+          bordered = TRUE, highlight = TRUE,
+          searchable = TRUE,
+          defaultColDef = colDef(minWidth = 40),
+          columns = list(
+            term = colDef(minWidth = 35, 
+                          style = list(fontFamily = "monospace",
+                                       fontSize = "0.85rem"))
+            )
+          )
+```
+
+## `status_mapping` 
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+reactable(df %>% filter(table == 'STATUS_MAPPING') %>% select(-table), 
+          resizable = TRUE,
+          defaultPageSize = 25,
+          wrap = TRUE,
+          outlined = TRUE,
+          bordered = TRUE, highlight = TRUE,
+          searchable = TRUE,
+          defaultColDef = colDef(minWidth = 40),
+          columns = list(
+            term = colDef(minWidth = 35, 
+                          style = list(fontFamily = "monospace",
+                                       fontSize = "0.85rem"))
+            )
+          )
+```

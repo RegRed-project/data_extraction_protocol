@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>/index.html</loc>
-    <lastmod>2026-02-10T13:53:35.127Z</lastmod>
+    <lastmod>2026-02-24T14:45:01.171Z</lastmod>
   </url>
   <url>
     <loc>/sections/roles_team_and_responsibilities.html</loc>
@@ -13,36 +13,40 @@
     <lastmod>2026-01-22T09:53:23.465Z</lastmod>
   </url>
   <url>
-    <loc>/sections/appendices/iucn_regional_categories.html</loc>
-    <lastmod>2026-02-03T14:42:43.885Z</lastmod>
-  </url>
-  <url>
-    <loc>/sections/workflows/for_data_extractors/step_2.html</loc>
-    <lastmod>2026-02-10T14:27:48.985Z</lastmod>
-  </url>
-  <url>
-    <loc>/sections/workflows/for_data_extractors/step_1.html</loc>
-    <lastmod>2026-02-10T13:59:52.241Z</lastmod>
-  </url>
-  <url>
-    <loc>/sections/workflows/for_nrl_data_harmoniser/steps.html</loc>
-    <lastmod>2025-12-02T16:16:43.867Z</lastmod>
-  </url>
-  <url>
-    <loc>/sections/workflows/for_taxonomy_harmoniser/steps.html</loc>
-    <lastmod>2026-01-22T15:22:50.731Z</lastmod>
-  </url>
-  <url>
-    <loc>/sections/workflows/for_data_extractors/step_3.html</loc>
-    <lastmod>2026-02-03T07:49:06.486Z</lastmod>
+    <loc>/sections/appendices/extraction_template_definitions.html</loc>
+    <lastmod>2026-02-24T14:42:36.572Z</lastmod>
   </url>
   <url>
     <loc>/sections/workflows/for_spatial_data_generator/steps.html</loc>
     <lastmod>2026-01-22T15:24:39.969Z</lastmod>
   </url>
   <url>
+    <loc>/sections/workflows/for_data_extractors/step_3.html</loc>
+    <lastmod>2026-02-24T13:45:42.759Z</lastmod>
+  </url>
+  <url>
+    <loc>/sections/workflows/for_taxonomy_harmoniser/steps.html</loc>
+    <lastmod>2026-01-22T15:22:50.731Z</lastmod>
+  </url>
+  <url>
+    <loc>/sections/workflows/for_nrl_data_harmoniser/steps.html</loc>
+    <lastmod>2025-12-02T16:16:43.867Z</lastmod>
+  </url>
+  <url>
+    <loc>/sections/workflows/for_data_extractors/step_1.html</loc>
+    <lastmod>2026-02-24T12:53:25.471Z</lastmod>
+  </url>
+  <url>
+    <loc>/sections/workflows/for_data_extractors/step_2.html</loc>
+    <lastmod>2026-02-24T14:04:27.677Z</lastmod>
+  </url>
+  <url>
+    <loc>/sections/appendices/iucn_regional_categories.html</loc>
+    <lastmod>2026-02-03T14:42:43.885Z</lastmod>
+  </url>
+  <url>
     <loc>/sections/appendices/controlled_vocabulary.html</loc>
-    <lastmod>2026-01-22T09:46:02.076Z</lastmod>
+    <lastmod>2026-02-24T13:52:24.617Z</lastmod>
   </url>
   <url>
     <loc>/sections/faq.html</loc>

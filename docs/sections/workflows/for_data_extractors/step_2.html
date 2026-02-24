@@ -208,6 +208,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../sections/appendices/extraction_template_definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extraction template definitions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../sections/appendices/controlled_vocabulary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Controlled vocabulary</span></a>
   </div>
@@ -335,25 +341,48 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?
+<span class="screen-reader-only">Warning</span>How do I fill the <code>sourceIdentifier</code>?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Always follow this hierarchy of preferred identifiers: DOI, ISSN/ISBN, URL to the PDF or interactive resource, and then URL to the electronic catalogue entry (e.g., a national library).</li>
-<li>URLs should only be used when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.</li>
-<li>Fill in the identifier field with a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs. Recommended hierarchy:
+<p>The identifier is a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs.</p>
 <ul>
 <li><strong>DOI</strong>: <code>https://doi.org/&lt;doi&gt;</code>, e.g., <code>https://doi.org/10.2909/9a752c28-cb5f-4ead-9922-2a8173e0306b</code></li>
 <li><strong>ISBN</strong>: <code>urn:isbn:&lt;isbn&gt;</code>, e.g., <code>urn:isbn:0-486-27557-4</code></li>
 <li><strong>ISSN</strong>: <code>urn:issn:&lt;issn&gt;</code>,e.g., <code>urn:issn:0953-4563</code></li>
-<li><strong>URL to catalogue</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
+<li><strong>URL to catalog</strong>: e.g., <code>https://portals.iucn.org/library/node/10315</code></li>
 <li><strong>URL to source</strong>: e.g., <code>https://example.org/resource.pdf</code></li>
-</ul></li>
-<li>If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).<br>
-</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What happens if there are several possibilities for a <code>sourceIdentifier</code>?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You may have more than one potential identifier, e.g., a DOI and also an URL.</p>
+<ul>
+<li>Always follow this hierarchy of preferred identifiers:</li>
+</ul>
+<ol type="1">
+<li><strong>DOI</strong></li>
+<li><strong>ISSN</strong>/<strong>ISBN</strong></li>
+<li><strong>URL</strong> to the electronic catalog entry (e.g., a national library)</li>
+<li><strong>URL</strong> to the PDF or interactive resource.</li>
+</ol>
+<ul>
+<li>URLs <strong>should only be used</strong> when the source has neither a DOI nor an ISSN/ISBN. If you use a URL, make sure it resolves correctly.</li>
+<li>If there are additional ISBN or URLs directly linked to the PDF or interactive resource, please include all of them in the Zotero shared library when adding the bibliographic citation (e.g., under ISBN, URL, or in Extra).</li>
 </ul>
 </div>
 </div>
@@ -423,7 +452,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <section id="filling-the-redlist-table" class="level2">
 <h2 class="anchored" data-anchor-id="filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -432,14 +461,14 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Check the previous question “<strong>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?</strong>”. The same applies to these identifiers.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -448,7 +477,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><p>The <code>statusAssessmentType</code> is the <strong>type of assessment system</strong> used to define the status codes for the taxa in the redlist. Most redlists follow an <strong>IUCN</strong> criteria, however, many countries create their own protocols to assign conservation statuses. This is why we need to translate all statuses to a common standard.</p></li>
@@ -518,6 +547,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </table>
 <section id="dealing-with-the-status-mapping-source" class="level3">
 <h3 class="anchored" data-anchor-id="dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</h3>
+<p>Status mapping sources are one of the key values of RegRed.</p>
 <p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN regional <code>statusCodes</code>. This is “<em>IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</em>”, and has <code>statusMappingSourceID = 1</code>.</p>
 <p><strong>Instructions to select the <code>statusMappingSourceID</code></strong></p>
 <ol type="1">
@@ -603,7 +633,7 @@ Creating the mapping source involves preparing two documents:</p>
 When you are done with the mapping source (Excel and PDF), contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> to store it in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</p>
 <p>If you got this far and you still have doubts about status mapping sources, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Sofi</span>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -612,7 +642,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You can find the <code>statusMappingSourceID</code> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_used</span> file.</p>
 </div>
@@ -623,7 +653,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 <section id="filling-the-location-table" class="level2">
 <h2 class="anchored" data-anchor-id="filling-the-location-table">2.4 Filling the <code>location</code> table</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -632,7 +662,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> are based in the following databases:</p>
 <ul>
@@ -645,7 +675,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -654,7 +684,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Refer always to the website of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <a href="https://regred-project.github.io/geographic_entities/" class="uri">https://regred-project.github.io/geographic_entities/</a>.</p>
 </div>
@@ -680,7 +710,7 @@ If you are looking for</p>
 <li>an <code>island</code> that does not fit any of the above: global_islands.</li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -689,7 +719,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You should send <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> an email with the name of the locality and a picture (screenshot) of an accompanying map if available.</p>
 </div>
@@ -781,7 +811,7 @@ If you are looking for</p>
 </tbody>
 </table>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -790,7 +820,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians &amp; Reptiles) you can use the <code>split_script</code> to automatically divide the Excel file into multiple class-specific files.</p>
 </div>
