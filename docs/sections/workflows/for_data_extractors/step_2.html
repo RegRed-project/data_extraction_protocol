@@ -69,6 +69,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="neutral">
 <script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -248,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#filling-the-source-table" id="toc-filling-the-source-table" class="nav-link" data-scroll-target="#filling-the-source-table">2.2 Filling the <code>source</code> table</a></li>
   <li><a href="#filling-the-redlist-table" id="toc-filling-the-redlist-table" class="nav-link" data-scroll-target="#filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</a>
   <ul class="collapse">
-  <li><a href="#dealing-with-the-status-mapping-source" id="toc-dealing-with-the-status-mapping-source" class="nav-link" data-scroll-target="#dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</a></li>
+  <li><a href="#handling-status-mapping-sources" id="toc-handling-status-mapping-sources" class="nav-link" data-scroll-target="#handling-status-mapping-sources">2.3.1 Handling Status Mapping Sources</a></li>
   </ul></li>
   <li><a href="#filling-the-location-table" id="toc-filling-the-location-table" class="nav-link" data-scroll-target="#filling-the-location-table">2.4 Filling the <code>location</code> table</a></li>
   <li><a href="#filling-the-taxon_asseessment-table" id="toc-filling-the-taxon_asseessment-table" class="nav-link" data-scroll-target="#filling-the-taxon_asseessment-table">2.4 Filling the <code>taxon_asseessment</code> table</a>
@@ -545,10 +546,79 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </tr>
 </tbody>
 </table>
-<section id="dealing-with-the-status-mapping-source" class="level3">
-<h3 class="anchored" data-anchor-id="dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</h3>
-<p>Status mapping sources are one of the key values of RegRed.</p>
-<p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN regional <code>statusCodes</code>. This is “<em>IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</em>”, and has <code>statusMappingSourceID = 1</code>.</p>
+<section id="handling-status-mapping-sources" class="level3">
+<h3 class="anchored" data-anchor-id="handling-status-mapping-sources">2.3.1 Handling Status Mapping Sources</h3>
+<p>The following details will help you define when and how to select or create a status mapping source so that all <code>verbatimStatusCodes</code> in RegRed are consistently mapped to the latest IUCN regional status codes.</p>
+<p>All <code>verbatimStatusCode</code>s are mapped, by default, to the IUCN regional framework, and this mapping has <code>statusMappingSourceID = 1</code>:</p>
+<blockquote class="blockquote">
+<p>IUCN (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</p>
+</blockquote>
+<section id="decision-tree" class="level4">
+<h4 class="anchored" data-anchor-id="decision-tree">Decision tree</h4>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  Start(["source"]) --&gt; IUCN{"Uses IUCN v4.0 (2012)?"}
+  IUCN -- "Yes" --&gt; Use1(["Use statusMappingSourceID = 1"])
+
+  IUCN -- "No" --&gt; Exists{"Existing mapping source in RegRed?"}
+  Exists -- "Yes" --&gt; Reuse(["Reuse existing statusMappingSourceID"])
+  Exists -- "No" --&gt; Choose{"Choose creation scenario"}
+
+  %% Scenario A
+  Choose -- "(1) same source provides mapping" --&gt; A0
+  subgraph A0["Mapping in the same source"]
+    direction TB
+    A1(["Create Excel and PDF"])
+    A2(["statusAssessmentTypeCitation = original source"])
+    A3(["statusAssessmentTypeIdentifier = DOI or URL or catalog ID"])
+    A4(["Create new statusMappingSourceID"])
+    A1 --&gt; A2 --&gt; A3 --&gt; A4
+  end
+
+  %% Scenario B
+  Choose -- "(2) official mapping published" --&gt; B0
+  subgraph B0["Official mapping source"]
+    direction TB
+    B1(["Create Excel and PDF"])
+    B2(["statusAssessmentTypeCitation = official document"])
+    B3(["statusAssessmentTypeIdentifier = DOI or URL"])
+    B4(["Create new statusMappingSourceID"])
+    B1 --&gt; B2 --&gt; B3 --&gt; B4
+  end
+
+  %% Scenario C
+  Choose -- "(2) no official or mixed sources -&gt; create custom" --&gt; C0
+  subgraph C0["Custom mapping"]
+    direction TB
+    C1(["Create Excel and PDF"])
+    C2(["statusAssessmentTypeCitation = custom mapping"])
+    C3(["statusAssessmentTypeIdentifier = GitHub URL"])
+    C4(["Create new statusMappingSourceID"])
+    C1 --&gt; C2 --&gt; C3 --&gt; C4
+  end
+  
+  %% --- CUSTOM COLORS ---  
+  %% Define a class for decision nodes (Exists + Choose)  
+  classDef decision_no fill:#FFE9B3,stroke:#CC9900,stroke-width:2px,color:#000;  
+  classDef decision_yes fill:#DFF5D4,stroke:#4CAF50,stroke-width:2px,color:#000; 
+  classDef boxes fill:#f2f3f5,stroke:#363636,stroke-width:0.5px,color:#000; 
+  
+  %% Apply the class to the nodes  
+  class Exists,Choose decision_no;
+  class Use1,Reuse decision_yes;
+  %%class A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,C0,C1,C2,C3,C4 boxes;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>If the assessment did not use the latest IUCN regional guidelines (v4.0), you must find or create an appropriate mapping source (<code>statusAssessmentTypeCitation</code>) and reference its <code>statusMappingSourceID</code>.<br>
+Before creating a new source, always check if the mapping source already exists in RegRed. If it does, reuse its existing <code>statusMappingSourceID</code>.</p>
 <p><strong>Instructions to select the <code>statusMappingSourceID</code></strong></p>
 <ol type="1">
 <li><p>If the assessment was done with the latest version of IUCN, then use <code>statusMappingSourceID = 1</code>.</p></li>
@@ -562,29 +632,6 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <p>So, for all options you will have to create a separate Excel file with its respective documentation PDF (and <code>statusMappingSourceID</code>), but only in the last case you will use a custom identifier.</p>
 <p>You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p></li>
 </ol>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    A[statusAssessmentType] --&gt; B(IUCN)
-    B --&gt;|example: the standard &lt;br/&gt; **cite IUCN and use the corresponding mapping source**| C["**Citation** = IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0&lt;br/&gt;**Mapping source** = 1"]
-    B --&gt;|example: IUCN older version&lt;br/&gt; **cite IUCN and use the corresponding mapping source**| D["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).&lt;br/&gt;**Mapping source** = 2"]
-
-    A[statusAssessmentType] --&gt; E(non-IUCN)
-    E --&gt;|example: paper &lt;br/&gt; **cite the paper and create the corresponding mapping source**| F["**Citation** = Xue, et al. (2023). Mapping Asia Plants. &lt;br/&gt;**Mapping source** = 10"]
-    E --&gt;|example: ourselves &lt;br/&gt; **cite yourself and create the corresponding mapping source**| G["**Citation** = Praleskouskaya, S. (2026, January 31). Mapping of Kirov Oblast (Russia) status codes.&lt;br/&gt;**Mapping source** = 13"]
-
-    A[statusAssessmentType] --&gt; H(IUCN + extra documentation)
-    H --&gt;|example: UICN + paper &lt;br/&gt; **cite IUCN but create new mapping source**| I["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).&lt;br/&gt;**Mapping source** = 14"]
-    H --&gt;|example: UICN + ourselves &lt;br/&gt; **cite IUCN but create new mapping source**| J["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).&lt;br/&gt;**Mapping source** = 15"]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
 <p><strong>Instructions to create the status mapping source</strong><br>
 Creating the mapping source involves preparing two documents:</p>
 <ol type="1">
@@ -648,6 +695,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="filling-the-location-table" class="level2">

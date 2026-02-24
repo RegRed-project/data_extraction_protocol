@@ -131,11 +131,75 @@ If the `statusAssessmentType = IUCN` but it is not the standard version, or if t
 : {tbl-colwidths="[25,75]"}
 
 
-### 2.3.1 Dealing with the status mapping source
+### 2.3.1 Handling Status Mapping Sources
 
-Status mapping sources are one of the key values of RegRed. 
+The following details will help you define when and how to select or create a status mapping source so that all `verbatimStatusCodes` in RegRed are consistently mapped to the latest IUCN regional status codes.
 
-All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN regional `statusCodes`. This is "*IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336*", and has `statusMappingSourceID = 1`.   
+All `verbatimStatusCode`s are mapped, by default, to the IUCN regional framework, and this mapping has `statusMappingSourceID = 1`:
+
+> IUCN (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336
+
+#### Decision tree
+
+
+```{mermaid}
+flowchart TD
+  Start(["source"]) --> IUCN{"Uses IUCN v4.0 (2012)?"}
+  IUCN -- "Yes" --> Use1(["Use statusMappingSourceID = 1"])
+
+  IUCN -- "No" --> Exists{"Existing mapping source in RegRed?"}
+  Exists -- "Yes" --> Reuse(["Reuse existing statusMappingSourceID"])
+  Exists -- "No" --> Choose{"Choose creation scenario"}
+
+  %% Scenario A
+  Choose -- "(1) same source provides mapping" --> A0
+  subgraph A0["Mapping in the same source"]
+    direction TB
+    A1(["Create Excel and PDF"])
+    A2(["statusAssessmentTypeCitation = original source"])
+    A3(["statusAssessmentTypeIdentifier = DOI or URL or catalog ID"])
+    A4(["Create new statusMappingSourceID"])
+    A1 --> A2 --> A3 --> A4
+  end
+
+  %% Scenario B
+  Choose -- "(2) official mapping published" --> B0
+  subgraph B0["Official mapping source"]
+    direction TB
+    B1(["Create Excel and PDF"])
+    B2(["statusAssessmentTypeCitation = official document"])
+    B3(["statusAssessmentTypeIdentifier = DOI or URL"])
+    B4(["Create new statusMappingSourceID"])
+    B1 --> B2 --> B3 --> B4
+  end
+
+  %% Scenario C
+  Choose -- "(2) no official or mixed sources -> create custom" --> C0
+  subgraph C0["Custom mapping"]
+    direction TB
+    C1(["Create Excel and PDF"])
+    C2(["statusAssessmentTypeCitation = custom mapping"])
+    C3(["statusAssessmentTypeIdentifier = GitHub URL"])
+    C4(["Create new statusMappingSourceID"])
+    C1 --> C2 --> C3 --> C4
+  end
+  
+  %% --- CUSTOM COLORS ---  
+  %% Define a class for decision nodes (Exists + Choose)  
+  classDef decision_no fill:#FFE9B3,stroke:#CC9900,stroke-width:2px,color:#000;  
+  classDef decision_yes fill:#DFF5D4,stroke:#4CAF50,stroke-width:2px,color:#000; 
+  classDef boxes fill:#f2f3f5,stroke:#363636,stroke-width:0.5px,color:#000; 
+  
+  %% Apply the class to the nodes  
+  class Exists,Choose decision_no;
+  class Use1,Reuse decision_yes;
+  %%class A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,C0,C1,C2,C3,C4 boxes;
+```
+
+
+If the assessment did not use the latest IUCN regional guidelines (v4.0), you must find or create an appropriate mapping source (`statusAssessmentTypeCitation`) and reference its `statusMappingSourceID`.   
+Before creating a new source, always check if the mapping source already exists in RegRed. If it does, reuse its existing `statusMappingSourceID`.
+
 
 **Instructions to select the `statusMappingSourceID`**   
 
@@ -156,21 +220,6 @@ All the `verbatimStatusCode`s for the species in our database will be mapped to 
       So, for all options you will have to create a separate Excel file with its respective documentation PDF (and `statusMappingSourceID`), but only in the last case you will use a custom identifier.
 
       You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
-
-```{mermaid}
-flowchart LR
-    A[statusAssessmentType] --> B(IUCN)
-    B -->|example: the standard <br/> **cite IUCN and use the corresponding mapping source**| C["**Citation** = IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0<br/>**Mapping source** = 1"]
-    B -->|example: IUCN older version<br/> **cite IUCN and use the corresponding mapping source**| D["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 2"]
-
-    A[statusAssessmentType] --> E(non-IUCN)
-    E -->|example: paper <br/> **cite the paper and create the corresponding mapping source**| F["**Citation** = Xue, et al. (2023). Mapping Asia Plants. <br/>**Mapping source** = 10"]
-    E -->|example: ourselves <br/> **cite yourself and create the corresponding mapping source**| G["**Citation** = Praleskouskaya, S. (2026, January 31). Mapping of Kirov Oblast (Russia) status codes.<br/>**Mapping source** = 13"]
-
-    A[statusAssessmentType] --> H(IUCN + extra documentation)
-    H -->|example: UICN + paper <br/> **cite IUCN but create new mapping source**| I["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 14"]
-    H -->|example: UICN + ourselves <br/> **cite IUCN but create new mapping source**| J["**Citation** = IUCN. (2012). IUCN Red List categories and criteria, version 3.1 (2nd ed.).<br/>**Mapping source** = 15"]
-```
 
 **Instructions to create the status mapping source**   
 Creating the mapping source involves preparing two documents:
