@@ -7,7 +7,7 @@ authors:
   - name: Florencia Grattarola
     orcid: 0000-0001-8282-5732
   - name: Kateřina Tschernosterová 
-    orcid: 
+    orcid:
   - name: Ivo Kadlec
     orcid: 
   - name: Adam Uličný

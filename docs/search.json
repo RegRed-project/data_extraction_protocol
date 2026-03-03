@@ -205,7 +205,7 @@
     "href": "sections/workflows/for_data_extractors/step_3.html",
     "title": "Step 3: Store the extracted data",
     "section": "",
-    "text": "When you are done with the red list, you have to send it to one of your designed reviewer peers. Verify that each file is correctly placed in its corresponding folder.",
+    "text": "When you are done with the red list, before it can be uploaded and stored, your designed reviewer peer will have to check it.",
     "crumbs": [
       "Workflow",
       "For data extractors",
@@ -213,11 +213,23 @@
     ]
   },
   {
-    "objectID": "sections/workflows/for_data_extractors/step_3.html#steps-for-the-peer-review-process",
-    "href": "sections/workflows/for_data_extractors/step_3.html#steps-for-the-peer-review-process",
+    "objectID": "sections/workflows/for_data_extractors/step_3.html#steps-peer-reviewing-sources",
+    "href": "sections/workflows/for_data_extractors/step_3.html#steps-peer-reviewing-sources",
     "title": "Step 3: Store the extracted data",
-    "section": "Steps for the peer-review process",
-    "text": "Steps for the peer-review process\n\n\n\n\n\n\nNote\n\n\n\nThis section needs to be developed.",
+    "section": "Steps peer-reviewing sources",
+    "text": "Steps peer-reviewing sources\nYou will be given a folder that contains one to many Excel files corresponding to extracted redlists for a given sourceID:\n\nCheck that the folder name (named after the sourceID) matches the sourceID in the table of sources_to_extract.\n\nCheck that the file names in the folder (corresponding to the redlists) also match the &lt;sourceID_X&gt; naming convention.\n\nCheck that the other metadata in the sources_to_extract align (e.g., year, title, location, taxa), and if they don’t, check if there are any remarks about it in the extractionRemarks.\n\nGo through the Excel files (redlist) one by one. In each sheet check the columns for consistency and try to spot errors:\n\nCheck sourceIdentifier format.\n\nCheck that the redlistID corresponds to the file name (i.e., that 111_1 is not 111_3 in the file).\n\nCheck that all the Zotero citations for the source have been created.\n\nCheck that the statusMappingID used in the redlist matches the correct one in the status mapping table.\n\nDetect any line breaks or double-spaces.\n\nCheck that lists are properly structured: ” | ” (with spaces).\n\nCheck that there are no other technical errors, such as hyperlinks (we don’t want them), colours being used, hidden rows, extra columns, and comments on fields.\n\nCheck that the controlled vocabulary is used properly, and no free text is used in the CV fields.\n\nCheck general inconsistencies (e.g. if sourceType is a collection, then sourceFormat should be multiple).",
+    "crumbs": [
+      "Workflow",
+      "For data extractors",
+      "3. Store the extracted data"
+    ]
+  },
+  {
+    "objectID": "sections/workflows/for_data_extractors/step_3.html#finalising-a-source",
+    "href": "sections/workflows/for_data_extractors/step_3.html#finalising-a-source",
+    "title": "Step 3: Store the extracted data",
+    "section": "Finalising a source",
+    "text": "Finalising a source\nAmend all the changes suggested by your peer.\nOnce you are done with all the corrections, finalise your source by storing the folder in the folder tetrapods_extracted_sources and marking done in the progress column of the file tetrapods_sources_to_extract.",
     "crumbs": [
       "Workflow",
       "For data extractors",

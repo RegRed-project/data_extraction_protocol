@@ -263,22 +263,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>When you are done with the red list, you have to send it to one of your designed reviewer peers. Verify that each file is correctly placed in its corresponding folder.</p>
-<section id="steps-for-the-peer-review-process" class="level2">
-<h2 class="anchored" data-anchor-id="steps-for-the-peer-review-process">Steps for the peer-review process</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This section needs to be developed.</p>
-</div>
-</div>
+<p>When you are done with the red list, before it can be uploaded and stored, your designed reviewer peer will have to check it.</p>
+<section id="steps-peer-reviewing-sources" class="level2">
+<h2 class="anchored" data-anchor-id="steps-peer-reviewing-sources">Steps peer-reviewing sources</h2>
+<p>You will be given a folder that contains one to many Excel files corresponding to extracted redlists for a given <code>sourceID</code>:</p>
+<ul>
+<li>Check that the folder name (named after the <code>sourceID</code>) matches the <code>sourceID</code> in the table of sources_to_extract.<br>
+</li>
+<li>Check that the file names in the folder (corresponding to the redlists) also match the &lt;<code>sourceID_X</code>&gt; naming convention.<br>
+</li>
+<li>Check that the other metadata in the sources_to_extract align (e.g., year, title, location, taxa), and if they don’t, check if there are any remarks about it in the <code>extractionRemarks</code>.</li>
+</ul>
+<p>Go through the Excel files (redlist) one by one. In each sheet check the columns for consistency and try to spot errors:</p>
+<ul>
+<li>Check <code>sourceIdentifier</code> format.<br>
+</li>
+<li>Check that the <code>redlistID</code> corresponds to the file name (i.e., that <code>111_1</code> is not <code>111_3</code> in the file).<br>
+</li>
+<li>Check that all the Zotero citations for the source have been created.<br>
+</li>
+<li>Check that the <code>statusMappingID</code> used in the redlist matches the correct one in the status mapping table.<br>
+</li>
+<li>Detect any line breaks or double-spaces.<br>
+</li>
+<li>Check that lists are properly structured: ” | ” (with spaces).<br>
+</li>
+<li>Check that there are no other technical errors, such as hyperlinks (we don’t want them), colours being used, hidden rows, extra columns, and comments on fields.<br>
+</li>
+<li>Check that the controlled vocabulary is used properly, and no free text is used in the <strong>CV</strong> fields.<br>
+</li>
+<li>Check general inconsistencies (e.g.&nbsp;if <code>sourceType</code> is a collection, then <code>sourceFormat</code> should be multiple).</li>
+</ul>
+</section>
+<section id="finalising-a-source" class="level2">
+<h2 class="anchored" data-anchor-id="finalising-a-source">Finalising a source</h2>
+<p>Amend all the changes suggested by your peer.<br>
+Once you are done with all the corrections, finalise your source by storing the folder in the folder <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/tetrapods_extracted_sources?csf=1&amp;web=1&amp;e=bx6Zki">tetrapods_extracted_sources</a></span> and marking <code>done</code> in the <code>progress</code> column of the file <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_tetrapods_sources_to_extract.xlsx?d=wf0ea428dc8d944aa8129214a38f69238&amp;csf=1&amp;web=1&amp;e=UXEtEO">tetrapods_sources_to_extract</a></span>.</p>
 
 
 </section>
