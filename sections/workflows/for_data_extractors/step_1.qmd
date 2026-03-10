@@ -181,7 +181,7 @@ Each red list must have a unique taxonomic scope. As the project focuses on tetr
       - **Lower-level division**: If the source provides distinct assessments within the same class (e.g., separate evaluations for breeding vs. non-breeding birds), you must divide further into order, family, or other relevant groups. However, do not divide into lower taxonomic levels unless the source clearly distinguishes them with separate assessments (e.g., a species has "LC" for a breeding population and "EN" for a non-breeding).
   
   2. `redlistLocation`:
-Each red list must have a unique location. This can be a country, `stateProvince`, `county`, `locality`, or a named custom region. 
+Each red list must have a unique location. This can be a `country`, `stateProvince`, `county`, `locality`, or a named custom region. 
 
   3. `redlistDate`:
 Each red list must have a unique date. We will use the year the assessment was conducted.

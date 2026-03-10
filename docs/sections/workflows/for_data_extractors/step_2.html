@@ -305,6 +305,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </li>
 <li>Follow the respective controlled vocabulary. If the value you want to add in a column is not there, you have to report this to <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Káča</span> or <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span>. If needed, the option will be added to the template.<br>
 </li>
+<li>Paste values by using <strong>Ctrl+Shift+V</strong> or “Paste option: Keep Text Only” to avoid any formatting in the Excel files.</li>
 <li>Do not copy and paste values blindly. Verify always what you are copying. Remove double spaces, and spaces in the end or start of values (e.g., “<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #f7f414;"></span>Mammals” or “Mammals<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #f7f414;"></span>”).<br>
 </li>
 <li>Do not use the value “<code>Unknown</code>” for information that is missing. Instead, just leave the field empty. Use <code>Unknown</code> only in those cases that have the value as part of the controlled vocabulary.<br>
@@ -738,6 +739,27 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What is a custom region?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A <em>region</em> for RegRed is an official administrative unit. It could be a <code>country</code> (<em>adm0</em>), <code>stateProvince</code> (<em>adm1</em>), <code>county</code> (<em>adm2</em>), or any administrative unit beyond that, which is officially recognised by a country.</p>
+<p>Since <strong>geoBoundaries</strong> provides spatial geometries only for <em>adm0</em>, <em>adm1</em>, and <em>adm2</em>, regions representing <em>adm3</em>, or higher may be confused with custom regions. In doubt, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> early on in the extraction period to make a decision.</p>
+<p><strong>Examples of a custom region</strong><br>
+“Spanish territory without the Islas Canarias”. This group of administrative units does not exist as an administrative unit; therefore, it is a custom region.</p>
+<p><strong>Examples of locations that could be custom regions, but they are not</strong><br>
+“Provincia Antártica Chilena” is a <code>county</code> (<em>adm2</em>), with two municipalities (<em>adm3</em>): “Cabo de Hornos” and “Antártica”. Separately, they are <strong>official administrative regions absent from geoBoundaries</strong>; therefore, they are not custom regions.</p>
+</div>
+</div>
+</div>
 <p><strong>Instructions to use the geographic entities file</strong><br>
 If you are looking for</p>
 <ul>
@@ -758,18 +780,18 @@ If you are looking for</p>
 <li>an <code>island</code> that does not fit any of the above: global_islands.</li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What happens if I find an error or if none of these options fits my case
+<span class="screen-reader-only">Warning</span>What happens if I find an error or if none of these options fits my case?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You should send <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> an email with the name of the locality and a picture (screenshot) of an accompanying map if available.</p>
+<p>Contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span>. Include the name of the locality, a description, and a picture (screenshot) of an accompanying map if available. The description should be as precise as possible. For example, “The Spanish territory without the Canary Islands”.</p>
 </div>
 </div>
 </div>
@@ -859,7 +881,7 @@ If you are looking for</p>
 </tbody>
 </table>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -868,7 +890,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians &amp; Reptiles) you can use the <code>split_script</code> to automatically divide the Excel file into multiple class-specific files.</p>
 </div>

@@ -19,6 +19,7 @@ The [**RegRed**]{colour="#d14024" bg-colour="#fff"} database has six tables that
   - Always refer to this protocol to fill the template. Do not assume any decisions that are not contemplated in this document. If you have doubts about the protocol, contact [Flo]{colour="#fff" bg-colour="#000"}.   
   - Always check the "**Definitions**" tab and do not assume any definitions on your side.   
   - Follow the respective controlled vocabulary. If the value you want to add in a column is not there, you have to report this to [Káča]{colour="#fff" bg-colour="#000"} or [Flo]{colour="#fff" bg-colour="#000"}. If needed, the option will be added to the template.  
+  - Paste values by using **Ctrl+Shift+V** or "Paste option: Keep Text Only" to avoid any formatting in the Excel files.
   - Do not copy and paste values blindly. Verify always what you are copying. Remove double spaces, and spaces in the end or start of values (e.g., "[ ]{colour="#fff" bg-colour="#f7f414"}Mammals" or "Mammals[ ]{colour="#fff" bg-colour="#f7f414"}").   
   - Do not use the value "`Unknown`" for information that is missing. Instead, just leave the field empty. Use `Unknown` only in those cases that have the value as part of the controlled vocabulary.  
   - Verify all the data you extract. Errors can occur, so a careful review is essential to ensure data integrity.  
@@ -284,6 +285,21 @@ The [[geographic_entities](https://regred-project.github.io/geographic_entities/
 Refer always to the website of [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} <https://regred-project.github.io/geographic_entities/>.
 :::
 
+::: { .callout-warning collapse="true"}
+## What is a custom region?
+
+A *region* for RegRed is an official administrative unit. It could be a `country` (*adm0*), `stateProvince` (*adm1*), `county` (*adm2*), or any administrative unit beyond that, which is officially recognised by a country. 
+ 
+Since **geoBoundaries** provides spatial geometries only for *adm0*, *adm1*, and *adm2*, regions representing *adm3*, or higher may be confused with custom regions. In doubt, contact [Gabriel]{colour="#fff" bg-colour="#000"} early on in the extraction period to make a decision.
+ 
+**Examples of a custom region**   
+"Spanish territory without the Islas Canarias". This group of administrative units does not exist as an administrative unit; therefore, it is a custom region.
+ 
+**Examples of locations that could be custom regions, but they are not**    
+"Provincia Antártica Chilena" is a `county` (*adm2*), with two municipalities (*adm3*): "Cabo de Hornos" and "Antártica". Separately, they are **official administrative regions absent from geoBoundaries**; therefore, they are not custom regions.
+
+:::
+
 **Instructions to use the geographic entities file**    
 If you are looking for 
 
@@ -297,9 +313,9 @@ If you are looking for
 -   an `island` that does not fit any of the above: global_islands.  
 
 ::: { .callout-warning collapse="true"}
-## What happens if I find an error or if none of these options fits my case
-You should send [Gabriel]{colour="#fff" bg-colour="#000"} an email with the name of the locality and a picture (screenshot) of an accompanying map if available. 
+## What happens if I find an error or if none of these options fits my case?
 
+Contact [Gabriel]{colour="#fff" bg-colour="#000"}. Include the name of the locality, a description, and a picture (screenshot) of an accompanying map if available. The description should be as precise as possible. For example, "The Spanish territory without the Canary Islands".  
 :::
 
 **Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**. 
