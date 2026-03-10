@@ -486,7 +486,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <li><p>The <code>statusMappingID</code> is the ID for the <code>statusMappingSource</code> that has the mapping (i.e., translation) between statuses.</p></li>
 </ul>
 <p>All the <code>verbatimStatusCode</code>s for the species in our database will be mapped to the latest version of the IUCN regional <code>statusCodes</code>. This is “<em>IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</em>”, and has <code>statusMappingSourceID = 1</code>.</p>
-<p>If the <code>statusAssessmentType = IUCN</code> but it is not the standard version, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#dealing-with-the-status-mapping-source">2.3.1 Dealing with the status mapping source</a>).</p>
+<p>If the <code>statusAssessmentType = IUCN</code> but it is not the standard version, or if the <code>statusAssessmentType = Non-IUCN</code>, you will also have to create the status mapping source (see below <a href="step_2.html#handling-status-mapping-sources">2.3.1 Handling Status Mapping Sources</a>).</p>
 </div>
 </div>
 </div>
@@ -562,55 +562,80 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
-  Start(["source"]) --&gt; IUCN{"Uses IUCN v4.0 (2012)?"}
+  Start(["source"]) --&gt; IUCN{"Does it use IUCN v4.0 (2012)?"}
   IUCN -- "Yes" --&gt; Use1(["Use statusMappingSourceID = 1"])
-
-  IUCN -- "No" --&gt; Exists{"Existing mapping source in RegRed?"}
+  IUCN -- "No" --&gt; Exists{"Does the mapping source exists in RegRed?"}
   Exists -- "Yes" --&gt; Reuse(["Reuse existing statusMappingSourceID"])
-  Exists -- "No" --&gt; Choose{"Choose creation scenario"}
+  Exists -- "No" --&gt; IsIUCN{"Does the source uses IUCN criteria?"}
+  IsIUCN -- "Yes" --&gt; Choose1{"Choose a scenario"}
+  IsIUCN -- "No" --&gt; Choose2{"Choose a scenario"}
+
+  %% Scenario D
+  Choose1 -- "(1) IUCN old version" --&gt; D0
+  subgraph D0["IUCN with modifications"]
+    direction TB
+    D1(["Create Excel and PDF"])
+    D2(["statusAssessmentTypeCitation = IUCN version"])
+    D3(["statusAssessmentTypeIdentifier = DOI or URL or catalog ID"])
+    D4(["Create new statusMappingSourceID"])
+    D4 --&gt; D1 --&gt; D2 --&gt; D3
+  end  
+  
+   %% Scenario E
+  Choose1 -- "(2) IUCN unknown version" --&gt; E0
+  subgraph E0["Unknown IUCN"]
+    direction TB
+    E1(["Create Excel and PDF"])
+    E2(["statusAssessmentTypeCitation = Unknown"])
+    E3(["statusAssessmentTypeIdentifier = leave this field empty"])
+    E4(["Create new statusMappingSourceID"])
+    E4 --&gt; E1 --&gt; E2 --&gt; E3
+  end  
 
   %% Scenario A
-  Choose -- "(1) same source provides mapping" --&gt; A0
+  Choose2 -- "(3) the source provides mapping" --&gt; A0
   subgraph A0["Mapping in the same source"]
     direction TB
     A1(["Create Excel and PDF"])
-    A2(["statusAssessmentTypeCitation = original source"])
+    A2(["statusAssessmentTypeCitation = cite redlist source"])
     A3(["statusAssessmentTypeIdentifier = DOI or URL or catalog ID"])
     A4(["Create new statusMappingSourceID"])
-    A1 --&gt; A2 --&gt; A3 --&gt; A4
+    A4 --&gt; A1 --&gt; A2 --&gt; A3
   end
 
   %% Scenario B
-  Choose -- "(2) official mapping published" --&gt; B0
+  Choose2 -- "(4) an official mapping was published" --&gt; B0
   subgraph B0["Official mapping source"]
     direction TB
     B1(["Create Excel and PDF"])
-    B2(["statusAssessmentTypeCitation = official document"])
+    B2(["statusAssessmentTypeCitation = cite official document"])
     B3(["statusAssessmentTypeIdentifier = DOI or URL"])
     B4(["Create new statusMappingSourceID"])
-    B1 --&gt; B2 --&gt; B3 --&gt; B4
+    B4 --&gt; B1 --&gt; B2 --&gt; B3
   end
 
   %% Scenario C
-  Choose -- "(2) no official or mixed sources -&gt; create custom" --&gt; C0
+  Choose2 -- "(5) no official or mixed sources" --&gt; C0
   subgraph C0["Custom mapping"]
     direction TB
     C1(["Create Excel and PDF"])
-    C2(["statusAssessmentTypeCitation = custom mapping"])
+    C2(["statusAssessmentTypeCitation = cite yourself"])
     C3(["statusAssessmentTypeIdentifier = GitHub URL"])
     C4(["Create new statusMappingSourceID"])
-    C1 --&gt; C2 --&gt; C3 --&gt; C4
+    C4 --&gt; C1 --&gt; C2 --&gt; C3
   end
   
   %% --- CUSTOM COLORS ---  
   %% Define a class for decision nodes (Exists + Choose)  
   classDef decision_no fill:#FFE9B3,stroke:#CC9900,stroke-width:2px,color:#000;  
   classDef decision_yes fill:#DFF5D4,stroke:#4CAF50,stroke-width:2px,color:#000; 
+  classDef citation fill:#F88379,stroke:#811331,stroke-width:2px,color:#000; 
   classDef boxes fill:#f2f3f5,stroke:#363636,stroke-width:0.5px,color:#000; 
   
   %% Apply the class to the nodes  
-  class Exists,Choose decision_no;
-  class Use1,Reuse decision_yes;
+  class IsIUCN,Exists,Choose2 decision_no;
+  class Use1,Reuse,Choose1 decision_yes;
+  class A2,B2,C2,D2,E2 citation;
   %%class A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,C0,C1,C2,C3,C4 boxes;
 </pre>
 </div>

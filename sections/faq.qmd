@@ -193,22 +193,25 @@ The [[geographic_entities](https://regred-project.github.io/geographic_entities/
 Refer always to the website of [geographic_entities]{colour="#fff" bg-colour="#31b0e0"} <https://regred-project.github.io/geographic_entities/>.
 :::
 
-**Instructions to use the geographic entities file**    
-If you are looking for 
+::: { .callout-warning collapse="true"}
+## What is a custom region?
 
--   a `country` (ADM0): geoboundaries_country.  
--   a `stateProvince` or second order administrative region (ADM1): geoboundaries_stateProvince.  
--   a `county` or the lowest administrative region possible (ADM2): geoboundaries_county.  
--   a `locality` that is a protected area: wdpa_sep2025.   
--   an `island` that is a country: geoboundaries_country.  
--   an `island` that is a `stateProvince` or second order administrative region: geoboundaries_stateProvince.  
--   an `island` that is `county` or the lowest administrative region possible: geoboundaries_county.  
--   an `island` that does not fit any of the above: global_islands.  
+A *region* for RegRed is an official administrative unit. It could be a `country` (*adm0*), `stateProvince` (*adm1*), `county` (*adm2*), or any administrative unit beyond that, which is officially recognised by a country. 
+ 
+Since **geoBoundaries** provides spatial geometries only for *adm0*, *adm1*, and *adm2*, regions representing *adm3*, or higher may be confused with custom regions. In doubt, contact [Gabriel]{colour="#fff" bg-colour="#000"} early on in the extraction period to make a decision.
+ 
+**Examples of a custom region**   
+"Spanish territory without the Islas Canarias". This group of administrative units does not exist as an administrative unit; therefore, it is a custom region.
+ 
+**Examples of locations that could be custom regions, but they are not**    
+"Provincia Antártica Chilena" is a `county` (*adm2*), with two municipalities (*adm3*): "Cabo de Hornos" and "Antártica". Separately, they are **official administrative regions absent from geoBoundaries**; therefore, they are not custom regions.
+
+:::
 
 ::: { .callout-warning collapse="true"}
-## What happens if I find an error or if none of these options fits my case
-You should send [Gabriel]{colour="#fff" bg-colour="#000"} an email with the name of the locality and a picture (screenshot) of an accompanying map if available. 
+## What happens if I find an error or if none of these options fits my case?
 
+Contact [Gabriel]{colour="#fff" bg-colour="#000"}. Include the name of the locality, a description, and a picture (screenshot) of an accompanying map if available. The description should be as precise as possible. For example, "The Spanish territory without the Canary Islands".  
 :::
 
 ### `taxon_assessment`

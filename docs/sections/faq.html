@@ -597,38 +597,40 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p><strong>Instructions to use the geographic entities file</strong><br>
-If you are looking for</p>
-<ul>
-<li>a <code>country</code> (ADM0): geoboundaries_country.<br>
-</li>
-<li>a <code>stateProvince</code> or second order administrative region (ADM1): geoboundaries_stateProvince.<br>
-</li>
-<li>a <code>county</code> or the lowest administrative region possible (ADM2): geoboundaries_county.<br>
-</li>
-<li>a <code>locality</code> that is a protected area: wdpa_sep2025.<br>
-</li>
-<li>an <code>island</code> that is a country: geoboundaries_country.<br>
-</li>
-<li>an <code>island</code> that is a <code>stateProvince</code> or second order administrative region: geoboundaries_stateProvince.<br>
-</li>
-<li>an <code>island</code> that is <code>county</code> or the lowest administrative region possible: geoboundaries_county.<br>
-</li>
-<li>an <code>island</code> that does not fit any of the above: global_islands.</li>
-</ul>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What happens if I find an error or if none of these options fits my case
+<span class="screen-reader-only">Warning</span>What is a custom region?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You should send <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> an email with the name of the locality and a picture (screenshot) of an accompanying map if available.</p>
+<p>A <em>region</em> for RegRed is an official administrative unit. It could be a <code>country</code> (<em>adm0</em>), <code>stateProvince</code> (<em>adm1</em>), <code>county</code> (<em>adm2</em>), or any administrative unit beyond that, which is officially recognised by a country.</p>
+<p>Since <strong>geoBoundaries</strong> provides spatial geometries only for <em>adm0</em>, <em>adm1</em>, and <em>adm2</em>, regions representing <em>adm3</em>, or higher may be confused with custom regions. In doubt, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> early on in the extraction period to make a decision.</p>
+<p><strong>Examples of a custom region</strong><br>
+“Spanish territory without the Islas Canarias”. This group of administrative units does not exist as an administrative unit; therefore, it is a custom region.</p>
+<p><strong>Examples of locations that could be custom regions, but they are not</strong><br>
+“Provincia Antártica Chilena” is a <code>county</code> (<em>adm2</em>), with two municipalities (<em>adm3</em>): “Cabo de Hornos” and “Antártica”. Separately, they are <strong>official administrative regions absent from geoBoundaries</strong>; therefore, they are not custom regions.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What happens if I find an error or if none of these options fits my case?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span>. Include the name of the locality, a description, and a picture (screenshot) of an accompanying map if available. The description should be as precise as possible. For example, “The Spanish territory without the Canary Islands”.</p>
 </div>
 </div>
 </div>
@@ -636,7 +638,7 @@ If you are looking for</p>
 <section id="taxon_assessment" class="level3">
 <h3 class="anchored" data-anchor-id="taxon_assessment"><code>taxon_assessment</code></h3>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -645,7 +647,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians &amp; Reptiles) you can use the <code>split_script</code> to automatically divide the Excel file into multiple class-specific files.</p>
 </div>
@@ -656,7 +658,7 @@ If you are looking for</p>
 <section id="citations" class="level2">
 <h2 class="anchored" data-anchor-id="citations">Citations</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -665,7 +667,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>If you are accessing the source online, you can use Zotero connector, communicating with your internet browser (Firefox, Chrome, Edge).</li>
@@ -677,7 +679,7 @@ If you are looking for</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -686,7 +688,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Go to the webpage you want to cite in your web browser.<br>
@@ -710,7 +712,7 @@ If you are looking for</p>
 <section id="controlled-vocabulary" class="level2">
 <h2 class="anchored" data-anchor-id="controlled-vocabulary">Controlled vocabulary</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -719,7 +721,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Basic instructions can be found also here: <a href="https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b" class="uri">https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b</a>.</p>
 <ul>

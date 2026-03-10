@@ -109,7 +109,7 @@ Check the previous question "**How do I fill the `sourceIdentifier` when there i
 
 All the `verbatimStatusCode`s for the species in our database will be mapped to the latest version of the IUCN regional `statusCodes`. This is "*IUCN. (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336*", and has `statusMappingSourceID = 1`.  
 
-If the `statusAssessmentType = IUCN` but it is not the standard version, or if the `statusAssessmentType = Non-IUCN`, you will also have to create the status mapping source (see below [2.3.1 Dealing with the status mapping source](step_2.html#dealing-with-the-status-mapping-source)).
+If the `statusAssessmentType = IUCN` but it is not the standard version, or if the `statusAssessmentType = Non-IUCN`, you will also have to create the status mapping source (see below [2.3.1 Handling Status Mapping Sources](step_2.html#handling-status-mapping-sources)).
 :::
 
 **Check the definition, examples and recommendations for each field in the Definitions tab of the template for data extraction**
@@ -145,55 +145,80 @@ All `verbatimStatusCode`s are mapped, by default, to the IUCN regional framework
 
 ```{mermaid}
 flowchart TD
-  Start(["source"]) --> IUCN{"Uses IUCN v4.0 (2012)?"}
+  Start(["source"]) --> IUCN{"Does it use IUCN v4.0 (2012)?"}
   IUCN -- "Yes" --> Use1(["Use statusMappingSourceID = 1"])
-
-  IUCN -- "No" --> Exists{"Existing mapping source in RegRed?"}
+  IUCN -- "No" --> Exists{"Does the mapping source exists in RegRed?"}
   Exists -- "Yes" --> Reuse(["Reuse existing statusMappingSourceID"])
-  Exists -- "No" --> Choose{"Choose creation scenario"}
+  Exists -- "No" --> IsIUCN{"Does the source uses IUCN criteria?"}
+  IsIUCN -- "Yes" --> Choose1{"Choose a scenario"}
+  IsIUCN -- "No" --> Choose2{"Choose a scenario"}
+
+  %% Scenario D
+  Choose1 -- "(1) IUCN old version" --> D0
+  subgraph D0["IUCN with modifications"]
+    direction TB
+    D1(["Create Excel and PDF"])
+    D2(["statusAssessmentTypeCitation = IUCN version"])
+    D3(["statusAssessmentTypeIdentifier = DOI or URL or catalog ID"])
+    D4(["Create new statusMappingSourceID"])
+    D4 --> D1 --> D2 --> D3
+  end  
+  
+   %% Scenario E
+  Choose1 -- "(2) IUCN unknown version" --> E0
+  subgraph E0["Unknown IUCN"]
+    direction TB
+    E1(["Create Excel and PDF"])
+    E2(["statusAssessmentTypeCitation = Unknown"])
+    E3(["statusAssessmentTypeIdentifier = leave this field empty"])
+    E4(["Create new statusMappingSourceID"])
+    E4 --> E1 --> E2 --> E3
+  end  
 
   %% Scenario A
-  Choose -- "(1) same source provides mapping" --> A0
+  Choose2 -- "(3) the source provides mapping" --> A0
   subgraph A0["Mapping in the same source"]
     direction TB
     A1(["Create Excel and PDF"])
-    A2(["statusAssessmentTypeCitation = original source"])
+    A2(["statusAssessmentTypeCitation = cite redlist source"])
     A3(["statusAssessmentTypeIdentifier = DOI or URL or catalog ID"])
     A4(["Create new statusMappingSourceID"])
-    A1 --> A2 --> A3 --> A4
+    A4 --> A1 --> A2 --> A3
   end
 
   %% Scenario B
-  Choose -- "(2) official mapping published" --> B0
+  Choose2 -- "(4) an official mapping was published" --> B0
   subgraph B0["Official mapping source"]
     direction TB
     B1(["Create Excel and PDF"])
-    B2(["statusAssessmentTypeCitation = official document"])
+    B2(["statusAssessmentTypeCitation = cite official document"])
     B3(["statusAssessmentTypeIdentifier = DOI or URL"])
     B4(["Create new statusMappingSourceID"])
-    B1 --> B2 --> B3 --> B4
+    B4 --> B1 --> B2 --> B3
   end
 
   %% Scenario C
-  Choose -- "(2) no official or mixed sources -> create custom" --> C0
+  Choose2 -- "(5) no official or mixed sources" --> C0
   subgraph C0["Custom mapping"]
     direction TB
     C1(["Create Excel and PDF"])
-    C2(["statusAssessmentTypeCitation = custom mapping"])
+    C2(["statusAssessmentTypeCitation = cite yourself"])
     C3(["statusAssessmentTypeIdentifier = GitHub URL"])
     C4(["Create new statusMappingSourceID"])
-    C1 --> C2 --> C3 --> C4
+    C4 --> C1 --> C2 --> C3
   end
   
   %% --- CUSTOM COLORS ---  
   %% Define a class for decision nodes (Exists + Choose)  
   classDef decision_no fill:#FFE9B3,stroke:#CC9900,stroke-width:2px,color:#000;  
   classDef decision_yes fill:#DFF5D4,stroke:#4CAF50,stroke-width:2px,color:#000; 
+  classDef citation fill:#F88379,stroke:#811331,stroke-width:2px,color:#000; 
   classDef boxes fill:#f2f3f5,stroke:#363636,stroke-width:0.5px,color:#000; 
   
   %% Apply the class to the nodes  
-  class Exists,Choose decision_no;
-  class Use1,Reuse decision_yes;
+  class IsIUCN,Exists,Choose2 decision_no;
+  class Use1,Reuse,Choose1 decision_yes;
+  class A2,B2,C2,D2,E2 citation;
   %%class A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,C0,C1,C2,C3,C4 boxes;
 ```
 
