@@ -312,11 +312,30 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </li>
 <li>Verify all the data you extract. Errors can occur, so a careful review is essential to ensure data integrity.</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Notes on extracting text/tables from PDFs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>If the text in the PDF is readable (copy/pasteable), you can use <a href="https://tabula.technology">tabula</a>, Excel or Ctrl+c</li>
+<li>If the text in the PDF is not readable, you can use <a href="https://ocr-software.com/en/extract-table/">OCR-Software.com</a> to make it readable.<br>
+</li>
+<li>If the text in the PDF is not copyable (e.g., it’s encrypted or corrupted), you can ask <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span> to help you convert the full PDF to a readable version.<br>
+</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="filling-the-source-table" class="level2">
 <h2 class="anchored" data-anchor-id="filling-the-source-table">2.2 Filling the <code>source</code> table</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -325,7 +344,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Some sources might include unsorted tables of species (e.g.&nbsp;Fauna, Vertebrates, Amphibians and Reptiles). Separating species into classes by hand is a difficult process. If you encounter a source that is simple to extract all at once, but difficult to separate by class, you can extract the data for all species as a single <code>redlist</code> and use our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&amp;web=1&amp;e=DdwV5p">split_script</a></span> to split the xlsx file into multiple files.</p>
 <p><strong>Instructions to use the file</strong><br>
@@ -338,7 +357,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -347,7 +366,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The identifier is a resolvable HTTP URI for DOIs and URLs, and an URN for ISBNs.</p>
 <ul>
@@ -361,7 +380,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -370,7 +389,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You may have more than one potential identifier, e.g., a DOI and also an URL.</p>
 <ul>
@@ -454,7 +473,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <section id="filling-the-redlist-table" class="level2">
 <h2 class="anchored" data-anchor-id="filling-the-redlist-table">2.3 Filling the <code>redlist</code> table</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -463,14 +482,14 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Check the previous question “<strong>How do I fill the <code>sourceIdentifier</code> when there is more than one file or document?</strong>”. The same applies to these identifiers.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -479,7 +498,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><p>The <code>statusAssessmentType</code> is the <strong>type of assessment system</strong> used to define the status codes for the taxa in the redlist. Most redlists follow an <strong>IUCN</strong> criteria, however, many countries create their own protocols to assign conservation statuses. This is why we need to translate all statuses to a common standard.</p></li>
@@ -550,19 +569,23 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 <section id="handling-status-mapping-sources" class="level3">
 <h3 class="anchored" data-anchor-id="handling-status-mapping-sources">2.3.1 Handling Status Mapping Sources</h3>
 <p>The following details will help you define when and how to select or create a status mapping source so that all <code>verbatimStatusCodes</code> in RegRed are consistently mapped to the latest IUCN regional status codes.</p>
-<p>All <code>verbatimStatusCode</code>s are mapped, by default, to the IUCN regional framework, and this mapping has <code>statusMappingSourceID = 1</code>:</p>
+<section id="decision-tree" class="level4">
+<h4 class="anchored" data-anchor-id="decision-tree">Decision tree</h4>
+<p>All <code>verbatimStatusCode</code>s will be mapped to the IUCN regional criteria, and this mapping has <code>statusMappingSourceID = 1</code>:</p>
 <blockquote class="blockquote">
 <p>IUCN (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336</p>
 </blockquote>
-<section id="decision-tree" class="level4">
-<h4 class="anchored" data-anchor-id="decision-tree">Decision tree</h4>
+<ol type="1">
+<li><p>If the assessment <strong>does not use</strong> the latest IUCN regional guidelines (v4.0), you must find or create an appropriate mapping source (<code>statusAssessmentTypeCitation</code> and <code>statusMappingSourceID</code>). Before creating a new source, always check if the mapping source already exists in RegRed. If it does, reuse its existing <code>statusMappingSourceID</code>.</p></li>
+<li><p>If the mapping source <strong>does not exist</strong> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_used.xlsx?d=w07c5175a0eeb4186abee639251dcca38&amp;csf=1&amp;web=1&amp;e=hjM4eq">mapping_sources_used</a></span>, you will have to create a new one. To do this, you need to first check if the assessment uses IUCN criteria or not, and then choose one of the following five different scenarios to create a <code>statusMappingSourceID</code>.</p></li>
+</ol>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
-  Start(["source"]) --&gt; IUCN{"Does it use IUCN v4.0 (2012)?"}
+  Start(["assessment"]) --&gt; IUCN{"Does it use IUCN v4.0 (2012)?"}
   IUCN -- "Yes" --&gt; Use1(["Use statusMappingSourceID = 1"])
   IUCN -- "No" --&gt; Exists{"Does the mapping source exists in RegRed?"}
   Exists -- "Yes" --&gt; Reuse(["Reuse existing statusMappingSourceID"])
@@ -643,52 +666,65 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </div>
 </div>
 </div>
-<p>If the assessment did not use the latest IUCN regional guidelines (v4.0), you must find or create an appropriate mapping source (<code>statusAssessmentTypeCitation</code>) and reference its <code>statusMappingSourceID</code>.<br>
-Before creating a new source, always check if the mapping source already exists in RegRed. If it does, reuse its existing <code>statusMappingSourceID</code>.</p>
-<p><strong>Instructions to select the <code>statusMappingSourceID</code></strong></p>
-<ol type="1">
-<li><p>If the assessment was done with the latest version of IUCN, then use <code>statusMappingSourceID = 1</code>.</p></li>
-<li><p>If not, you will have to create the status mapping source (<code>statusAssessmentTypeCitation</code>). <strong>Even if the source you are extracting (1) provides the mapping between non-IUCN and IUCN statuses as part of the PDF/book, or (2) if the mapping of statuses are already published online</strong>. However, if the mapping source has already been created, you should use that one and the respective <code>statusMappingSourceID</code>.</p>
-<p>2.1. To create the mapping source check:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Where do I find the <code>statusMappingSourceID</code> used?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can find the <code>statusMappingSourceID</code> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_used</span> file.</p>
+</div>
+</div>
+</div>
+<p><strong>Instructions to create a new <code>statusMappingSourceID</code></strong><br>
+In all scenarios, you will have to create a separate Excel file with its respective documentation PDF.</p>
 <ul>
-<li><p>If the same source provides the translation: you will use this criteria. <strong>You will create the Excel and PDF files, but you will cite the source in the <code>statusAssessmentTypeCitation</code>, and use its identifier in the <code>statusAssessmentTypeIdentifier</code></strong>.</p></li>
-<li><p>If there are official mapping sources published by the countries or researchers: you will use this criteria. <strong>You will create the Excel and PDF files, but you will cite the official document and use its identifier</strong>.</p></li>
-<li><p>If there aren’t any mapping sources available or you have a mix of sources: <strong>you will have to create your own criteria</strong>. <strong>You will create the Excel and PDF files, and you will cite the mapping source you created and use as identifier the URL from our GitHub repository</strong>.</p></li>
+<li><strong>Scenario 1</strong>: The assessment was done following IUCN guidelines that are not the latest version. Some modifications may be needed (e.g., EX = RE). You will cite the version of IUCN used in the <code>statusAssessmentTypeCitation</code> (and corresponding <code>statusAssessmentTypeIdentifier</code>), and you will explain in the mapping document, any modifications introduced or adaptations needed.<br>
+</li>
+<li><strong>Scenario 2</strong>: The assessment was done following IUCN guidelines, but it’s not evident from the source which version was used. The <code>statusAssessmentTypeCitation</code> and the <code>statusAssessmentTypeIdentifier</code> should be <code>Unknown</code>.<br>
+</li>
+<li><strong>Scenario 3</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, yet the same the same source provides the mapping of the <code>verbatimStatusCodes</code> to the <code>statusCodes</code>. You will use the source’s citation (<code>bibliographicCitation</code>) as the <code>statusAssessmentTypeCitation</code>, and the source’s identifier (<code>sourceIdentifier</code>) as the <code>statusAssessmentTypeIdentifier</code>.</li>
+<li><strong>Scenario 4</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, yet there is a publication (e.g., a manuscript or an official document) that has already done the mapping to the IUCN categories. You will create the citation for this document in Zotero and use it as the <code>statusAssessmentTypeCitation</code> (including the identifier as the <code>statusAssessmentTypeIdentifier</code>).</li>
+<li><strong>Scenario 5</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, and there is no official document that maps the statues to the IUCN criteria. You may also have a mix of different sources to define the mapping. In this case, you will cite yourself (use as identifier the URL from our GitHub repository). Contact Flo to store the Excel and PDF in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. You will need this to get a <code>statusAssessmentTypeIdentifier</code>.</li>
 </ul>
-<p>So, for all options you will have to create a separate Excel file with its respective documentation PDF (and <code>statusMappingSourceID</code>), but only in the last case you will use a custom identifier.</p>
-<p>You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p></li>
-</ol>
-<p><strong>Instructions to create the status mapping source</strong><br>
+<p>If you have doubts about how to create the mapping, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p>
+<p><strong>Instructions to create the Excel table and PDF document for the mapping source</strong><br>
 Creating the mapping source involves preparing two documents:</p>
 <ol type="1">
-<li>The table <strong>status_mapping_source_X</strong></li>
+<li>The Excel table <strong>status_mapping_source_X</strong></li>
 </ol>
 <ul>
-<li>This Excel file will store the equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code>, according to a specific source. You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&amp;csf=1&amp;web=1&amp;e=eMLqUr">mapping_sources_template_xlsx</a></span>.</li>
+<li>This file will store the equivalent values of <code>statusCode</code> for every <code>verbatimStatusCode</code>.</li>
+<li>You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&amp;csf=1&amp;web=1&amp;e=eMLqUr">mapping_sources_template_xlsx</a></span>.</li>
 <li>You should name the file as follows: &lt;<em>status_mapping_source_X.xlsx</em>&gt;, with <em>X</em> = <code>statusMappingSourceID</code>.</li>
-<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&amp;web=1&amp;e=9vcdgX">status_mapping_sources</a></span> folder, and name the folder after the <code>statusMappingSourceID</code>.<br>
-</li>
-<li>When you are done with the mapping source (Excel and PDF), contact Flo to store it in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</li>
+<li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&amp;web=1&amp;e=9vcdgX">status_mapping_sources</a></span> folder, and name the folder after the <code>statusMappingSourceID</code>.</li>
 </ul>
 <p><strong>Fields to be filled in</strong>:</p>
 <ul>
 <li><code>statusMappingID</code> - fill this with the ID of the <strong>status_mapping_source_X</strong> (it should be the same in every row).<br>
 </li>
-<li><code>verbatimStatusCode</code> - fill this with the <strong>original</strong> status code used in the source.<br>
+<li><code>verbatimStatusCode</code> - fill this with the <strong>original</strong> status code used in the source (or slightly modify for purpose).<br>
 </li>
-<li><code>statusCode</code> - fill with the mapped IUCN status code.<br>
+<li><code>statusCode</code> - the IUCN status codes (e.g., <code>VU</code>) are pre-filled in the template.<br>
 </li>
-<li><code>statusCategory</code> - fill with the status full definition (e.g., “Vulnerable”).<br>
+<li><code>statusCategory</code> - the IUCN status codes definition (e.g., <code>Vulnerable</code>) are pre-filled in the template.<br>
 </li>
-<li><code>statusMappingBy</code> - select the value from the list of controlled vocabulary.<br>
+<li><code>statusMappingBy</code> - select your name from the list of controlled vocabulary.<br>
 </li>
 <li><code>statusMappingRemarks</code> - fill with any specifications about your decisions.</li>
 </ul>
 <ol start="2" type="1">
-<li>The PDF documentation <strong>status_mapping_source_X</strong></li>
+<li>The PDF document <strong>status_mapping_source_X</strong></li>
 </ol>
 <ul>
-<li>This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>). You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&amp;csf=1&amp;web=1&amp;e=ixPLC6">mapping_sources_template_docx</a></span>, and then save it as a PDF.</li>
+<li>This file will have a verbal description and a list of the sources used and decisions made to define equivalent values of <code>statusCode</code> for <code>verbatimStatusCode</code> (e.g., to determine that <code>X1 = CR</code>).</li>
+<li>You will create it using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&amp;csf=1&amp;web=1&amp;e=ixPLC6">mapping_sources_template_docx</a></span>, and then save it as a PDF.</li>
 <li>You should name the file as follows: &lt;<em>status_mapping_source_X.pdf</em>&gt;, with <em>X</em> = <code>statusMappingID.</code></li>
 <li>You should store the file in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&amp;web=1&amp;e=9vcdgX">status_mapping_sources</a></span> folder with the correct <code>statusMappingSourceID</code>.</li>
 </ul>
@@ -703,31 +739,15 @@ Creating the mapping source involves preparing two documents:</p>
 <li><strong>Bibliography</strong>: The documents and sources you used to define the criteria.</li>
 </ul>
 <p><strong>Final step</strong>:<br>
-When you are done with the mapping source (Excel and PDF), contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> to store it in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</p>
+When you are done with the mapping source (Excel and PDF), contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> to store the folder in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</p>
 <p>If you got this far and you still have doubts about status mapping sources, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Sofi</span>.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Where do I find the <code>statusMappingSourceID</code> used?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You can find the <code>statusMappingSourceID</code> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">mapping_sources_used</span> file.</p>
-</div>
-</div>
-</div>
 </section>
 </section>
 </section>
 <section id="filling-the-location-table" class="level2">
 <h2 class="anchored" data-anchor-id="filling-the-location-table">2.4 Filling the <code>location</code> table</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -736,7 +756,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://regred-project.github.io/geographic_entities/">geographic_entities</a></span> are based in the following databases:</p>
 <ul>
@@ -749,7 +769,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -758,14 +778,14 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Refer always to the website of <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">geographic_entities</span> <a href="https://regred-project.github.io/geographic_entities/" class="uri">https://regred-project.github.io/geographic_entities/</a>.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -774,7 +794,7 @@ When you are done with the mapping source (Excel and PDF), contact <span class="
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A <em>region</em> for RegRed is an official administrative unit. It could be a <code>country</code> (<em>adm0</em>), <code>stateProvince</code> (<em>adm1</em>), <code>county</code> (<em>adm2</em>), or any administrative unit beyond that, which is officially recognised by a country.</p>
 <p>Since <strong>geoBoundaries</strong> provides spatial geometries only for <em>adm0</em>, <em>adm1</em>, and <em>adm2</em>, regions representing <em>adm3</em>, or higher may be confused with custom regions. In doubt, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span> early on in the extraction period to make a decision.</p>
@@ -805,7 +825,7 @@ If you are looking for</p>
 <li>an <code>island</code> that does not fit any of the above: global_islands.</li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -814,7 +834,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Gabriel</span>. Include the name of the locality, a description, and a picture (screenshot) of an accompanying map if available. The description should be as precise as possible. For example, “The Spanish territory without the Canary Islands”.</p>
 </div>
@@ -906,7 +926,7 @@ If you are looking for</p>
 </tbody>
 </table>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -915,7 +935,7 @@ If you are looking for</p>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you have a red list that has multiple classes in one (e.g., Fauna, Vertebrates, Amphibians &amp; Reptiles) you can use the <code>split_script</code> to automatically divide the Excel file into multiple class-specific files.</p>
 </div>

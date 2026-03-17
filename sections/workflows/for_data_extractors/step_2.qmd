@@ -23,6 +23,15 @@ The [**RegRed**]{colour="#d14024" bg-colour="#fff"} database has six tables that
   - Do not copy and paste values blindly. Verify always what you are copying. Remove double spaces, and spaces in the end or start of values (e.g., "[ ]{colour="#fff" bg-colour="#f7f414"}Mammals" or "Mammals[ ]{colour="#fff" bg-colour="#f7f414"}").   
   - Do not use the value "`Unknown`" for information that is missing. Instead, just leave the field empty. Use `Unknown` only in those cases that have the value as part of the controlled vocabulary.  
   - Verify all the data you extract. Errors can occur, so a careful review is essential to ensure data integrity.  
+  
+  
+::: {.callout-tip}
+## Notes on extracting text/tables from PDFs 
+
+  - If the text in the PDF is readable (copy/pasteable), you can use [tabula](https://tabula.technology), Excel or Ctrl+c 
+  - If the text in the PDF is not readable, you can use [OCR-Software.com](https://ocr-software.com/en/extract-table/) to make it readable.   
+  - If the text in the PDF is not copyable (e.g., it's encrypted or corrupted), you can ask [Adam]{colour="#fff" bg-colour="#000"} to help you convert the full PDF to a readable version.  
+:::
 
 ## 2.2 Filling the `source` table
 
@@ -136,16 +145,20 @@ If the `statusAssessmentType = IUCN` but it is not the standard version, or if t
 
 The following details will help you define when and how to select or create a status mapping source so that all `verbatimStatusCodes` in RegRed are consistently mapped to the latest IUCN regional status codes.
 
-All `verbatimStatusCode`s are mapped, by default, to the IUCN regional framework, and this mapping has `statusMappingSourceID = 1`:
+#### Decision tree
+
+All `verbatimStatusCode`s will be mapped to the IUCN regional criteria, and this mapping has `statusMappingSourceID = 1`:
 
 > IUCN (2012). Guidelines for application of IUCN Red List criteria at regional and national levels: Version 4.0. IUCN. https://portals.iucn.org/library/node/10336
 
-#### Decision tree
 
+1. If the assessment **does not use** the latest IUCN regional guidelines (v4.0), you must find or create an appropriate mapping source (`statusAssessmentTypeCitation` and `statusMappingSourceID`). Before creating a new source, always check if the mapping source already exists in RegRed. If it does, reuse its existing `statusMappingSourceID`.  
+
+2. If the mapping source **does not exist** in the [[mapping_sources_used](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_used.xlsx?d=w07c5175a0eeb4186abee639251dcca38&csf=1&web=1&e=hjM4eq)]{colour="#fff" bg-colour="#31b0e0"}, you will have to create a new one. To do this, you need to first check if the assessment uses IUCN criteria or not, and then choose one of the following five different scenarios to create a `statusMappingSourceID`. 
 
 ```{mermaid}
 flowchart TD
-  Start(["source"]) --> IUCN{"Does it use IUCN v4.0 (2012)?"}
+  Start(["assessment"]) --> IUCN{"Does it use IUCN v4.0 (2012)?"}
   IUCN -- "Yes" --> Use1(["Use statusMappingSourceID = 1"])
   IUCN -- "No" --> Exists{"Does the mapping source exists in RegRed?"}
   Exists -- "Yes" --> Reuse(["Reuse existing statusMappingSourceID"])
@@ -222,53 +235,47 @@ flowchart TD
   %%class A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,C0,C1,C2,C3,C4 boxes;
 ```
 
+::: { .callout-warning collapse="true"}
+##  Where do I find the `statusMappingSourceID` used?
 
-If the assessment did not use the latest IUCN regional guidelines (v4.0), you must find or create an appropriate mapping source (`statusAssessmentTypeCitation`) and reference its `statusMappingSourceID`.   
-Before creating a new source, always check if the mapping source already exists in RegRed. If it does, reuse its existing `statusMappingSourceID`.
+You can find the `statusMappingSourceID` in the [mapping_sources_used]{colour="#fff" bg-colour="#31b0e0"} file.  
 
+:::
 
-**Instructions to select the `statusMappingSourceID`**   
+**Instructions to create a new `statusMappingSourceID`**   
+In all scenarios, you will have to create a separate Excel file with its respective documentation PDF.
 
-1.   If the assessment was done with the latest version of IUCN, then use `statusMappingSourceID = 1`. 
-
-2.   If not, you will have to create the status mapping source (`statusAssessmentTypeCitation`). **Even if the source you are extracting (1) provides the mapping between non-IUCN and IUCN statuses as part of the PDF/book, or (2) if the mapping of statuses are already published online**. However, if the mapping source has already been created, you should use that one and the respective `statusMappingSourceID`.  
-
-      2.1.    To create the mapping source check:
+  - **Scenario 1**: The assessment was done following IUCN guidelines that are not the latest version. Some modifications may be needed (e.g., EX = RE). You will cite the version of IUCN used in the `statusAssessmentTypeCitation` (and corresponding `statusAssessmentTypeIdentifier`), and you will explain in the mapping document, any modifications introduced or adaptations needed.    
+  - **Scenario 2**: The assessment was done following IUCN guidelines, but it's not evident from the source which version was used. The `statusAssessmentTypeCitation` and the `statusAssessmentTypeIdentifier` should be `Unknown`.  
+  - **Scenario 3**: The assessment was **not** done following IUCN guidelines, yet the same the same source provides the mapping of the `verbatimStatusCodes` to the `statusCodes`. You will use the source's citation (`bibliographicCitation`) as the `statusAssessmentTypeCitation`, and the source's identifier (`sourceIdentifier`) as the `statusAssessmentTypeIdentifier`.
+  - **Scenario 4**: The assessment was **not** done following IUCN guidelines, yet there is a publication (e.g., a manuscript or an official document) that has already done the mapping to the IUCN categories. You will create the citation for this document in Zotero and use it as the `statusAssessmentTypeCitation` (including the identifier as the `statusAssessmentTypeIdentifier`).
+  - **Scenario 5**: The assessment was **not** done following IUCN guidelines, and there is no official document that maps the statues to the IUCN criteria. You may also have a mix of different sources to define the mapping. In this case, you will cite yourself (use as identifier the URL from our GitHub repository). Contact Flo to store the Excel and PDF in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. You will need this to get a `statusAssessmentTypeIdentifier`.
       
-        - If the same source provides the translation: you will use this criteria. **You will create the Excel and PDF files, but you will cite the source in the `statusAssessmentTypeCitation`, and use its identifier in the `statusAssessmentTypeIdentifier`**.   
-        
-        
-        - If there are official mapping sources published by the countries or researchers: you will use this criteria. **You will create the Excel and PDF files, but you will cite the official document and use its identifier**.  
-        
-        
-        - If there aren't any mapping sources available or you have a mix of sources: **you will have to create your own criteria**. **You will create the Excel and PDF files, and you will cite the mapping source you created and use as identifier the URL from our GitHub repository**.   
-  
-      So, for all options you will have to create a separate Excel file with its respective documentation PDF (and `statusMappingSourceID`), but only in the last case you will use a custom identifier.
+If you have doubts about how to create the mapping, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
 
-      You can create your own criteria based on some previous mapping source (e.g., Belarus statuses are equivalent to Russian ones), but do not copy mapping sources blindly. In all cases, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
-
-**Instructions to create the status mapping source**   
+**Instructions to create the Excel table and PDF document for the mapping source**   
 Creating the mapping source involves preparing two documents:
 
-1.    The table **status_mapping_source_X**
+1.    The Excel table **status_mapping_source_X**
 
--   This Excel file will store the equivalent values of `statusCode` for `verbatimStatusCode`, according to a specific source. You will create it using the [[mapping_sources_template_xlsx](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)]{colour="#fff" bg-colour="#31b0e0"}.
+-   This file will store the equivalent values of `statusCode` for every `verbatimStatusCode`.
+-   You will create it using the [[mapping_sources_template_xlsx](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)]{colour="#fff" bg-colour="#31b0e0"}.
 -   You should name the file as follows: <*status_mapping_source_X.xlsx*>, with *X* = `statusMappingSourceID`.
 -   You should store the file in the [[status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)]{colour="#fff" bg-colour="#3169e0"} folder, and name the folder after the `statusMappingSourceID`.  
--   When you are done with the mapping source (Excel and PDF), contact Flo to store it in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
 
 **Fields to be filled in**: 
 
   -   `statusMappingID` - fill this with the ID of the **status_mapping_source_X** (it should be the same in every row).    
-  -   `verbatimStatusCode` - fill this with the **original** status code used in the source.  
-  -   `statusCode` - fill with the mapped IUCN status code.  
-  -   `statusCategory` - fill with the status full definition (e.g., "Vulnerable").    
-  -   `statusMappingBy` - select the value from the list of controlled vocabulary.    
+  -   `verbatimStatusCode` - fill this with the **original** status code used in the source (or slightly modify for purpose).  
+  -   `statusCode` - the IUCN status codes (e.g., `VU`) are pre-filled in the template.    
+  -   `statusCategory` - the IUCN status codes definition (e.g., `Vulnerable`) are pre-filled in the template.     
+  -   `statusMappingBy` - select your name from the list of controlled vocabulary.    
   -   `statusMappingRemarks` - fill with any specifications about your decisions.  
 
-2.    The PDF documentation **status_mapping_source_X**
+2.    The PDF document **status_mapping_source_X**
 
--   This PDF document will have a verbal description and a list of the sources used and decisions made to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`). You will create it using the [[mapping_sources_template_docx](https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&csf=1&web=1&e=ixPLC6)]{colour="#fff" bg-colour="#31b0e0"}, and then save it as a PDF.
+-   This file will have a verbal description and a list of the sources used and decisions made to define equivalent values of `statusCode` for `verbatimStatusCode` (e.g., to determine that `X1 = CR`). 
+-   You will create it using the [[mapping_sources_template_docx](https://czuvpraze.sharepoint.com/:w:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/status_mapping_source_template.docx?d=wb0eed893c5e94b17b0b9932ff61e128a&csf=1&web=1&e=ixPLC6)]{colour="#fff" bg-colour="#31b0e0"}, and then save it as a PDF.
 -   You should name the file as follows: <*status_mapping_source_X.pdf*>, with *X* = `statusMappingID.` 
 -   You should store the file in the [[status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)]{colour="#fff" bg-colour="#3169e0"} folder with the correct `statusMappingSourceID`.  
 
@@ -281,16 +288,10 @@ Creating the mapping source involves preparing two documents:
 -   **Bibliography**: The documents and sources you used to define the criteria.  
 
 **Final step**:    
-When you are done with the mapping source (Excel and PDF), contact [Flo]{colour="#fff" bg-colour="#000"} to store it in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
+When you are done with the mapping source (Excel and PDF), contact [Flo]{colour="#fff" bg-colour="#000"} to store the folder in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
 
 If you got this far and you still have doubts about status mapping sources, contact [Sofi]{colour="#fff" bg-colour="#000"}.  
 
-::: { .callout-warning collapse="true"}
-##  Where do I find the `statusMappingSourceID` used?
-
-You can find the `statusMappingSourceID` in the [mapping_sources_used]{colour="#fff" bg-colour="#31b0e0"} file.  
-
-:::
 
 ## 2.4 Filling the `location` table
 
