@@ -328,9 +328,9 @@ After you select a country, you will start working on one source at a time.</p>
 <p><strong>Always track your progress</strong><br>
 Indicate your progress by filling in the following columns in the table of sources:</p>
 <ul>
-<li><code>dataExtractor</code>: The name of the team member assigned to and responsible for extracting data from the source. | <strong>values</strong>: <code>Ivo</code>, <code>Adam</code>, <code>Káča</code>, <code>Sofi.</code><br>
+<li><code>dataExtractor</code>: The name of the team member assigned to and responsible for extracting data from the source. | <strong>values</strong>: <code>Ivo</code>, <code>Adam</code>, <code>Káča</code>, <code>Sofi</code>, <code>Carmen</code>, <code>Dani</code>, <code>Kristýna</code><br>
 </li>
-<li><code>progress</code>: The current status of the data extraction process for the source. | <strong>values</strong>: <code>in progress</code>, <code>done.</code><br>
+<li><code>progress</code>: The current status of the data extraction process for the source. | <strong>values</strong>: <code>in progress</code>, <code>done</code>, <code>excluded</code>.<br>
 </li>
 <li><code>redlistTypeOfContent</code>: Describes the format in which the red list species and their statuses are presented within the source. For example: text (data is in text), table (data is in structured tables), or table+text (a combination of both). This information is key for deciding between manual and automated extraction methods. | <strong>values</strong>: <code>table</code>, <code>text</code>, <code>table+text</code>, <code>image</code>.<br>
 </li>
@@ -398,11 +398,35 @@ Indicate your progress by filling in the following columns in the table of sourc
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What if I find a new source?
+<span class="screen-reader-only">Warning</span>What if the source is duplicated, is not a proper source, and thus should be excluded?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You should indicate <code>progress</code> = <code>excluded</code>, and add details to the <code>extractionRemarks</code> that reflect why the source was excluded. For example:</p>
+<ul>
+<li><code>extractionRemarks</code>: This is a duplicate of source 162.<br>
+</li>
+<li><code>extractionRemarks</code>: This is part of source 3356.<br>
+</li>
+<li><code>extractionRemarks</code>: Sources 3094, 3095, 3096, 3097 are the same as 3093.</li>
+</ul>
+<p>If the source is excluded, no other details (<code>redlistTypeOfContent</code>, <code>extractionType</code>, <code>numberOfRedlists</code>, <code>dateStarted</code>, <code>fullyExtracted</code>) should be filled in.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>What if I find a new source?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you find a new source that is not in the table of sources, first check with those involved in the metadata creation (<span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Ivo</span> and <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Adam</span>) to see why it is not in the list (maybe there is a reason why it was skipped).</p>
 <p>If it needs to be added, fill in the details about the new source in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources/new_sources.xlsx?d=wf01d3d61592a473488abcdc1e4d7b91d&amp;csf=1&amp;web=1&amp;e=VJDcqK">new_sources</a></span> file and store any associated files in <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a></span> folder.</p>
@@ -421,9 +445,10 @@ Indicate your progress by filling in the following columns in the table of sourc
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Each member reports on their progress, including any difficulties encountered.</li>
+<li>Each member reports on their progress (number of sources, redlists, mappings, and peer-reviews done), including any difficulties encountered.</li>
 <li>Plans for the upcoming week are shared, including which country or source they intend to pick next.</li>
 </ul>
+<p>We keep a record of the weekly number of redlists done by each data extractor in our <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/docs/weekly_targets/regred_weekly_tracker.xlsx?d=wdf640ca9627745c2ba2140ace94e186f&amp;csf=1&amp;web=1&amp;e=qpMw0c">weekly_tracker</a></span>.</p>
 </div>
 </div>
 </section>
@@ -432,7 +457,7 @@ Indicate your progress by filling in the following columns in the table of sourc
 <p><strong>Check before starting to extract data</strong>.<br>
 The National Red List project (<a href="https://www.nationalredlist.org/" class="uri">https://www.nationalredlist.org/</a>) is one of <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s partners. They have extracted data from many different sources already, and <strong>data extractors</strong> should make sure not to extract these data again. However, in order for the NRL data to be useful, it will still need to be harmonised by the <strong>NRL data harmoniser</strong>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -441,7 +466,7 @@ The National Red List project (<a href="https://www.nationalredlist.org/" class=
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Check the NRL data and assess whether the source you have is in the NRL database.</li>
@@ -467,7 +492,7 @@ The National Red List project (<a href="https://www.nationalredlist.org/" class=
 <p><strong>Manual or automated extraction</strong><br>
 <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> uses <strong>EcoParse</strong>, a tool that streamlines the AI automated method, but not all sources yield reliable results through automation. Before beginning to extract any data, Data Extractors will have to assess whether the source is appropriate for manual or automated extraction.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -476,7 +501,7 @@ The National Red List project (<a href="https://www.nationalredlist.org/" class=
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>AI-based extraction using large language models (LLMs) is useful for sources that are difficult to extract manually, e.g., because the information is provided inside text descriptions (and not tables). However, automated extraction depends on scientific species names and threat information being present on the same page.</p>
 </div>
@@ -487,7 +512,7 @@ Indicate this in the table of sources by filling in the <code>extractionType</co
 <p><strong>Else, if the source will be extracted manually</strong><br>
 Indicate in the table of sources that the <code>extractionType</code> = <code>Manual</code>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -496,14 +521,14 @@ Indicate in the table of sources that the <code>extractionType</code> = <code>Ma
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If the source provides text descriptions and does not contain tables that are easy to copy and paste.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -512,7 +537,7 @@ Indicate in the table of sources that the <code>extractionType</code> = <code>Ma
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If the source contains only a few species (e.g., a reptile red list from a country with ~10 species). If scientific species names and threat status information are not present on the same page of the text (as the LLM will fail to detect this).</p>
 </div>
@@ -544,7 +569,7 @@ Name the folder using the <code>sourceID</code> provided in the table of sources
 <p><strong>Multiple red lists per source</strong><br>
 Each source may contain multiple red lists, which are loosely defined as lists of species assessed for extinction risk within a specific geographic and taxonomic scope.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -553,7 +578,7 @@ Each source may contain multiple red lists, which are loosely defined as lists o
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse show">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>A red list is uniquely identified by the combination of:</p>
 <ol type="1">

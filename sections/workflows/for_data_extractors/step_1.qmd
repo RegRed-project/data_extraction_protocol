@@ -39,8 +39,8 @@ After you select a country, you will start working on one source at a time.
 **Always track your progress**  
 Indicate your progress by filling in the following columns in the table of sources:
 
-  -   `dataExtractor`: The name of the team member assigned to and responsible for extracting data from the source. | **values**: `Ivo`, `Adam`, `Káča`, `Sofi.`   
-  -   `progress`: The current status of the data extraction process for the source. | **values**: `in progress`, `done.`   
+  -   `dataExtractor`: The name of the team member assigned to and responsible for extracting data from the source. | **values**: `Ivo`, `Adam`, `Káča`, `Sofi`, `Carmen`, `Dani`, `Kristýna`    
+  -   `progress`: The current status of the data extraction process for the source. | **values**: `in progress`, `done`, `excluded`.   
   -   `redlistTypeOfContent`: Describes the format in which the red list species and their statuses are presented within the source. For example: text (data is in text), table (data is in structured tables), or table+text (a combination of both). This information is key for deciding between manual and automated extraction methods. | **values**: `table`, `text`, `table+text`, `image`.   
   -   `extractionType`: Describes how was the data extracted, manually by a data extractor, in an automated way, or by the NRL and translated to the RegRed's system. | **values**: `EcoParse`, `Manual`, and `NRL`.
   -   `numberOfRedlists`: The number of identified redlists in the source. | **values**: *integer numbers > 1*.
@@ -78,6 +78,19 @@ If there are any comments you want to make about any of the metadata being wrong
 :::
 
 ::: {.callout-warning collapse="true"}
+## What if the source is duplicated, is not a proper source, and thus should be excluded?
+
+You should indicate `progress` = `excluded`, and add details to the `extractionRemarks` that reflect why the source was excluded. For example: 
+
+  - `extractionRemarks`: This is a duplicate of source 162.  
+  - `extractionRemarks`: This is part of source 3356.  
+  - `extractionRemarks`: Sources 3094, 3095, 3096, 3097 are the same as 3093.
+
+If the source is excluded, no other details (`redlistTypeOfContent`, `extractionType`, `numberOfRedlists`, `dateStarted`, `fullyExtracted`) should be filled in.   
+
+:::
+
+::: {.callout-warning collapse="true"}
 ## What if I find a new source?
 
 If you find a new source that is not in the table of sources, first check with those involved in the metadata creation ([Ivo]{colour="#fff" bg-colour="#000"} and [Adam]{colour="#fff" bg-colour="#000"}) to see why it is not in the list (maybe there is a reason why it was skipped). 
@@ -91,8 +104,11 @@ If the source should be included in the table of sources, it will need to be add
 ::: {.callout-tip}
 ##  Report your work during the weekly meetings
 
-  - Each member reports on their progress, including any difficulties encountered.
+  - Each member reports on their progress (number of sources, redlists, mappings, and peer-reviews done), including any difficulties encountered.
   - Plans for the upcoming week are shared, including which country or source they intend to pick next.
+
+We keep a record of the weekly number of redlists done by each data extractor in our [[weekly_tracker](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/docs/weekly_targets/regred_weekly_tracker.xlsx?d=wdf640ca9627745c2ba2140ace94e186f&csf=1&web=1&e=qpMw0c)]{colour="#fff" bg-colour="#31b0e0"}.  
+  
 ::: 
 
 
