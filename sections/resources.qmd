@@ -14,11 +14,12 @@ page-layout: full
 ├── data/
 │   ├── ...
 │   ├── all_sources_to_extract/
-│   ├── backups/
 │   ├── new_sources/
 │   ├── old_files/
+│   ├── source_to_review/
 │   ├── status_mapping_sources/
-│   └── tetrapods_extracted_sources/
+│   ├── tetrapods_extracted_sources/
+│   └── updated_sources/
 ├── docs/                  
 ├── raw_data/                
 └── README.docx
@@ -30,10 +31,10 @@ page-layout: full
 This is a directory containing all the files (PDFs, etc.) named after the name convention of the first metadata effort (<*ISO3_taxa_year.pdf*>). Be aware that these names will not match any current fields in the template for data extraction.
 
   - [new_sources]{colour="#fff" bg-colour="#3169e0"} | [new_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&web=1&e=gecFt8)  
-This is a directory in which we store the new sources that people send to us or that we find during the extraction process.
+This is a directory in which we store the new sources that people have sent to us or that we have found during the extraction process.
 
-  - [old_files]{colour="#fff" bg-colour="#3169e0"} | [old_files](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/old_files?csf=1&web=1&e=bVVjTk)  
-This is a directory is an archive of old files.  
+  - [sources_to_review]{colour="#fff" bg-colour="#3169e0"} | [sources_to_review](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/sources_to_review?csf=1&web=1&e=KLQWKY)  
+This is a directory used for the peer-reviewing process of the extracted data.  
 
   - [status_mapping_sources]{colour="#fff" bg-colour="#3169e0"} | [status_mapping_sources](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&web=1&e=9vcdgX)  
 This is the directory in which we store the IUCN mapping sources (PDF + table, named after `statusMappingSourceID`).  
@@ -68,11 +69,14 @@ This is the Excel file that stores all the mapping sources created to translate 
 This is the Excel file that **data extractors** will use to store information about any new source (not in found in the [tetrapods_sources_to_extract]{colour="#fff" bg-colour="#31b0e0"}).
 
   - [split_script]{colour="#fff" bg-colour="#31b0e0"} | [code/Splitter/split_script](https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&web=1&e=DdwV5p)  
-This is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.   
+This is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files. 
+  - [NRL_match]{colour="#fff" bg-colour="#31b0e0"} | [code/MatchNRL/NRL_match](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/MatchNRL?csf=1&web=1&e=egwOdU)  
+This is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.
   
 ## Others
 
-  - [**RegRed**]{colour="#d14024" bg-colour="#fff"} [weekly_tracker]{colour="#fff" bg-colour="#31b0e0"} of number of redlists processed per week.  
+  - [**RegRed**]{colour="#d14024" bg-colour="#fff"} [[weekly_tracker](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/docs/weekly_targets/regred_weekly_tracker.xlsx?d=wdf640ca9627745c2ba2140ace94e186f&csf=1&web=1&e=qpMw0c)]{colour="#fff" bg-colour="#31b0e0"} of number of redlists processed per week.  
   - [**RegRed**]{colour="#d14024" bg-colour="#fff"} project on GitHub <https://github.com/RegRed-project>.  
   - [**RegRed**]{colour="#d14024" bg-colour="#fff"} **Zotero** library.  
+
 

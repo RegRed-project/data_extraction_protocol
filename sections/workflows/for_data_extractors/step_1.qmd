@@ -115,18 +115,22 @@ We keep a record of the weekly number of redlists done by each data extractor in
 ## 1.3 Check if the source has already been extracted by the NRL
 
 **Check before starting to extract data**.    
-The National Red List project (<https://www.nationalredlist.org/>) is one of [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s partners. They have extracted data from many different sources already, and **data extractors** should make sure not to extract these data again. However, in order for the NRL data to be useful, it will still need to be harmonised by the **NRL data harmoniser**. 
+The National Red List project (<https://www.nationalredlist.org/>) is one of [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s partners. They have extracted data from many different sources already, and **data extractors** should make sure not to extract the species status assessment data again. However, **data extractors** will still need to extract all relevant field for the source or redlist being considered. 
 
 ::: {.callout-warning collapse="true"}
 ## How to know if the source has been extracted by the NRL?  
 
-  -   Check the NRL data and assess whether the source you have is in the NRL database.
-  -   Double-check that the source is effectively fully extracted, as sometimes NRL has a source but only a few species (e.g., only *Mammals* not all tetrapods). 
-
+  -   Check the field `inNRL` in the [[tetrapods_sources_to_extract](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_tetrapods_sources_to_extract.xlsx?d=wf0ea428dc8d944aa8129214a38f69238&csf=1&web=1&e=UXEtEO)]{colour="#fff" bg-colour="#31b0e0"}. 
+  -   If this is filled out, there is a match for `year` and `country` in the NRL database. The values you will find there are taxonomic classes and number of unique species per class for that `year+country`. 
+  -   This field is a hint that there is the source **may** have a match, but the best way to see this is by checking the NRL database. 
+  -   Find out which species were extracted by NRL, by using the [[NRL_match](https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/MatchNRL?csf=1&web=1&e=egwOdU)]{colour="#fff" bg-colour="#31b0e0"} script (copy the folder to your machine, fill in year and country and run it).  
+  -   **Double-check that the source is effectively fully extracted**, as sometimes NRL has a source but only a few species (e.g., only *Mammals* not all tetrapods).   
+  
 If the source has already been fully extracted by NRL:   
 
   -   Indicate this in the table of sources by filling in the `extractionType` = `NRL`.  
-  -   The NRL Data Harmoniser will have to adapt the source to [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s structure. You will be done with the source, and you will start over from step [1.2. Pick a source and report progress]().    
+  -   Use the `verbatimIdentification` and `verbatimStatusCode` values extracted by NRL for your `taxon_assessment` table.
+  -   Continue with step [1.5 Create a folder and name it using the `sourceID`](step_1.html#create-a-folder-and-name-it-using-the-sourceid).   
   
 Else, if the source has not already been fully extracted by NRL:   
 

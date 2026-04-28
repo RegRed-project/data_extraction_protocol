@@ -44,7 +44,7 @@
     "href": "sections/roles_team_and_responsibilities.html",
     "title": "RegRed",
     "section": "",
-    "text": "Data Extractor: collects and organises the red list data from the designated sources, either manually or using the automated tool.\n\nNRL Data Harmoniser: standardises the data from the National Red List (NRL) and adapts it to the RegRed structure.\n\nSpatial Data Generator: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.\n\nTaxonomy Harmoniser: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.",
+    "text": "Data Extractor: collects and organises the red list data from the designated sources, either manually or using the automated tool.\n\nSpatial Data Generator: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.\n\nTaxonomy Harmoniser: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.",
     "crumbs": [
       "Roles, team and responsibilities"
     ]
@@ -54,7 +54,7 @@
     "href": "sections/roles_team_and_responsibilities.html#roles",
     "title": "RegRed",
     "section": "",
-    "text": "Data Extractor: collects and organises the red list data from the designated sources, either manually or using the automated tool.\n\nNRL Data Harmoniser: standardises the data from the National Red List (NRL) and adapts it to the RegRed structure.\n\nSpatial Data Generator: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.\n\nTaxonomy Harmoniser: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.",
+    "text": "Data Extractor: collects and organises the red list data from the designated sources, either manually or using the automated tool.\n\nSpatial Data Generator: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.\n\nTaxonomy Harmoniser: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.",
     "crumbs": [
       "Roles, team and responsibilities"
     ]
@@ -64,7 +64,7 @@
     "href": "sections/roles_team_and_responsibilities.html#team-members-and-their-responsibilities",
     "title": "RegRed",
     "section": "Team members and their responsibilities",
-    "text": "Team members and their responsibilities\n\nFlo (Florencia Grattarola): coordinator, database structure.\nIvo (Ivo Kadlec): data extractor, metadata.\n\nAdam (Adam Uličný): data extractor, metadata, EcoParse.\nKáča (Kateřina Tschernosterová): data extractor, controlled vocabulary, bibliographic citations.\nGabriel (Gabriel Ortega): geopgraphic entities, geodatabase.\nSofi (Safiya Praleskouskaya): data extractor, status mapping.\nCarmen (Carmen Soria): data extractor.\nDani (Daniela Mellado): data extractor.",
+    "text": "Team members and their responsibilities\n\nFlo (Florencia Grattarola): coordinator, database structure.\nIvo (Ivo Kadlec): data extractor, metadata.\n\nAdam (Adam Uličný): data extractor, metadata, EcoParse.\nKáča (Kateřina Tschernosterová): data extractor, controlled vocabulary, bibliographic citations.\nGabriel (Gabriel Ortega): geopgraphic entities, geodatabase.\nSofi (Safiya Praleskouskaya): data extractor, status mapping.\nCarmen (Carmen Soria): data extractor.\nDani (Daniela Mellado): data extractor.\nKristýna (Kristýna Vlasáková): data extractor.",
     "crumbs": [
       "Roles, team and responsibilities"
     ]
@@ -248,17 +248,6 @@
     ]
   },
   {
-    "objectID": "sections/workflows/for_nrl_data_harmoniser/steps.html",
-    "href": "sections/workflows/for_nrl_data_harmoniser/steps.html",
-    "title": "For NRL data harmoniser",
-    "section": "",
-    "text": "Note\n\n\n\nThis section needs to be developed.",
-    "crumbs": [
-      "Workflow",
-      "For NRL data harmoniser"
-    ]
-  },
-  {
     "objectID": "sections/workflows/for_data_extractors/step_1.html",
     "href": "sections/workflows/for_data_extractors/step_1.html",
     "title": "Step 1: Select a source",
@@ -299,7 +288,7 @@
     "href": "sections/workflows/for_data_extractors/step_1.html#check-if-the-source-has-already-been-extracted-by-the-nrl",
     "title": "Step 1: Select a source",
     "section": "1.3 Check if the source has already been extracted by the NRL",
-    "text": "1.3 Check if the source has already been extracted by the NRL\nCheck before starting to extract data.\nThe National Red List project (https://www.nationalredlist.org/) is one of RegRed’s partners. They have extracted data from many different sources already, and data extractors should make sure not to extract these data again. However, in order for the NRL data to be useful, it will still need to be harmonised by the NRL data harmoniser.\n\n\n\n\n\n\nWarningHow to know if the source has been extracted by the NRL?\n\n\n\n\n\n\nCheck the NRL data and assess whether the source you have is in the NRL database.\nDouble-check that the source is effectively fully extracted, as sometimes NRL has a source but only a few species (e.g., only Mammals not all tetrapods).\n\nIf the source has already been fully extracted by NRL:\n\nIndicate this in the table of sources by filling in the extractionType = NRL.\n\nThe NRL Data Harmoniser will have to adapt the source to RegRed’s structure. You will be done with the source, and you will start over from step 1.2. Pick a source and report progress.\n\nElse, if the source has not already been fully extracted by NRL:\n\nKeep working on the following steps.",
+    "text": "1.3 Check if the source has already been extracted by the NRL\nCheck before starting to extract data.\nThe National Red List project (https://www.nationalredlist.org/) is one of RegRed’s partners. They have extracted data from many different sources already, and data extractors should make sure not to extract the species status assessment data again. However, data extractors will still need to extract all relevant field for the source or redlist being considered.\n\n\n\n\n\n\nWarningHow to know if the source has been extracted by the NRL?\n\n\n\n\n\n\nCheck the field inNRL in the tetrapods_sources_to_extract.\nIf this is filled out, there is a match for year and country in the NRL database. The values you will find there are taxonomic classes and number of unique species per class for that year+country.\nThis field is a hint that there is the source may have a match, but the best way to see this is by checking the NRL database.\nFind out which species were extracted by NRL, by using the NRL_match script (copy the folder to your machine, fill in year and country and run it).\n\nDouble-check that the source is effectively fully extracted, as sometimes NRL has a source but only a few species (e.g., only Mammals not all tetrapods).\n\nIf the source has already been fully extracted by NRL:\n\nIndicate this in the table of sources by filling in the extractionType = NRL.\n\nUse the verbatimIdentification and verbatimStatusCode values extracted by NRL for your taxon_assessment table.\nContinue with step 1.5 Create a folder and name it using the sourceID.\n\nElse, if the source has not already been fully extracted by NRL:\n\nKeep working on the following steps.",
     "crumbs": [
       "Workflow",
       "For data extractors",
@@ -514,7 +503,7 @@
     "href": "sections/resources.html",
     "title": "RegRed",
     "section": "",
-    "text": ".\n├── code/                \n│   └── Splitter/\n│       ├── ...\n│       └── split_script.R\n├── data/\n│   ├── ...\n│   ├── all_sources_to_extract/\n│   ├── backups/\n│   ├── new_sources/\n│   ├── old_files/\n│   ├── status_mapping_sources/\n│   └── tetrapods_extracted_sources/\n├── docs/                  \n├── raw_data/                \n└── README.docx",
+    "text": ".\n├── code/                \n│   └── Splitter/\n│       ├── ...\n│       └── split_script.R\n├── data/\n│   ├── ...\n│   ├── all_sources_to_extract/\n│   ├── new_sources/\n│   ├── old_files/\n│   ├── source_to_review/\n│   ├── status_mapping_sources/\n│   ├── tetrapods_extracted_sources/\n│   └── updated_sources/\n├── docs/                  \n├── raw_data/                \n└── README.docx",
     "crumbs": [
       "Tools and resources"
     ]
@@ -524,7 +513,7 @@
     "href": "sections/resources.html#one-drive-folder-structure",
     "title": "RegRed",
     "section": "",
-    "text": ".\n├── code/                \n│   └── Splitter/\n│       ├── ...\n│       └── split_script.R\n├── data/\n│   ├── ...\n│   ├── all_sources_to_extract/\n│   ├── backups/\n│   ├── new_sources/\n│   ├── old_files/\n│   ├── status_mapping_sources/\n│   └── tetrapods_extracted_sources/\n├── docs/                  \n├── raw_data/                \n└── README.docx",
+    "text": ".\n├── code/                \n│   └── Splitter/\n│       ├── ...\n│       └── split_script.R\n├── data/\n│   ├── ...\n│   ├── all_sources_to_extract/\n│   ├── new_sources/\n│   ├── old_files/\n│   ├── source_to_review/\n│   ├── status_mapping_sources/\n│   ├── tetrapods_extracted_sources/\n│   └── updated_sources/\n├── docs/                  \n├── raw_data/                \n└── README.docx",
     "crumbs": [
       "Tools and resources"
     ]
@@ -534,7 +523,7 @@
     "href": "sections/resources.html#folders-data",
     "title": "RegRed",
     "section": "Folders (data/)",
-    "text": "Folders (data/)\n\nall_sources_to_extract | all_sources_to_extract\nThis is a directory containing all the files (PDFs, etc.) named after the name convention of the first metadata effort (&lt;ISO3_taxa_year.pdf&gt;). Be aware that these names will not match any current fields in the template for data extraction.\nnew_sources | new_sources\nThis is a directory in which we store the new sources that people send to us or that we find during the extraction process.\nold_files | old_files\nThis is a directory is an archive of old files.\nstatus_mapping_sources | status_mapping_sources\nThis is the directory in which we store the IUCN mapping sources (PDF + table, named after statusMappingSourceID).\ntetrapods_extracted_sources | tetrapods_extracted_sources\nThis is the directory that contains all the tetrapods extracted sources (named after sourceID).",
+    "text": "Folders (data/)\n\nall_sources_to_extract | all_sources_to_extract\nThis is a directory containing all the files (PDFs, etc.) named after the name convention of the first metadata effort (&lt;ISO3_taxa_year.pdf&gt;). Be aware that these names will not match any current fields in the template for data extraction.\nnew_sources | new_sources\nThis is a directory in which we store the new sources that people have sent to us or that we have found during the extraction process.\nsources_to_review | sources_to_review\nThis is a directory used for the peer-reviewing process of the extracted data.\nstatus_mapping_sources | status_mapping_sources\nThis is the directory in which we store the IUCN mapping sources (PDF + table, named after statusMappingSourceID).\ntetrapods_extracted_sources | tetrapods_extracted_sources\nThis is the directory that contains all the tetrapods extracted sources (named after sourceID).",
     "crumbs": [
       "Tools and resources"
     ]
@@ -544,7 +533,7 @@
     "href": "sections/resources.html#files-most-important",
     "title": "RegRed",
     "section": "Files (most important)",
-    "text": "Files (most important)\n\ntetrapods_sources_to_extract | data/regred_tetrapods_sources_to_extract\nThis table has all the tetrapods sources that the data extractors will use it as a reference for the extraction process. It was generated following our metadata table (Kadlec et al., 2025) by keeping only those sources that belong to tetrapods. The content in this table should never be edited, except for the fields: dataExtractor, progress, redlistTypeOfContent, extractionType, numberOfRedlists, dateStarted, fullyExtracted, extractionRemarks.\ndata_extraction_template | data/regred_data_extraction_template\nThis is the Excel (read-only) template file that data extractors will use as a template for the data extraction.\ngeographic_entities | data/regred_geographic_entities (https://regred-project.github.io/geographic_entities/)\nThis is the local copy of the standard geographic locations that data extractors will use as a reference for filling the location table. Only the web version should be used.\ndata_codebooks | data/regred_data_codebooks\nThis is an Excel (read-only) file that keeps all the controlled vocabulary of the database stored.\nmapping_sources_template_xlsx | data/status_mapping_sources/regred_mapping_sources_template\nThis is the Excel (read-only) template file that data extractors will use as a template for generating mapping sources for conservation status.\nmapping_sources_template_docx | data/status_mapping_sources/regred_mapping_sources_template\nThis is the Word (read-only) template file that data extractors will use as a template for generating mapping sources for conservation status. They should store it as a PDF.\nmapping_sources_used | data/status_mapping_sources/regred_mapping_sources_used\nThis is the Excel file that stores all the mapping sources created to translate conservation statuses.\nnew_sources | data/new_sources/new_sources\nThis is the Excel file that data extractors will use to store information about any new source (not in found in the tetrapods_sources_to_extract).\nsplit_script | code/Splitter/split_script\nThis is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.",
+    "text": "Files (most important)\n\ntetrapods_sources_to_extract | data/regred_tetrapods_sources_to_extract\nThis table has all the tetrapods sources that the data extractors will use it as a reference for the extraction process. It was generated following our metadata table (Kadlec et al., 2025) by keeping only those sources that belong to tetrapods. The content in this table should never be edited, except for the fields: dataExtractor, progress, redlistTypeOfContent, extractionType, numberOfRedlists, dateStarted, fullyExtracted, extractionRemarks.\ndata_extraction_template | data/regred_data_extraction_template\nThis is the Excel (read-only) template file that data extractors will use as a template for the data extraction.\ngeographic_entities | data/regred_geographic_entities (https://regred-project.github.io/geographic_entities/)\nThis is the local copy of the standard geographic locations that data extractors will use as a reference for filling the location table. Only the web version should be used.\ndata_codebooks | data/regred_data_codebooks\nThis is an Excel (read-only) file that keeps all the controlled vocabulary of the database stored.\nmapping_sources_template_xlsx | data/status_mapping_sources/regred_mapping_sources_template\nThis is the Excel (read-only) template file that data extractors will use as a template for generating mapping sources for conservation status.\nmapping_sources_template_docx | data/status_mapping_sources/regred_mapping_sources_template\nThis is the Word (read-only) template file that data extractors will use as a template for generating mapping sources for conservation status. They should store it as a PDF.\nmapping_sources_used | data/status_mapping_sources/regred_mapping_sources_used\nThis is the Excel file that stores all the mapping sources created to translate conservation statuses.\nnew_sources | data/new_sources/new_sources\nThis is the Excel file that data extractors will use to store information about any new source (not in found in the tetrapods_sources_to_extract).\nsplit_script | code/Splitter/split_script\nThis is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.\nNRL_match | code/MatchNRL/NRL_match\nThis is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.",
     "crumbs": [
       "Tools and resources"
     ]

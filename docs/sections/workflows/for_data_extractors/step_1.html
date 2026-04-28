@@ -176,12 +176,6 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../sections/workflows/for_nrl_data_harmoniser/steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">For NRL data harmoniser</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../sections/workflows/for_spatial_data_generator/steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">For spatial data generator</span></a>
   </div>
@@ -455,7 +449,7 @@ Indicate your progress by filling in the following columns in the table of sourc
 <section id="check-if-the-source-has-already-been-extracted-by-the-nrl" class="level2">
 <h2 class="anchored" data-anchor-id="check-if-the-source-has-already-been-extracted-by-the-nrl">1.3 Check if the source has already been extracted by the NRL</h2>
 <p><strong>Check before starting to extract data</strong>.<br>
-The National Red List project (<a href="https://www.nationalredlist.org/" class="uri">https://www.nationalredlist.org/</a>) is one of <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s partners. They have extracted data from many different sources already, and <strong>data extractors</strong> should make sure not to extract these data again. However, in order for the NRL data to be useful, it will still need to be harmonised by the <strong>NRL data harmoniser</strong>.</p>
+The National Red List project (<a href="https://www.nationalredlist.org/" class="uri">https://www.nationalredlist.org/</a>) is one of <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s partners. They have extracted data from many different sources already, and <strong>data extractors</strong> should make sure not to extract the species status assessment data again. However, <strong>data extractors</strong> will still need to extract all relevant field for the source or redlist being considered.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -469,14 +463,19 @@ The National Red List project (<a href="https://www.nationalredlist.org/" class=
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>Check the NRL data and assess whether the source you have is in the NRL database.</li>
-<li>Double-check that the source is effectively fully extracted, as sometimes NRL has a source but only a few species (e.g., only <em>Mammals</em> not all tetrapods).</li>
+<li>Check the field <code>inNRL</code> in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_tetrapods_sources_to_extract.xlsx?d=wf0ea428dc8d944aa8129214a38f69238&amp;csf=1&amp;web=1&amp;e=UXEtEO">tetrapods_sources_to_extract</a></span>.</li>
+<li>If this is filled out, there is a match for <code>year</code> and <code>country</code> in the NRL database. The values you will find there are taxonomic classes and number of unique species per class for that <code>year+country</code>.</li>
+<li>This field is a hint that there is the source <strong>may</strong> have a match, but the best way to see this is by checking the NRL database.</li>
+<li>Find out which species were extracted by NRL, by using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/MatchNRL?csf=1&amp;web=1&amp;e=egwOdU">NRL_match</a></span> script (copy the folder to your machine, fill in year and country and run it).<br>
+</li>
+<li><strong>Double-check that the source is effectively fully extracted</strong>, as sometimes NRL has a source but only a few species (e.g., only <em>Mammals</em> not all tetrapods).</li>
 </ul>
 <p>If the source has already been fully extracted by NRL:</p>
 <ul>
 <li>Indicate this in the table of sources by filling in the <code>extractionType</code> = <code>NRL</code>.<br>
 </li>
-<li>The NRL Data Harmoniser will have to adapt the source to <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s structure. You will be done with the source, and you will start over from step <a href="">1.2. Pick a source and report progress</a>.</li>
+<li>Use the <code>verbatimIdentification</code> and <code>verbatimStatusCode</code> values extracted by NRL for your <code>taxon_assessment</code> table.</li>
+<li>Continue with step <a href="step_1.html#create-a-folder-and-name-it-using-the-sourceid">1.5 Create a folder and name it using the <code>sourceID</code></a>.</li>
 </ul>
 <p>Else, if the source has not already been fully extracted by NRL:</p>
 <ul>

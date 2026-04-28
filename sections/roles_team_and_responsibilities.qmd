@@ -6,9 +6,8 @@ page-layout: full
 ## Roles
 
 1. **Data Extractor**: collects and organises the red list data from the designated sources, either manually or using the automated tool.  
-2. **NRL Data Harmoniser**: standardises the data from the National Red List (NRL) and adapts it to the [**RegRed**]{colour="#d14024" bg-colour="#fff"} structure.  
-3. **Spatial Data Generator**: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.  
-4. **Taxonomy Harmoniser**: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.  
+2. **Spatial Data Generator**: validates the spatial information from the extracted data and obtains the geometries associated with the red list locations.  
+3. **Taxonomy Harmoniser**: verifies the taxonomy and reconciles the scientific names in the extracted data from a red list to match a taxonomic backbone.  
 
 ## Team members and their responsibilities
 
@@ -20,6 +19,7 @@ page-layout: full
   - [Sofi]{colour="#fff" bg-colour="#000"} (Safiya Praleskouskaya): data extractor, status mapping.
   - [Carmen]{colour="#fff" bg-colour="#000"} (Carmen Soria): data extractor.
   - [Dani]{colour="#fff" bg-colour="#000"} (Daniela Mellado): data extractor.
+  - [Kristýna]{colour="#fff" bg-colour="#000"} (Kristýna Vlasáková): data extractor.
 
 ## Team meetings
 

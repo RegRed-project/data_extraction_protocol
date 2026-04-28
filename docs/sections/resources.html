@@ -176,12 +176,6 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sections/workflows/for_nrl_data_harmoniser/steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">For NRL data harmoniser</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../sections/workflows/for_spatial_data_generator/steps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">For spatial data generator</span></a>
   </div>
@@ -257,11 +251,12 @@ ul.task-list li input[type="checkbox"] {
 ├── data/
 │   ├── ...
 │   ├── all_sources_to_extract/
-│   ├── backups/
 │   ├── new_sources/
 │   ├── old_files/
+│   ├── source_to_review/
 │   ├── status_mapping_sources/
-│   └── tetrapods_extracted_sources/
+│   ├── tetrapods_extracted_sources/
+│   └── updated_sources/
 ├── docs/                  
 ├── raw_data/                
 └── README.docx</code></pre>
@@ -272,9 +267,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">all_sources_to_extract</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/all_sources_to_extract?csf=1&amp;web=1&amp;e=QdLyUf">all_sources_to_extract</a><br>
 This is a directory containing all the files (PDFs, etc.) named after the name convention of the first metadata effort (&lt;<em>ISO3_taxa_year.pdf</em>&gt;). Be aware that these names will not match any current fields in the template for data extraction.</p></li>
 <li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">new_sources</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/new_sources?csf=1&amp;web=1&amp;e=gecFt8">new_sources</a><br>
-This is a directory in which we store the new sources that people send to us or that we find during the extraction process.</p></li>
-<li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">old_files</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/old_files?csf=1&amp;web=1&amp;e=bVVjTk">old_files</a><br>
-This is a directory is an archive of old files.</p></li>
+This is a directory in which we store the new sources that people have sent to us or that we have found during the extraction process.</p></li>
+<li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">sources_to_review</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/sources_to_review?csf=1&amp;web=1&amp;e=KLQWKY">sources_to_review</a><br>
+This is a directory used for the peer-reviewing process of the extracted data.</p></li>
 <li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">status_mapping_sources</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources?csf=1&amp;web=1&amp;e=9vcdgX">status_mapping_sources</a><br>
 This is the directory in which we store the IUCN mapping sources (PDF + table, named after <code>statusMappingSourceID</code>).</p></li>
 <li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #3169e0;">tetrapods_extracted_sources</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/tetrapods_extracted_sources?csf=1&amp;web=1&amp;e=bx6Zki">tetrapods_extracted_sources</a><br>
@@ -302,12 +297,14 @@ This is the Excel file that stores all the mapping sources created to translate 
 This is the Excel file that <strong>data extractors</strong> will use to store information about any new source (not in found in the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">tetrapods_sources_to_extract</span>).</p></li>
 <li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">split_script</span> | <a href="https://czuvpraze.sharepoint.com/:u:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/Splitter/split_script.R?csf=1&amp;web=1&amp;e=DdwV5p">code/Splitter/split_script</a><br>
 This is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.</p></li>
+<li><p><span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">NRL_match</span> | <a href="https://czuvpraze.sharepoint.com/:f:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/code/MatchNRL?csf=1&amp;web=1&amp;e=egwOdU">code/MatchNRL/NRL_match</a><br>
+This is an R file to automatically divide Excel files with mixed-classes extracted sources into multiple single class-specific files.</p></li>
 </ul>
 </section>
 <section id="others" class="level2">
 <h2 class="anchored" data-anchor-id="others">Others</h2>
 <ul>
-<li><span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;">weekly_tracker</span> of number of redlists processed per week.<br>
+<li><span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/docs/weekly_targets/regred_weekly_tracker.xlsx?d=wdf640ca9627745c2ba2140ace94e186f&amp;csf=1&amp;web=1&amp;e=qpMw0c">weekly_tracker</a></span> of number of redlists processed per week.<br>
 </li>
 <li><span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> project on GitHub <a href="https://github.com/RegRed-project" class="uri">https://github.com/RegRed-project</a>.<br>
 </li>
