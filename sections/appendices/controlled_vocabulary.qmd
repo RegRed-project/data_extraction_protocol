@@ -71,7 +71,7 @@ Basic instructions can be found also here: <https://support.microsoft.com/en-us/
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'sLanguage') %>% 
+df <- read_xlsx(tmp, sheet = 'sourceLanguage') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -94,7 +94,7 @@ reactable(df,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'sLicense') %>% 
+df <- read_xlsx(tmp, sheet = 'sourceLicense') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -117,7 +117,7 @@ reactable(df,
 #| message: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'sType') %>% 
+df <- read_xlsx(tmp, sheet = 'sourceType') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -143,11 +143,11 @@ reactable(df,
 #| echo: false
 #| eval: false
 
-df <- read_xlsx(tmp, sheet = 'sFormat') %>% 
+df <- read_xlsx(tmp, sheet = 'sourceFormat') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
-reactable(sFormat, 
+reactable(df, 
           resizable = TRUE,
           defaultPageSize = 5,
           wrap = TRUE,
@@ -167,11 +167,11 @@ In case there is some sourceType that is not listed in Excel CV table, it can be
 #| message: false
 #| echo: false
 #| eval: false
-df <- read_xlsx(tmp, sheet = 'sExtractionType') %>% 
+df <- read_xlsx(tmp, sheet = 'extractionType') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
-reactable(sFormat, 
+reactable(df, 
           resizable = TRUE,
           defaultPageSize = 5,
           wrap = TRUE,
@@ -187,7 +187,7 @@ reactable(sFormat,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'sCategory') %>% 
+df <- read_xlsx(tmp, sheet = 'sourceCategory') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -207,7 +207,7 @@ reactable(df,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'sPublisherType') %>% 
+df <- read_xlsx(tmp, sheet = 'sourcePublisherType') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -229,7 +229,7 @@ reactable(df,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'rGeospatialScope') %>% 
+df <- read_xlsx(tmp, sheet = 'geospatialScope') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -249,7 +249,7 @@ reactable(df,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'rTaxonomicScope') %>% 
+df <- read_xlsx(tmp, sheet = 'taxonomicScope') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -269,7 +269,7 @@ reactable(df,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'rStatusAssessmentType') %>% 
+df <- read_xlsx(tmp, sheet = 'statusAssessmentType') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 
@@ -291,7 +291,7 @@ reactable(df,
 #| warning: false
 #| echo: false
 
-df <- read_xlsx(tmp, sheet = 'lContinent') %>% 
+df <- read_xlsx(tmp, sheet = 'continent') %>% 
   janitor::clean_names('lower_camel', abbreviations = 'ID') %>% 
   mutate(across(everything(), ~str_squish(str_trim(.)))) 
 

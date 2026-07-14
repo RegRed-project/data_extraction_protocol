@@ -101,6 +101,31 @@ You may have more than one potential identifier, e.g., a DOI and also an URL.
 
 : {tbl-colwidths="[25,75]"}
 
+### 2.2.1 Handling `sourcePublisher`, `sourcePublisherType` and `bibliographicCitation`
+
+`sourcePublisher` is the organisation or organisations responsible for the redlist publication. It can be a list of organisations. Note: the publisher is **NEVER** the editorial company behind the publication (it must be an organisation). You can think of this term as "who paid to make this redlist". For some sources it may be unclear who the `sourcePublisher` is. Consider that, a redlist should only have the authors' names listed as the `sourcePublisher` and "Individuals" as the `sourcePublisherType` when there is no clear indication that the redlist was created under a specific grant, project, or as part of an academic or governmental task. To be sure, you should inspect sections like "Funding", "Acknowledgements", and go through the Methods or Introduction and search for any possible hint to a grant or project.   
+
+`sourcePublisherType` is the *type* that the main organisation behind the redlist has. Use the first organisation in the `sourcePublisher` list if there are many.   
+
+`bibliographicCitation` is the bibliographic reference for the source, and it may (or may not) have the `sourcePublisher`s as authors. The citation may include authors, editors, and contributors, and they should all be part of the citation. In most cases, the "Publisher" field in Zotero will refer to the `sourcePublisher`s. The publication may have an editorial company behind it (e.g., Oxford Press), and this information can be included in the field "Publisher" in Zotero, but it has nothing to do with the `sourcePublisher` of the redlist. In sum, the "Publisher" in Zotero may be a publishing company or organisation responsible for producing and distributing the work (and is generally the copyright holder).  
+
+::: { .callout-warning collapse="true"}
+## What happens if I have a red book with editors and multiple organisations behind the redlist?
+
+Put all the organisations in a list separated by " | " as the `sourcePublisher`. Pick the first or main organisation to determine the `sourcePublisherType`. Include the editors in the corresponding "Editors" field in Zotero (drop-down menu authors > editors) to fill the `bibliographicCitation`.
+:::
+
+::: { .callout-warning collapse="true"}
+## What happens if the source is a manuscript and has multiple authors?
+
+Put as `sourcePublisher` the affiliations of the authors and evaluate what type of organisation is the first one to define the `sourcePublisherType`.  
+
+OR  
+
+If there is no clear organisation paying or supporting the creation of this redlist: Put as `sourcePublisher` the authors' names and select "Individual" as the `sourcePublisherType`. Generate the citation, including all authors in the `bibliographicCitation`, as you would normally do when you cite a publication.   
+:::
+
+ 
 ## 2.3 Filling the `redlist` table
 
 ::: { .callout-warning collapse="true"}
@@ -291,6 +316,84 @@ Creating the mapping source involves preparing two documents:
 When you are done with the mapping source (Excel and PDF), contact [Flo]{colour="#fff" bg-colour="#000"} to store the folder in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
 
 If you got this far and you still have doubts about status mapping sources, contact [Sofi]{colour="#fff" bg-colour="#000"}.  
+
+
+### 2.3.2 Trustworthiness ranking protocol for RegRed status mappings  
+
+::: {.callout-note}
+This section is being developed (Last update: `r today()`).
+:::
+
+Mapping allows us to match the original threat status code found in one source to the corresponding one in the IUCN Guidelines for Application of IUCN Red List Criteria at Regional and National Levels v4.0. 
+
+The two main components of a species' threat assessment are the status code (the name or acronym indicating the species' threat status; which we refer as to `verbatimStatusCode`) and the criteria (the conditions for assigning a species to a specific status code; `statusCriteria`). Some redlists may also report through codes other type of information that is not related with a threat assessment, for instance the cultural or economic importance of a species. In [**RegRed**]{colour="#d14024" bg-colour="#fff"}, we are only interested in the threat statuses. Ideally, species that are regionally extinct (`RE`) or globally extinct (`EX`) should be reported. Most redlist will at least report endangered statuses (`VU`, `EN`, and `CR`). Additional threat statuses, such as LC, DD, NE, and NA, may not always be available.   
+
+Not all mappings are unambiguous or direct. In cases where the redlist's system diverges from the newest IUCN criteria, mapping requires the use of additional reference materials or relies on the data extractor's interpretation. Because the mapping is not always direct, we have come up with a system that allows us to rank the quality of it. This is because, if some decisions had to be made, there might be more than one option on how to map the statuses, and we want to reflect this as a quality metric. To make this uncertainty explicit and comparable across sources, we established a tiered trustworthiness system ranked from highest to lowest status mapping confidence.   
+
+We refer to a "mapping" as the `verbatimStatusCode`–`StatusCode` pair, and we will separately evaluate each one of them withing a redlist creating a `trustRank`.   
+
+#### Steps 
+ 
+1. Evaluate the source eligibility    
+Before any mapping is attempted, decide whether the source can be mapped at all. If we do not know how the assessment was done, and there is not a clear 1 to 1 aligning, we cannot assume any mappings (i.e., the system used by the redlist is incompatible with IUCN). If this is the case, none of its `verbatimStatusCodes` receive a `statusCode` or a rank; the source is excluded from the mapping table entirely (and from being extracted). Before making the decision not to include the source for this reason, we must attempt to contact the original authors to ask whether some correspondence exists that is not evident from the published materials and only exclude once that avenue is closed.  
+
+**Examples **
+
+  - `sourceID`=2054, which provides only information about hunting and game protection status, not a threat assessment.  
+  - `sourceID`=3359, and the UK's Birds of Conservation Concern framework, which both provide threat-like categories that do not map to IUCN criteria. 
+ 
+
+2. Identify the classification system the redlist uses   
+Context about the system used by the redlist will help explain and predict the per-mapping ranks assigned. Knowing what a source classification system is will tend to tell you what its ranks will mostly look like, but the context itself is never substituted for the per-mapping check. 
+
+**Typical cases**
+
+  - **IUCN system**: the source uses IUCN Regional v4.0 (2012), v3.0 (2003), Gärdenfors et al. (2001), or IUCN Global v3.1 (2001/2012) without modification. Sources in this category will generally produce all `trustRank` of 1, because there is nothing to assume.   
+  - **IUCN-derived with renamed or reorganized codes**: the source follows IUCN criteria but uses different labels (e.g., "N/A" instead of "NA") or a legacy system such as IUCN 1995. Sources in this category will generally produce mostly `trustRank` of 1.   
+  - **Non-IUCN system with available external mapping**: the source uses its own classification that was built from, or is explicitly mapped against, IUCN criteria, but a separately published work has produced a mapping  (e.g., Xue et al. 2021's Russian Red Data Book mapping). Sources in this category will generally produce a mix of `trustRank`, mostly 2 and possibly some 3.   
+  - **System with no available external mapping**: the source's own categories do not reference IUCN, and you will have to decide how to map them (e.g., the MER classification from Mexico, `sourceID`=2570). Sources in this category will generally produce a mix of `trustRank`, mostly 2 and 3.   
+ 
+3. Create a per-mapping rank 
+Assign a trustRank separately to each verbatimStatusCode–statusCode pair. 
+
+##### `trustRank` = 1  
+No assumption was required beyond what the source states.  
+
+**This covers two cases**
+
+1. The source uses a direct IUCN system, so there is no real ambiguity to resolve.   
+2. The source's text explicitly states the equivalence, even when the codes are not literally identical to IUCN's. If the reasoning is written down in the source itself, it belongs here, regardless of how different the `verbatimStatusCode` looks from the `statusCode`.    
+
+**Examples**
+
+  - `statusMappingSourceID`=1, `sourceID`=2825, 2826, mapping is direct as it is already in our target system 
+  - `statusMappingSourceID`=57, `sourceID`=2628, where "Not applicable" is labeled "N/A" instead of NA, and `statusMappingSourceID`=23, `sourceID`=725, it considers "n/a" = NA 
+  - `statusMappingSourceID`=79 and 80, `sourceID`=2012, where EX (extinct) should be transformed to RE (regionally extinct) . 
+  - `statusMappingSourceID`=57, `sourceID`=2628, where "rare" = NT, and "IE (species of special interest)" = LC, the source states the correspondence. 
+ 
+
+##### `trustRank` = 2 
+
+**This covers two cases**
+
+1. The source itself does not state how this specific pair should be resolved, but an external, already-published work has done that interpretive work. The extractor is borrowing someone else's stated judgment, not generating their own.   
+2. The source uses a custom IUCN system with different thresholds and criteria to assign a threat status to a species and thus is not directly equivalent.   
+
+**Examples** 
+
+  - `statusMappingSourceID`=12 (Xue et al. 2021). Where Xue et al. explicitly states a correspondence, such as 0 = RE. 
+  - `statusMappingSourceID`=X, where LC is considered LC but it uses a 10 year threshold (instead of the standard one for IUCN).  
+ 
+
+##### `trustRank` = 3 
+Neither the source nor any external published work states how this specific pair should resolve. No one has come up with the answer; the extractor has to choose. When this happens and more than one `statusCode` is plausible for a single `verbatimStatusCode`, choose the most comprehensive / inclusive category, the one that, if wrong, still contains the correct answer. For example, if a code could be CR or EN, choose EN, since at least all EN-or-CR cases fall within "EN or more severe". 
+
+**Examples**
+
+  - `statusMappingSourceID`=12 (Xue et al. 2021), where they explicitly state that one code may used equally for different IUCN categories. "Category EN has no Russian counterpart. In fact, it partly consists of taxa of category 1, partly of category 2". Thus, 1=EN or 1=CR.  
+  - `statusMappingSourceID`=X, `sourceID`=2570, MER classification from Mexico uses different criteria and the proposed mapping indicates that the MER category "P" could correspond to EN or CR.   
+  - `statusMappingSourceID`=113,109, many Japanese redlists have some species assigned to category 1 which is equal to "CR+EN".   
+  - `statusMappingSourceID`=10, linked to NT and DD.  
 
 
 ## 2.4 Filling the `location` table

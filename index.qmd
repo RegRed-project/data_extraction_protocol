@@ -16,6 +16,12 @@ authors:
     orcid: 
   - name: Gabriel Ortega
     orcid:  
+  - name: Carmen Soria
+    orcid:  
+  - name: Daniela Mellado
+    orcid:  
+  - name: Kristýna Vlasáková
+    orcid:  
 ---
 
 ## Purpose
