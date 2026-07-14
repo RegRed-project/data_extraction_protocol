@@ -321,7 +321,7 @@ If you got this far and you still have doubts about status mapping sources, cont
 ### 2.3.2 Trustworthiness ranking protocol for RegRed status mappings  
 
 ::: {.callout-note}
-This section is being developed (Last update: `r today()`).
+This section is being developed (Last update: `2026-07-14`).
 :::
 
 Mapping allows us to match the original threat status code found in one source to the corresponding one in the IUCN Guidelines for Application of IUCN Red List Criteria at Regional and National Levels v4.0. 
