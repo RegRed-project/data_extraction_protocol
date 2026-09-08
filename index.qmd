@@ -1,5 +1,5 @@
 ---
-title: '[RegRed]{colour="#d14024" bg-colour="#fff"} Data Extraction Protocol'
+title: '[RegRed]{colour="#ff1428" bg-colour="#fff"} Data Extraction Protocol'
 subtitle: ''
 page-layout: full
 date-modified: last-modified
@@ -48,4 +48,4 @@ This `tag` is used for variable names or values.
 
 ## Report errors
 
-Contact [Flo]{colour="#fff" bg-colour="#000"} if you find any inconsistencies in this document: [grattarola@fzp.czu.cz](mailto:grattarola@fzp.czu.cz).
+Contact [Flo]{colour="#fff" bg-colour="#000"} if you find any inconsistencies in this document: [grattarola@fzp.czu.cz](mailto:grattarola@fzp.czu.cz). 

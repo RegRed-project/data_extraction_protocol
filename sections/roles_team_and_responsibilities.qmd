@@ -23,5 +23,5 @@ page-layout: full
 
 ## Team meetings
 
-We will hold weekly meetings on Tuesdays at 10:30 (**room D233**) to assess progress, report issues and assign new tasks. To make this meetings more productive, team members should write their questions in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s meeting notes in advance.
+We will hold weekly meetings on Tuesdays at 10:30 (**room D233**) to assess progress, report issues and assign new tasks. To make this meetings more productive, team members should write their questions in [**RegRed**]{colour="#ff1428" bg-colour="#fff"}'s meeting notes in advance.
 

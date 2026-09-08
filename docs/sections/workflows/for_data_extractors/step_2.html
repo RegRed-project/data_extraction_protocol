@@ -107,8 +107,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../images/other_random_logo_regred.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../../images/other_random_logo_regred.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../../../images/RegRed-Icon-v02_RR-Logo-Primary.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../images/RegRed-Icon-v02_RR-Logo-Primary.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
     <a href="https://github.com/RegRed-project" title="RegRed" class="quarto-navigation-tool px-1" aria-label="RegRed"><i class="bi bi-globe"></i></a>
@@ -284,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><strong>Everyone is involved in the extraction</strong><br>
-The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> database has six tables that relate to each other through IDs - they will be filled as follows.</p>
+The <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> database has six tables that relate to each other through IDs - they will be filled as follows.</p>
 <ul>
 <li>The <strong>data extractors</strong> will extract data manually using the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&amp;csf=1&amp;web=1&amp;e=P8dExb">data_extraction_template</a></span> for the tables <code>source</code>, <code>redlist</code>, and <code>location</code>, and will extract data either manually or automatically, depending on the <code>extractionType</code> detected, for the <code>taxon_assessment</code> table. They will also have to create a file for mapping <code>verbatimStatusCode</code> to a standardised <code>statusCode</code>, following the <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #31b0e0;"><a href="https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&amp;csf=1&amp;web=1&amp;e=eMLqUr">mapping_sources_template</a></span>.<br>
 </li>
@@ -463,7 +463,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </tr>
 <tr class="odd">
 <td><code>bibliographicCitation</code></td>
-<td>use <strong>Zotero</strong> to create this value by entering the source in the shared <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> Zotero library (Sources Collection). Export the bibliographic citation in APA 7 style (Englsih UK) and use that value (more information in the <a href="../../../sections/appendices/citation_rules.html">Citation Rules</a> appendix)</td>
+<td>use <strong>Zotero</strong> to create this value by entering the source in the shared <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> Zotero library (Sources Collection). Export the bibliographic citation in APA 7 style (Englsih UK) and use that value (more information in the <a href="../../../sections/appendices/citation_rules.html">Citation Rules</a> appendix)</td>
 </tr>
 </tbody>
 </table>
@@ -592,7 +592,7 @@ The <span class="light-content" style="color: #d14024;border-radius: 0.2rem; pad
 </tr>
 <tr class="even">
 <td><code>statusAssessmentTypeCitation</code></td>
-<td>use <strong>Zotero</strong> to create this field by entering the source in the shared <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix)</td>
+<td>use <strong>Zotero</strong> to create this field by entering the source in the shared <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix)</td>
 </tr>
 <tr class="odd">
 <td><code>statusAssessmentTypeIdentifier</code></td>
@@ -729,7 +729,7 @@ In all scenarios, you will have to create a separate Excel file with its respect
 </li>
 <li><strong>Scenario 3</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, yet the same the same source provides the mapping of the <code>verbatimStatusCodes</code> to the <code>statusCodes</code>. You will use the source’s citation (<code>bibliographicCitation</code>) as the <code>statusAssessmentTypeCitation</code>, and the source’s identifier (<code>sourceIdentifier</code>) as the <code>statusAssessmentTypeIdentifier</code>.</li>
 <li><strong>Scenario 4</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, yet there is a publication (e.g., a manuscript or an official document) that has already done the mapping to the IUCN categories. You will create the citation for this document in Zotero and use it as the <code>statusAssessmentTypeCitation</code> (including the identifier as the <code>statusAssessmentTypeIdentifier</code>).</li>
-<li><strong>Scenario 5</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, and there is no official document that maps the statues to the IUCN criteria. You may also have a mix of different sources to define the mapping. In this case, you will cite yourself (use as identifier the URL from our GitHub repository). Contact Flo to store the Excel and PDF in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. You will need this to get a <code>statusAssessmentTypeIdentifier</code>.</li>
+<li><strong>Scenario 5</strong>: The assessment was <strong>not</strong> done following IUCN guidelines, and there is no official document that maps the statues to the IUCN criteria. You may also have a mix of different sources to define the mapping. In this case, you will cite yourself (use as identifier the URL from our GitHub repository). Contact Flo to store the Excel and PDF in <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. You will need this to get a <code>statusAssessmentTypeIdentifier</code>.</li>
 </ul>
 <p>If you have doubts about how to create the mapping, you can check with <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> how to define the statuses. Always try to come up with something, so that we can finalise together.</p>
 <p><strong>Instructions to create the Excel table and PDF document for the mapping source</strong><br>
@@ -777,7 +777,7 @@ Creating the mapping source involves preparing two documents:</p>
 <li><strong>Bibliography</strong>: The documents and sources you used to define the criteria.</li>
 </ul>
 <p><strong>Final step</strong>:<br>
-When you are done with the mapping source (Excel and PDF), contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> to store the folder in <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</p>
+When you are done with the mapping source (Excel and PDF), contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Flo</span> to store the folder in <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>’s GitHub repository. This repository will be archived in the future in Zenodo.</p>
 <p>If you got this far and you still have doubts about status mapping sources, contact <span class="light-content" style="color: #fff;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #000;">Sofi</span>.</p>
 </section>
 </section>
@@ -797,7 +797,7 @@ Note
 </div>
 </div>
 <p>Mapping allows us to match the original threat status code found in one source to the corresponding one in the IUCN Guidelines for Application of IUCN Red List Criteria at Regional and National Levels v4.0.</p>
-<p>The two main components of a species’ threat assessment are the status code (the name or acronym indicating the species’ threat status; which we refer as to <code>verbatimStatusCode</code>) and the criteria (the conditions for assigning a species to a specific status code; <code>statusCriteria</code>). Some redlists may also report through codes other type of information that is not related with a threat assessment, for instance the cultural or economic importance of a species. In <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>, we are only interested in the threat statuses. Ideally, species that are regionally extinct (<code>RE</code>) or globally extinct (<code>EX</code>) should be reported. Most redlist will at least report endangered statuses (<code>VU</code>, <code>EN</code>, and <code>CR</code>). Additional threat statuses, such as LC, DD, NE, and NA, may not always be available.</p>
+<p>The two main components of a species’ threat assessment are the status code (the name or acronym indicating the species’ threat status; which we refer as to <code>verbatimStatusCode</code>) and the criteria (the conditions for assigning a species to a specific status code; <code>statusCriteria</code>). Some redlists may also report through codes other type of information that is not related with a threat assessment, for instance the cultural or economic importance of a species. In <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span>, we are only interested in the threat statuses. Ideally, species that are regionally extinct (<code>RE</code>) or globally extinct (<code>EX</code>) should be reported. Most redlist will at least report endangered statuses (<code>VU</code>, <code>EN</code>, and <code>CR</code>). Additional threat statuses, such as LC, DD, NE, and NA, may not always be available.</p>
 <p>Not all mappings are unambiguous or direct. In cases where the redlist’s system diverges from the newest IUCN criteria, mapping requires the use of additional reference materials or relies on the data extractor’s interpretation. Because the mapping is not always direct, we have come up with a system that allows us to rank the quality of it. This is because, if some decisions had to be made, there might be more than one option on how to map the statuses, and we want to reflect this as a quality metric. To make this uncertainty explicit and comparable across sources, we established a tiered trustworthiness system ranked from highest to lowest status mapping confidence.</p>
 <p>We refer to a “mapping” as the <code>verbatimStatusCode</code>–<code>StatusCode</code> pair, and we will separately evaluate each one of them withing a redlist creating a <code>trustRank</code>.</p>
 <section id="steps" class="level4">
@@ -885,7 +885,7 @@ Context about the system used by the redlist will help explain and predict the p
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What sources does <span class="light-content" style="color: #d14024;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> use for geographic locations?
+<span class="screen-reader-only">Warning</span>What sources does <span class="light-content" style="color: #ff1428;border-radius: 0.2rem; padding: 0 0.2rem 0 0.2rem;background-color: #fff;"><strong>RegRed</strong></span> use for geographic locations?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>

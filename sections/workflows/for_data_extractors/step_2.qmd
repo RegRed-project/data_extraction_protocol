@@ -6,7 +6,7 @@ toc-location: left
 ---
 
 **Everyone is involved in the extraction**   
-The [**RegRed**]{colour="#d14024" bg-colour="#fff"} database has six tables that relate to each other through IDs - they will be filled as follows. 
+The [**RegRed**]{colour="#ff1428" bg-colour="#fff"} database has six tables that relate to each other through IDs - they will be filled as follows. 
 
   - The **data extractors** will extract data manually using the [[data_extraction_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/regred_data_extraction_template.xlsx?d=w4c80628c98c644729594d006e079afa4&csf=1&web=1&e=P8dExb)]{colour="#fff" bg-colour="#31b0e0"} for the tables `source`, `redlist`, and `location`, and will extract data either manually or automatically, depending on the `extractionType` detected, for the `taxon_assessment` table. They will also have to create a file for mapping `verbatimStatusCode` to a standardised `statusCode`, following the [[mapping_sources_template](https://czuvpraze.sharepoint.com/:x:/r/teams/czu-in19b7pkjs2ctzgp-Gainsandlosses/Sdilene%20dokumenty/RegRed/data/status_mapping_sources/regred_mapping_sources_template.xlsx?d=w5a550bfc041d467e9cf7fd6d8237dcca&csf=1&web=1&e=eMLqUr)]{colour="#fff" bg-colour="#31b0e0"}.   
   - The **spatial data generator** will be in charge of verifying the `location` table, and generating the spatial polygons for all `redlistLocation`s following the [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} standard.   
@@ -97,7 +97,7 @@ You may have more than one potential identifier, e.g., a DOI and also an URL.
 | `sourceCategory` | select the value from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcecategory) |
 | `sourcePublisher` | find the publisher or publishers in the source, and add them separate by "`|`". Use the full name of the publishers followed by the acronym in brackets. A publisher can be an institution or people |
 | `sourcePublisherType` | select from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#sourcepublishertype). If multiple publishers, separate by "`|`" following the same order as `sourcePublisher` |
-| `bibliographicCitation` | use **Zotero** to create this value by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Sources Collection). Export the bibliographic citation in APA 7 style (Englsih UK) and use that value (more information in the [Citation Rules](/sections/appendices/citation_rules.html) appendix) |
+| `bibliographicCitation` | use **Zotero** to create this value by entering the source in the shared [**RegRed**]{colour="#ff1428" bg-colour="#fff"} Zotero library (Sources Collection). Export the bibliographic citation in APA 7 style (Englsih UK) and use that value (more information in the [Citation Rules](/sections/appendices/citation_rules.html) appendix) |
 
 : {tbl-colwidths="[25,75]"}
 
@@ -159,7 +159,7 @@ If the `statusAssessmentType = IUCN` but it is not the standard version, or if t
 | `isTaxonomicScopeFullyReported` | select from the list of controlled vocabulary. Fill with `Yes` if the number of species reported on the redlist is the same as the number of species in the `taxonomicScope` |
 | `redlistLocation` | this must be a unique value, not a list. Check if the location refers to a `country`, `stateProvince`, or `county`, if it is a location smaller than a `county`, if the location is a protected area or if it is an island, and search for the correct name in the table of [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} |
 | `statusAssessmentType` | select from the list of [controlled vocabulary](/sections/appendices/controlled_vocabulary.html#statusassessmenttype). If it is `Non-IUCN`, you must create the status mapping source following the template |
-| `statusAssessmentTypeCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#d14024" bg-colour="#fff"} Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
+| `statusAssessmentTypeCitation` | use **Zotero** to create this field by entering the source in the shared [**RegRed**]{colour="#ff1428" bg-colour="#fff"} Zotero library (Assessment systems Collection). Export the bibliographic citation in APA style and use that value (see Appendix) |
 | `statusAssessmentTypeIdentifier` | check if the mapping source has an identifier and add the value |
 | `statusMappingSourceID` | check if the mapping source has an identifier and add the value |
 
@@ -274,7 +274,7 @@ In all scenarios, you will have to create a separate Excel file with its respect
   - **Scenario 2**: The assessment was done following IUCN guidelines, but it's not evident from the source which version was used. The `statusAssessmentTypeCitation` and the `statusAssessmentTypeIdentifier` should be `Unknown`.  
   - **Scenario 3**: The assessment was **not** done following IUCN guidelines, yet the same the same source provides the mapping of the `verbatimStatusCodes` to the `statusCodes`. You will use the source's citation (`bibliographicCitation`) as the `statusAssessmentTypeCitation`, and the source's identifier (`sourceIdentifier`) as the `statusAssessmentTypeIdentifier`.
   - **Scenario 4**: The assessment was **not** done following IUCN guidelines, yet there is a publication (e.g., a manuscript or an official document) that has already done the mapping to the IUCN categories. You will create the citation for this document in Zotero and use it as the `statusAssessmentTypeCitation` (including the identifier as the `statusAssessmentTypeIdentifier`).
-  - **Scenario 5**: The assessment was **not** done following IUCN guidelines, and there is no official document that maps the statues to the IUCN criteria. You may also have a mix of different sources to define the mapping. In this case, you will cite yourself (use as identifier the URL from our GitHub repository). Contact Flo to store the Excel and PDF in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. You will need this to get a `statusAssessmentTypeIdentifier`.
+  - **Scenario 5**: The assessment was **not** done following IUCN guidelines, and there is no official document that maps the statues to the IUCN criteria. You may also have a mix of different sources to define the mapping. In this case, you will cite yourself (use as identifier the URL from our GitHub repository). Contact Flo to store the Excel and PDF in [**RegRed**]{colour="#ff1428" bg-colour="#fff"}'s GitHub repository. You will need this to get a `statusAssessmentTypeIdentifier`.
       
 If you have doubts about how to create the mapping, you can check with [Flo]{colour="#fff" bg-colour="#000"} how to define the statuses. Always try to come up with something, so that we can finalise together. 
 
@@ -313,7 +313,7 @@ Creating the mapping source involves preparing two documents:
 -   **Bibliography**: The documents and sources you used to define the criteria.  
 
 **Final step**:    
-When you are done with the mapping source (Excel and PDF), contact [Flo]{colour="#fff" bg-colour="#000"} to store the folder in [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
+When you are done with the mapping source (Excel and PDF), contact [Flo]{colour="#fff" bg-colour="#000"} to store the folder in [**RegRed**]{colour="#ff1428" bg-colour="#fff"}'s GitHub repository. This repository will be archived in the future in Zenodo.  
 
 If you got this far and you still have doubts about status mapping sources, contact [Sofi]{colour="#fff" bg-colour="#000"}.  
 
@@ -326,7 +326,7 @@ This section is being developed (Last update: `2026-07-14`).
 
 Mapping allows us to match the original threat status code found in one source to the corresponding one in the IUCN Guidelines for Application of IUCN Red List Criteria at Regional and National Levels v4.0. 
 
-The two main components of a species' threat assessment are the status code (the name or acronym indicating the species' threat status; which we refer as to `verbatimStatusCode`) and the criteria (the conditions for assigning a species to a specific status code; `statusCriteria`). Some redlists may also report through codes other type of information that is not related with a threat assessment, for instance the cultural or economic importance of a species. In [**RegRed**]{colour="#d14024" bg-colour="#fff"}, we are only interested in the threat statuses. Ideally, species that are regionally extinct (`RE`) or globally extinct (`EX`) should be reported. Most redlist will at least report endangered statuses (`VU`, `EN`, and `CR`). Additional threat statuses, such as LC, DD, NE, and NA, may not always be available.   
+The two main components of a species' threat assessment are the status code (the name or acronym indicating the species' threat status; which we refer as to `verbatimStatusCode`) and the criteria (the conditions for assigning a species to a specific status code; `statusCriteria`). Some redlists may also report through codes other type of information that is not related with a threat assessment, for instance the cultural or economic importance of a species. In [**RegRed**]{colour="#ff1428" bg-colour="#fff"}, we are only interested in the threat statuses. Ideally, species that are regionally extinct (`RE`) or globally extinct (`EX`) should be reported. Most redlist will at least report endangered statuses (`VU`, `EN`, and `CR`). Additional threat statuses, such as LC, DD, NE, and NA, may not always be available.   
 
 Not all mappings are unambiguous or direct. In cases where the redlist's system diverges from the newest IUCN criteria, mapping requires the use of additional reference materials or relies on the data extractor's interpretation. Because the mapping is not always direct, we have come up with a system that allows us to rank the quality of it. This is because, if some decisions had to be made, there might be more than one option on how to map the statuses, and we want to reflect this as a quality metric. To make this uncertainty explicit and comparable across sources, we established a tiered trustworthiness system ranked from highest to lowest status mapping confidence.   
 
@@ -399,7 +399,7 @@ Neither the source nor any external published work states how this specific pair
 ## 2.4 Filling the `location` table
 
 ::: { .callout-warning collapse="true"}
-## What sources does [**RegRed**]{colour="#d14024" bg-colour="#fff"} use for geographic locations?
+## What sources does [**RegRed**]{colour="#ff1428" bg-colour="#fff"} use for geographic locations?
 
 The [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} are based in the following databases:
 

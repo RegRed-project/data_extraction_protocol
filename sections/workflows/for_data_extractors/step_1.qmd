@@ -116,7 +116,7 @@ We keep a record of the weekly number of redlists done by each data extractor in
 ## 1.3 Check if the source has already been extracted by the NRL
 
 **Check before starting to extract data**.    
-The National Red List project (<https://www.nationalredlist.org/>) is one of [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s partners. They have extracted data from many different sources already, and **data extractors** should make sure not to extract the species status assessment data again. However, **data extractors** will still need to extract all relevant field for the source or redlist being considered. 
+The National Red List project (<https://www.nationalredlist.org/>) is one of [**RegRed**]{colour="#ff1428" bg-colour="#fff"}'s partners. They have extracted data from many different sources already, and **data extractors** should make sure not to extract the species status assessment data again. However, **data extractors** will still need to extract all relevant field for the source or redlist being considered. 
 
 ::: {.callout-warning collapse="true"}
 ## How to know if the source has been extracted by the NRL?  
@@ -142,7 +142,7 @@ Else, if the source has not already been fully extracted by NRL:
 ## 1.4 Evaluate the suitability of the source for manual extraction
 
 **Manual or automated extraction**   
-[**RegRed**]{colour="#d14024" bg-colour="#fff"} uses **EcoParse**, a tool that streamlines the AI automated method, but not all sources yield reliable results through automation. Before beginning to extract any data, Data Extractors will have to assess whether the source is appropriate for manual or automated extraction. 
+[**RegRed**]{colour="#ff1428" bg-colour="#fff"} uses **EcoParse**, a tool that streamlines the AI automated method, but not all sources yield reliable results through automation. Before beginning to extract any data, Data Extractors will have to assess whether the source is appropriate for manual or automated extraction. 
 
 ::: {.callout-warning collapse="true"}
 ## Why use automated methods?   
@@ -190,7 +190,7 @@ Name the folder using the `sourceID` provided in the table of sources. This shou
 Each source may contain multiple red lists, which are loosely defined as lists of species assessed for extinction risk within a specific geographic and taxonomic scope.
 
 ::: {.callout-warning collapse="false"}
-## What is a red list for [**RegRed**]{colour="#d14024" bg-colour="#fff"}?
+## What is a red list for [**RegRed**]{colour="#ff1428" bg-colour="#fff"}?
 
 A red list is uniquely identified by the combination of:
 

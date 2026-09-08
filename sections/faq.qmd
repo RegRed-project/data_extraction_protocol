@@ -53,7 +53,7 @@ If the source should be included in the table of sources, it will need to be add
 If the source has already been fully extracted by NRL:   
 
   -   Indicate this in the table of sources by filling in the `extractionType` = `NRL`.  
-  -   The NRL Data Harmoniser will have to adapt the source to [**RegRed**]{colour="#d14024" bg-colour="#fff"}'s structure. You will be done with the source, and you will start over from step [1.2. Pick a source and report progress]().    
+  -   The NRL Data Harmoniser will have to adapt the source to [**RegRed**]{colour="#ff1428" bg-colour="#fff"}'s structure. You will be done with the source, and you will start over from step [1.2. Pick a source and report progress]().    
   
 Else, if the source has not already been fully extracted by NRL:   
 
@@ -129,7 +129,7 @@ You may have more than one potential identifier, e.g., a DOI and also an URL.
 ### `redlist`
 
 ::: {.callout-warning collapse="false"}
-## What is a red list for [**RegRed**]{colour="#d14024" bg-colour="#fff"}?
+## What is a red list for [**RegRed**]{colour="#ff1428" bg-colour="#fff"}?
 
 A red list is uniquely identified by the combination of:
 
@@ -178,7 +178,7 @@ You can find the `statusMappingSourceID` in the [mapping_sources_used]{colour="#
 ### `location`
 
 ::: { .callout-warning collapse="true"}
-## What sources does [**RegRed**]{colour="#d14024" bg-colour="#fff"} use for geographic locations?
+## What sources does [**RegRed**]{colour="#ff1428" bg-colour="#fff"} use for geographic locations?
 
 The [[geographic_entities](https://regred-project.github.io/geographic_entities/)]{colour="#fff" bg-colour="#31b0e0"} are based in the following databases:
 
