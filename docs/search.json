@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "RegRed Data Extraction Protocol",
+    "title": "Data Extraction Protocol",
     "section": "",
     "text": "The primary goal of this protocol is to ensure that any team member, regardless of when they join, can confidently and consistently contribute to the data extraction process.\nBe aware, the protocol is adapted to the extraction of data from the tetrapods group.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#purpose",
     "href": "index.html#purpose",
-    "title": "RegRed Data Extraction Protocol",
+    "title": "Data Extraction Protocol",
     "section": "",
     "text": "The primary goal of this protocol is to ensure that any team member, regardless of when they join, can confidently and consistently contribute to the data extraction process.\nBe aware, the protocol is adapted to the extraction of data from the tetrapods group.",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#how-to-use-this-document",
     "href": "index.html#how-to-use-this-document",
-    "title": "RegRed Data Extraction Protocol",
+    "title": "Data Extraction Protocol",
     "section": "How to use this document",
     "text": "How to use this document\n\n\n\n\n\n\nTipThis is a tip\n\n\n\n\n\n\n\n\n\n\n\n\nWarningThis is a question\n\n\n\n\n\n\nThis tag is used for team member names.\nThis tag is used for folders.\nThis tag is used for files.\nThis tag is used for variable names or values.",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "index.html#report-errors",
     "href": "index.html#report-errors",
-    "title": "RegRed Data Extraction Protocol",
+    "title": "Data Extraction Protocol",
     "section": "Report errors",
     "text": "Report errors\nContact Flo if you find any inconsistencies in this document: grattarola@fzp.czu.cz.",
     "crumbs": [

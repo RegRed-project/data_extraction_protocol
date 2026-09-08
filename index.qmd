@@ -1,5 +1,5 @@
 ---
-title: '[RegRed]{colour="#ff1428" bg-colour="#fff"} Data Extraction Protocol'
+title: 'Data Extraction Protocol'
 subtitle: ''
 page-layout: full
 date-modified: last-modified
